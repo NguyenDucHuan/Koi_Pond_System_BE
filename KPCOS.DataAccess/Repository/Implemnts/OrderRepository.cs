@@ -1,52 +1,44 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.Models;
 
 namespace KPCOS.DataAccess.Repository.Implemnts
 {
-    public class ServiceRepository : IServiceRepository
+    public class OrderRepository : IOrderRepository
     {
         private readonly KpcosdbContext _context;
 
-        public ServiceRepository(KpcosdbContext context)
+        public OrderRepository(KpcosdbContext context)
         {
             _context = context;
         }
 
-        public Task<Service> AddServiceAsync(Service service)
+        public Task<Order> AddOrderAsync(Order order)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteServiceAsync(int serviceId)
+        public Task DeleteOrderAsync(int orderId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Service> GetServiceAsync(int serviceId)
+        public Task<Order> GetOrderAsync(int orderId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Service>> GetServicesAsync()
+        public Task<List<Order>> GetOrdersAsync()
         {
             throw new NotImplementedException();
         }
 
-
-        public Task<Service> UpdateServiceAsync(Service service)
+        public Task<Order> UpdateOrderAsync(Order order)
         {
             throw new NotImplementedException();
-        }
-
-        public T SaveChange<T>(T u)
-        {
-            _context.SaveChanges();
-            return u;
         }
     }
 }

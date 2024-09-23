@@ -1,52 +1,44 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.Models;
 
 namespace KPCOS.DataAccess.Repository.Implemnts
 {
-    public class ServiceRepository : IServiceRepository
+    public class DecorationRepository : IDecorationRepository
     {
         private readonly KpcosdbContext _context;
 
-        public ServiceRepository(KpcosdbContext context)
+        public DecorationRepository(KpcosdbContext context)
         {
             _context = context;
         }
 
-        public Task<Service> AddServiceAsync(Service service)
+        public Task<Decoration> AddDecorationAsync(Decoration decoration)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteServiceAsync(int serviceId)
+        public Task DeleteDecorationAsync(int decorationId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Service> GetServiceAsync(int serviceId)
+        public Task<Decoration> GetDecorationAsync(int decorationId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Service>> GetServicesAsync()
+        public Task<List<Decoration>> GetDecorationsAsync()
         {
             throw new NotImplementedException();
         }
 
-
-        public Task<Service> UpdateServiceAsync(Service service)
+        public Task<Decoration> UpdateDecorationAsync(Decoration decoration)
         {
             throw new NotImplementedException();
-        }
-
-        public T SaveChange<T>(T u)
-        {
-            _context.SaveChanges();
-            return u;
         }
     }
 }

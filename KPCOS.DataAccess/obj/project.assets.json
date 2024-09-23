@@ -3357,11 +3357,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TERM6\\Merge\\Koi_fish_system\\KPCOS.BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj",
+      "projectUniqueName": "D:\\TERM6\\Merge\\KPCOS.BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj",
       "projectName": "KPCOS.DataAccess",
-      "projectPath": "D:\\TERM6\\Merge\\Koi_fish_system\\KPCOS.BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj",
+      "projectPath": "D:\\TERM6\\Merge\\KPCOS.BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj",
       "packagesPath": "C:\\Users\\subih\\.nuget\\packages\\",
-      "outputPath": "D:\\TERM6\\Merge\\Koi_fish_system\\KPCOS.BE\\KPCOS.DataAccess\\obj\\",
+      "outputPath": "D:\\TERM6\\Merge\\KPCOS.BE\\KPCOS.DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3383,8 +3383,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\TERM6\\Merge\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
-              "projectPath": "D:\\TERM6\\Merge\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj"
+            "D:\\TERM6\\Merge\\KPCOS.BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
+              "projectPath": "D:\\TERM6\\Merge\\KPCOS.BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj"
             }
           }
         }

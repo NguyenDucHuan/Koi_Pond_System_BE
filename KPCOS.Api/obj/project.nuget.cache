@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Nwhuy+9kSso=",
+  "dgSpecHash": "aYpdfmpoxuU=",
   "success": true,
-  "projectFilePath": "D:\\TERM6\\Merge\\Koi_fish_system\\KPCOS.BE\\KPCOS.Api\\KPCOS.Api.csproj",
+  "projectFilePath": "D:\\TERM6\\Merge\\KPCOS.BE\\KPCOS.Api\\KPCOS.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\subih\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\subih\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

@@ -1,52 +1,44 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.Models;
 
 namespace KPCOS.DataAccess.Repository.Implemnts
 {
-    public class ServiceRepository : IServiceRepository
+    public class DiscountRepository : IDiscountRepository
     {
         private readonly KpcosdbContext _context;
 
-        public ServiceRepository(KpcosdbContext context)
+        public DiscountRepository(KpcosdbContext context)
         {
             _context = context;
         }
 
-        public Task<Service> AddServiceAsync(Service service)
+        public Task<Discount> AddDiscountAsync(Discount discount)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteServiceAsync(int serviceId)
+        public Task DeleteDiscountAsync(int discountId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Service> GetServiceAsync(int serviceId)
+        public Task<Discount> GetDiscountAsync(int discountId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Service>> GetServicesAsync()
+        public Task<List<Discount>> GetDiscountsAsync()
         {
             throw new NotImplementedException();
         }
 
-
-        public Task<Service> UpdateServiceAsync(Service service)
+        public Task<Discount> UpdateDiscountAsync(Discount discount)
         {
             throw new NotImplementedException();
-        }
-
-        public T SaveChange<T>(T u)
-        {
-            _context.SaveChanges();
-            return u;
         }
     }
 }
