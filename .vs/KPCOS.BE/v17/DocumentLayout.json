@@ -1,0 +1,198 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\term6\\koi_fish_system\\kpcos.be\\kpcos.api\\service\\implement\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\service\\implement\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\term6\\koi_fish_system\\kpcos.be\\kpcos.api\\mappers\\accountmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\mappers\\accountmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|d:\\term6\\koi_fish_system\\kpcos.be\\kpocos.domain\\dtos\\response\\accountresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|solutionrelative:kpocos.domain\\dtos\\response\\accountresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64DF189C-F46D-4DF6-A385-B1353315EC91}|KPCOS.DataAccess\\KPCOS.DataAccess.csproj|d:\\term6\\koi_fish_system\\kpcos.be\\kpcos.dataaccess\\repository\\implemnts\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64DF189C-F46D-4DF6-A385-B1353315EC91}|KPCOS.DataAccess\\KPCOS.DataAccess.csproj|solutionrelative:kpcos.dataaccess\\repository\\implemnts\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|d:\\term6\\koi_fish_system\\kpcos.be\\kpocos.domain\\dtos\\constantsresponseentitymessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|solutionrelative:kpocos.domain\\dtos\\constantsresponseentitymessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64DF189C-F46D-4DF6-A385-B1353315EC91}|KPCOS.DataAccess\\KPCOS.DataAccess.csproj|d:\\term6\\koi_fish_system\\kpcos.be\\kpcos.dataaccess\\repository\\interfaces\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64DF189C-F46D-4DF6-A385-B1353315EC91}|KPCOS.DataAccess\\KPCOS.DataAccess.csproj|solutionrelative:kpcos.dataaccess\\repository\\interfaces\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64DF189C-F46D-4DF6-A385-B1353315EC91}|KPCOS.DataAccess\\KPCOS.DataAccess.csproj|d:\\term6\\koi_fish_system\\kpcos.be\\kpcos.dataaccess\\repository\\interfaces\\iservicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64DF189C-F46D-4DF6-A385-B1353315EC91}|KPCOS.DataAccess\\KPCOS.DataAccess.csproj|solutionrelative:kpcos.dataaccess\\repository\\interfaces\\iservicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|d:\\term6\\koi_fish_system\\kpcos.be\\kpocos.domain\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|solutionrelative:kpocos.domain\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|d:\\term6\\koi_fish_system\\kpcos.be\\kpocos.domain\\dtos\\resquest\\accountrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|solutionrelative:kpocos.domain\\dtos\\resquest\\accountrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|d:\\term6\\koi_fish_system\\kpcos.be\\kpocos.domain\\dtos\\resquest\\userprofilerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|solutionrelative:kpocos.domain\\dtos\\resquest\\userprofilerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|d:\\term6\\koi_fish_system\\kpcos.be\\kpocos.domain\\models\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|solutionrelative:kpocos.domain\\models\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPCOS.Api\\Service\\Implement\\AuthService.cs",
+              "RelativeDocumentMoniker": "KPCOS.Api\\Service\\Implement\\AuthService.cs",
+              "ToolTip": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPCOS.Api\\Service\\Implement\\AuthService.cs",
+              "RelativeToolTip": "KPCOS.Api\\Service\\Implement\\AuthService.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwCEAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T04:20:28.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountResponse.cs",
+              "DocumentMoniker": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\DTOs\\Response\\AccountResponse.cs",
+              "RelativeDocumentMoniker": "KPOCOS.Domain\\DTOs\\Response\\AccountResponse.cs",
+              "ToolTip": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\DTOs\\Response\\AccountResponse.cs",
+              "RelativeToolTip": "KPOCOS.Domain\\DTOs\\Response\\AccountResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T08:05:33.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConstantsResponseEntityMessage.cs",
+              "DocumentMoniker": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\DTOs\\ConstantsResponseEntityMessage.cs",
+              "RelativeDocumentMoniker": "KPOCOS.Domain\\DTOs\\ConstantsResponseEntityMessage.cs",
+              "ToolTip": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\DTOs\\ConstantsResponseEntityMessage.cs",
+              "RelativeToolTip": "KPOCOS.Domain\\DTOs\\ConstantsResponseEntityMessage.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T05:12:23.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountRepository.cs",
+              "DocumentMoniker": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPCOS.DataAccess\\Repository\\Implemnts\\AccountRepository.cs",
+              "RelativeDocumentMoniker": "KPCOS.DataAccess\\Repository\\Implemnts\\AccountRepository.cs",
+              "ToolTip": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPCOS.DataAccess\\Repository\\Implemnts\\AccountRepository.cs",
+              "RelativeToolTip": "KPCOS.DataAccess\\Repository\\Implemnts\\AccountRepository.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAA1wB0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T04:53:35.236Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IAccountRepository.cs",
+              "DocumentMoniker": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPCOS.DataAccess\\Repository\\Interfaces\\IAccountRepository.cs",
+              "RelativeDocumentMoniker": "KPCOS.DataAccess\\Repository\\Interfaces\\IAccountRepository.cs",
+              "ToolTip": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPCOS.DataAccess\\Repository\\Interfaces\\IAccountRepository.cs",
+              "RelativeToolTip": "KPCOS.DataAccess\\Repository\\Interfaces\\IAccountRepository.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAABAAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T04:56:29.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IServiceRepository.cs",
+              "DocumentMoniker": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPCOS.DataAccess\\Repository\\Interfaces\\IServiceRepository.cs",
+              "RelativeDocumentMoniker": "KPCOS.DataAccess\\Repository\\Interfaces\\IServiceRepository.cs",
+              "ToolTip": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPCOS.DataAccess\\Repository\\Interfaces\\IServiceRepository.cs",
+              "RelativeToolTip": "KPCOS.DataAccess\\Repository\\Interfaces\\IServiceRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T04:53:24.266Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserProfile.cs",
+              "DocumentMoniker": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\Models\\UserProfile.cs",
+              "RelativeDocumentMoniker": "KPOCOS.Domain\\Models\\UserProfile.cs",
+              "ToolTip": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\Models\\UserProfile.cs",
+              "RelativeToolTip": "KPOCOS.Domain\\Models\\UserProfile.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwBYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T17:42:30.864Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountMapper.cs",
+              "DocumentMoniker": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPCOS.Api\\Mappers\\AccountMapper.cs",
+              "RelativeDocumentMoniker": "KPCOS.Api\\Mappers\\AccountMapper.cs",
+              "ToolTip": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPCOS.Api\\Mappers\\AccountMapper.cs",
+              "RelativeToolTip": "KPCOS.Api\\Mappers\\AccountMapper.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAiwBMAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T17:46:23.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AccountRequest.cs",
+              "DocumentMoniker": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\DTOs\\Resquest\\AccountRequest.cs",
+              "RelativeDocumentMoniker": "KPOCOS.Domain\\DTOs\\Resquest\\AccountRequest.cs",
+              "ToolTip": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\DTOs\\Resquest\\AccountRequest.cs",
+              "RelativeToolTip": "KPOCOS.Domain\\DTOs\\Resquest\\AccountRequest.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwBkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T17:27:42.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserProfileRequest.cs",
+              "DocumentMoniker": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\DTOs\\Resquest\\UserProfileRequest.cs",
+              "RelativeDocumentMoniker": "KPOCOS.Domain\\DTOs\\Resquest\\UserProfileRequest.cs",
+              "ToolTip": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\DTOs\\Resquest\\UserProfileRequest.cs",
+              "RelativeToolTip": "KPOCOS.Domain\\DTOs\\Resquest\\UserProfileRequest.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAzwBMAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T17:41:07.24Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Account.cs",
+              "DocumentMoniker": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\Models\\Account.cs",
+              "RelativeDocumentMoniker": "KPOCOS.Domain\\Models\\Account.cs",
+              "ToolTip": "D:\\TERM6\\Koi_fish_system\\KPCOS.BE\\KPOCOS.Domain\\Models\\Account.cs",
+              "RelativeToolTip": "KPOCOS.Domain\\Models\\Account.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwAUAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T17:27:57.528Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
