@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace KPCOS.DataAccess.Repository.Implemnts
 {
@@ -16,29 +17,59 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             _context = context;
         }
 
-        public Task<ComponentType> AddComponentTypeAsync(ComponentType componentType)
+        public async Task<ComponentType> AddComponentTypeAsync(ComponentType componentType)
         {
-            throw new NotImplementedException();
+            var componentTypeadd = await _context.ComponentTypes.AddAsync(componentType);
+            if (componentTypeadd != null)
+            {
+                throw new Exception("ComponentType have exist");
+            }
+            _context.ComponentTypes.Add(componentType);
+            await _context.SaveChangesAsync();
+            return componentType;
         }
 
-        public Task DeleteComponentTypeAsync(int componentTypeId)
+        public async Task DeleteComponentTypeAsync(int componentTypeId)
         {
-            throw new NotImplementedException();
+            var componentType = await _context.ComponentTypes.FindAsync(componentTypeId);
+            if (componentType == null)
+            {
+                throw new Exception("ComponentType not found");
+            }
+            _context.ComponentTypes.Remove(componentType);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<ComponentType> GetComponentTypeAsync(int componentTypeId)
+        public async Task<ComponentType> GetComponentTypeAsync(int componentTypeId)
         {
-            throw new NotImplementedException();
+            var componentType = await _context.ComponentTypes.FindAsync(componentTypeId);
+            if (componentType == null)
+            {
+                return null;
+            }
+            return componentType;
         }
 
-        public Task<List<ComponentType>> GetComponentTypesAsync()
+        public async Task<List<ComponentType>> GetComponentTypesAsync()
         {
-            throw new NotImplementedException();
+            var componentTypes = await _context.ComponentTypes.ToListAsync();
+            if (componentTypes == null)
+            {
+                return null;
+            }
+            return componentTypes;
         }
 
-        public Task<ComponentType> UpdateComponentTypeAsync(ComponentType componentType)
+        public async Task<ComponentType> UpdateComponentTypeAsync(ComponentType componentType)
         {
-            throw new NotImplementedException();
+            var componentType1 = await _context.ComponentTypes.FindAsync(componentType.Id);
+            if (componentType1 == null)
+            {
+                throw new Exception("ComponentType not found");
+            }
+            _context.ComponentTypes.Update(componentType);
+            await _context.SaveChangesAsync();
+            return componentType;
         }
     }
 }

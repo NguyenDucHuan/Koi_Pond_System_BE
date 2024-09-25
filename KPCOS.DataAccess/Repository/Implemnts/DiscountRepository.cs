@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace KPCOS.DataAccess.Repository.Implemnts
 {
@@ -16,29 +17,59 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             _context = context;
         }
 
-        public Task<Discount> AddDiscountAsync(Discount discount)
+        public async Task<Discount> AddDiscountAsync(Discount discount)
         {
-            throw new NotImplementedException();
+            var discountadd = await _context.Discounts.AddAsync(discount);
+            if (discountadd != null)
+            {
+                throw new Exception("Discount have exist");
+            }
+            _context.Discounts.Add(discount);
+            await _context.SaveChangesAsync();
+            return discount;
         }
 
-        public Task DeleteDiscountAsync(int discountId)
+        public async Task DeleteDiscountAsync(int discountId)
         {
-            throw new NotImplementedException();
+            var discount = await _context.Discounts.FindAsync(discountId);
+            if (discount == null)
+            {
+                throw new Exception("Discount not found");
+            }
+            _context.Discounts.Remove(discount);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Discount> GetDiscountAsync(int discountId)
+        public async Task<Discount> GetDiscountAsync(int discountId)
         {
-            throw new NotImplementedException();
+            var discount = await _context.Discounts.FindAsync(discountId);
+            if (discount == null)
+            {
+                return null;
+            }
+            return discount;
         }
 
-        public Task<List<Discount>> GetDiscountsAsync()
+        public async Task<List<Discount>> GetDiscountsAsync()
         {
-            throw new NotImplementedException();
+            var discounts = await _context.Discounts.ToListAsync();
+            if (discounts == null)
+            {
+                return null;
+            }
+            return discounts;
         }
 
-        public Task<Discount> UpdateDiscountAsync(Discount discount)
+        public async Task<Discount> UpdateDiscountAsync(Discount discount)
         {
-            throw new NotImplementedException();
+            var discount1 = await _context.Discounts.FindAsync(discount.Id);
+            if (discount1 == null)
+            {
+                throw new Exception("Discount not found");
+            }
+            _context.Discounts.Update(discount);
+            await _context.SaveChangesAsync();
+            return discount;
         }
     }
 }

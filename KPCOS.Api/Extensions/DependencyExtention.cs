@@ -20,10 +20,15 @@ namespace KPCOS.Api.Extensions
         public static IServiceCollection AddService(this IServiceCollection services)
         {
             services.AddControllers();
+
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IAccountRepository, AccountRepository>();
-
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IUserProfileRepository, UserProfileRepository>();
+            services.AddScoped<IPondService, Pondservice>();
+            services.AddScoped<IPondRepository, PondRepository>();
+            services.AddCorsPolicy();
             return services;
         }
 
@@ -31,9 +36,6 @@ namespace KPCOS.Api.Extensions
         {
             services.AddSwaggerGen(options =>
             {
-                // using System.Reflection;
-                // var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                // options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
@@ -91,6 +93,20 @@ namespace KPCOS.Api.Extensions
                     };
                 });
 
+            return services;
+        }
+
+        public static IServiceCollection AddCorsPolicy(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
             return services;
         }
     }

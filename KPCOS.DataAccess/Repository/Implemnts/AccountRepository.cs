@@ -41,7 +41,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Account> GetAccountAsync(int accountId)
         {
-            var account = await _context.Accounts.Include(a => a.Role).FirstOrDefaultAsync(a => a.Id == accountId);
+            var account = await _context.Accounts.Include(a => a.Role).Include(a => a.UserProfiles).FirstOrDefaultAsync(a => a.Id == accountId);
             if (account == null)
             {
                 return null;
@@ -51,7 +51,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<List<Account>> GetAccountsAsync()
         {
-            var accounts = await _context.Accounts.ToListAsync();
+            var accounts = await _context.Accounts.Include(a => a.Role).Include(a => a.UserProfiles).ToListAsync();
             if (accounts == null)
             {
                 return null;
@@ -77,7 +77,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Account> GetByUserName(string userName)
         {
-            var account = await _context.Accounts.Include(a => a.Role).FirstOrDefaultAsync(a => a.UserName == userName);
+            var account = await _context.Accounts.Include(a => a.Role).Include(a => a.UserProfiles).FirstOrDefaultAsync(a => a.UserName == userName);
             if (account == null)
             {
                 return null;

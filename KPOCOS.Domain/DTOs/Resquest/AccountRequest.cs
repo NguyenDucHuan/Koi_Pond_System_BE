@@ -30,6 +30,8 @@ namespace KPOCOS.Domain.DTOs.Resquest
         public string UserName { get; set; } = string.Empty;
         [Required(ErrorMessage = "Password is missing")]
         public string Password { get; set; } = string.Empty;
-
+        [Required(ErrorMessage = "Confirm Password is missing")]
+        public string ConfirmPassword { get; set; } = string.Empty;
     }
+
 }

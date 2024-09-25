@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace KPCOS.DataAccess.Repository.Implemnts
 {
@@ -21,24 +22,47 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             throw new NotImplementedException();
         }
 
-        public Task DeleteServiceTypeAsync(int serviceTypeId)
+        public async Task DeleteServiceTypeAsync(int serviceTypeId)
         {
-            throw new NotImplementedException();
+            var serviceType = await _context.ServiceTypes.FindAsync(serviceTypeId);
+            if (serviceType == null)
+            {
+                throw new Exception("ServiceType not found");
+            }
+            _context.ServiceTypes.Remove(serviceType);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<ServiceType> GetServiceTypeAsync(int serviceTypeId)
+        public async Task<ServiceType> GetServiceTypeAsync(int serviceTypeId)
         {
-            throw new NotImplementedException();
+            var serviceType = await _context.ServiceTypes.FindAsync(serviceTypeId);
+            if (serviceType == null)
+            {
+                return null;
+            }
+            return serviceType;
         }
 
-        public Task<List<ServiceType>> GetServiceTypesAsync()
+        public async Task<List<ServiceType>> GetServiceTypesAsync()
         {
-            throw new NotImplementedException();
+            var serviceTypes = await _context.ServiceTypes.ToListAsync();
+            if (serviceTypes == null)
+            {
+                return null;
+            }
+            return serviceTypes;
         }
 
-        public Task<ServiceType> UpdateServiceTypeAsync(ServiceType serviceType)
+        public async Task<ServiceType> UpdateServiceTypeAsync(ServiceType serviceType)
         {
-            throw new NotImplementedException();
+            var checkExist = await _context.ServiceTypes.FindAsync(serviceType.Id);
+            if (checkExist == null)
+            {
+                throw new Exception("ServiceType not found");
+            }
+            _context.ServiceTypes.Update(serviceType);
+            await _context.SaveChangesAsync();
+            return serviceType;
         }
     }
 }

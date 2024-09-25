@@ -39,6 +39,7 @@ namespace KPCOS.Api
             builder.Services.AddJwtAuthentication(builder.Configuration);
             builder.Services.AddConfigSwagger();
 
+            builder.Services.AddCorsPolicy();
 
             // Register your services here
             var app = builder.Build();

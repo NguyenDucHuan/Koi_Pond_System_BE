@@ -27,5 +27,16 @@ namespace KPCOS.Api.Mappers
                 Status = true
             };
         }
+        public static Account RegisToAccount(this RegisterDto registerDto)
+        {
+            return new Account
+            {
+                UserName = registerDto.registerAccount.UserName,
+                Password = registerDto.registerAccount.Password,
+                RoleId = 2,
+                Status = false
+            };
+        }
+
     }
 }

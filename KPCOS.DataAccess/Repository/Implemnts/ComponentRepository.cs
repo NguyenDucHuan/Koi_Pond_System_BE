@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace KPCOS.DataAccess.Repository.Implemnts
 {
@@ -16,29 +17,59 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             _context = context;
         }
 
-        public Task<System.ComponentModel.Component> AddComponentAsync(System.ComponentModel.Component component)
+        public async Task<Component> AddComponentAsync(Component component)
         {
-            throw new NotImplementedException();
+            var componentadd = await _context.Components.AddAsync(component);
+            if (componentadd != null)
+            {
+                throw new Exception("Component have exist");
+            }
+            _context.Components.Add(component);
+            await _context.SaveChangesAsync();
+            return component;
         }
 
-        public Task DeleteComponentAsync(int componentId)
+        public async Task DeleteComponentAsync(int componentId)
         {
-            throw new NotImplementedException();
+            var component = await _context.Components.FindAsync(componentId);
+            if (component == null)
+            {
+                throw new Exception("Component not found");
+            }
+            _context.Components.Remove(component);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<System.ComponentModel.Component> GetComponentAsync(int componentId)
+        public async Task<Component> GetComponentAsync(int componentId)
         {
-            throw new NotImplementedException();
+            var component = await _context.Components.FindAsync(componentId);
+            if (component == null)
+            {
+                return null;
+            }
+            return component;
         }
 
-        public Task<List<System.ComponentModel.Component>> GetComponentsAsync()
+        public async Task<List<Component>> GetComponentsAsync()
         {
-            throw new NotImplementedException();
+            var components = await _context.Components.ToListAsync();
+            if (components == null)
+            {
+                return null;
+            }
+            return components;
         }
 
-        public Task<System.ComponentModel.Component> UpdateComponentAsync(System.ComponentModel.Component component)
+        public async Task<Component> UpdateComponentAsync(Component component)
         {
-            throw new NotImplementedException();
+            var component1 = await _context.Components.FindAsync(component.Id);
+            if (component == null)
+            {
+                throw new Exception("Component not found");
+            }
+            _context.Components.Remove(component);
+            await _context.SaveChangesAsync();
+            return component;
         }
     }
 }

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using KPOCOS.Domain.Models;
 
 namespace KPCOS.DataAccess.Repository.Interfaces
 {

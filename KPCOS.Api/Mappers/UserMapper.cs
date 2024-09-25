@@ -1,10 +1,11 @@
-﻿using KPOCOS.Domain.Models;
+﻿using KPOCOS.Domain.DTOs.Resquest;
+using KPOCOS.Domain.Models;
 
 namespace KPCOS.Api.Mappers
 {
     public static class UserMapper
     {
-        public static UserProfile RegisToProfile(this UserProfile profile)
+        public static UserProfile RegisToProfile(this RegisterUserProfile profile)
         {
             return new UserProfile
             {
@@ -13,8 +14,7 @@ namespace KPCOS.Api.Mappers
                 Phone = profile.Phone,
                 Email = profile.Email,
                 Birthday = profile.Birthday,
-                Gender = profile.Gender,
-                AccountId = 0
+                Gender = profile.Gender
             };
         }
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace KPCOS.DataAccess.Repository.Implemnts
 {
@@ -16,29 +17,59 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             _context = context;
         }
 
-        public Task<Order> AddOrderAsync(Order order)
+        public async Task<Order> AddOrderAsync(Order order)
         {
-            throw new NotImplementedException();
+            var orderadd = await _context.Orders.AddAsync(order);
+            if (orderadd != null)
+            {
+                throw new Exception("Order have exist");
+            }
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+            return order;
         }
 
-        public Task DeleteOrderAsync(int orderId)
+        public async Task DeleteOrderAsync(int orderId)
         {
-            throw new NotImplementedException();
+            var order = await _context.Orders.FindAsync(orderId);
+            if (order == null)
+            {
+                throw new Exception("Order not found");
+            }
+            _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Order> GetOrderAsync(int orderId)
+        public async Task<Order> GetOrderAsync(int orderId)
         {
-            throw new NotImplementedException();
+            var order = await _context.Orders.FindAsync(orderId);
+            if (order == null)
+            {
+                return null;
+            }
+            return order;
         }
 
-        public Task<List<Order>> GetOrdersAsync()
+        public async Task<List<Order>> GetOrdersAsync()
         {
-            throw new NotImplementedException();
+            var orders = await _context.Orders.ToListAsync();
+            if (orders == null)
+            {
+                return null;
+            }
+            return orders;
         }
 
-        public Task<Order> UpdateOrderAsync(Order order)
+        public async Task<Order> UpdateOrderAsync(Order order)
         {
-            throw new NotImplementedException();
+            var order1 = await _context.Orders.FindAsync(order.Id);
+            if (order == null)
+            {
+                throw new Exception("Order not found");
+            }
+            _context.Orders.Update(order);
+            await _context.SaveChangesAsync();
+            return order;
         }
     }
 }

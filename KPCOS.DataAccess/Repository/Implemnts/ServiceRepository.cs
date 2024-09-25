@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace KPCOS.DataAccess.Repository.Implemnts
 {
@@ -17,36 +18,60 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             _context = context;
         }
 
-        public Task<Service> AddServiceAsync(Service service)
+        public async Task<Service> AddServiceAsync(Service service)
         {
-            throw new NotImplementedException();
+            var serviceadd = await _context.Services.AddAsync(service);
+            if (serviceadd != null)
+            {
+                throw new Exception("Service have exist");
+            }
+            _context.Services.Add(service);
+            await _context.SaveChangesAsync();
+            return service;
         }
 
-        public Task DeleteServiceAsync(int serviceId)
+        public async Task DeleteServiceAsync(int serviceId)
         {
-            throw new NotImplementedException();
+            var service = await _context.Services.FindAsync(serviceId);
+            if (service == null)
+            {
+                throw new Exception("Service not found");
+            }
+            _context.Services.Remove(service);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Service> GetServiceAsync(int serviceId)
+        public async Task<Service> GetServiceAsync(int serviceId)
         {
-            throw new NotImplementedException();
+            var service = await _context.Services.FindAsync(serviceId);
+            if (service == null)
+            {
+                return null;
+            }
+            return service;
         }
 
-        public Task<List<Service>> GetServicesAsync()
+        public async Task<List<Service>> GetServicesAsync()
         {
-            throw new NotImplementedException();
+            var services = await _context.Services.ToListAsync();
+            if (services == null)
+            {
+                return null;
+            }
+            return services;
         }
 
 
-        public Task<Service> UpdateServiceAsync(Service service)
+        public async Task<Service> UpdateServiceAsync(Service service)
         {
-            throw new NotImplementedException();
-        }
-
-        public T SaveChange<T>(T u)
-        {
-            _context.SaveChanges();
-            return u;
+            var checkExist = await _context.Services.FindAsync(service.Id);
+            if (checkExist == null)
+            {
+                throw new Exception("Service not found");
+            }
+            _context.Services.Update(service);
+            await _context.SaveChangesAsync();
+            return service;
         }
     }
 }

@@ -16,10 +16,12 @@ namespace KPOCOS.Domain.DTOs.Resquest
         public string LastName { get; set; } = null!;
         [Required(ErrorMessage = "First is missing")]
         public string FirstName { get; set; } = null!;
-        public string? Phone { get; set; }
+        [Required(ErrorMessage = "Phone is missing")]
+        public string Phone { get; set; } = null!;
         public DateOnly? Birthday { get; set; }
         public string? Gender { get; set; }
-        public string? Email { get; set; }
-
+        [Required(ErrorMessage = "Email is missing")]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
+        public string Email { get; set; } = null!;
     }
 }

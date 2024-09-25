@@ -5,11 +5,13 @@ using KPCOS.Api.Service.Interface;
 using KPOCOS.Domain.DTOs.Resquest;
 using KPOCOS.Domain.Exceptions;
 using KPOCOS.Domain.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KPCOS.Api.Controllers
 {
     [Route("api/v1/authenticate")]
+    [EnableCors("AllowAllOrigins")]
     [ApiController]
     public class AuthenticateController : ControllerBase
     {
@@ -57,12 +59,52 @@ namespace KPCOS.Api.Controllers
             }
         }
 
-        [Authorize(PermissionAuthorizeConstant.Manager, PermissionAuthorizeConstant.Customer, PermissionAuthorizeConstant.ConsultingStaff, PermissionAuthorizeConstant.DesignStaff, PermissionAuthorizeConstant.ConstructionStaff)]
         [HttpPost("logout")]
         public IActionResult Logout()
         {
             Response.Cookies.Delete("AccessToken");
             return Ok(new { Message = "Logged out successfully" });
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterDto request)
+        {
+            try
+            {
+                var message = await _authService.Register(request);
+            }
+            catch (BadRequestException ex)
+            {
+                return Problem(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            return Ok(new { Message = "Register successfully" });
+        }
+
+        [HttpGet("verify-email")]
+        [HttpPost("verify-email")]
+        public async Task<IActionResult> VerifyEmail([FromQuery] string email)
+        {
+            try
+            {
+                await _authService.VerifyEmail(email);
+                return Ok("Email đã được xác thực thành công");
+            }
+            catch (NotFoundException)
+            {
+                return NotFound("Không tìm thấy người dùng");
+            }
+            catch (BadRequestException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Đã xảy ra lỗi khi xác thực email");
+            }
         }
     }
 }

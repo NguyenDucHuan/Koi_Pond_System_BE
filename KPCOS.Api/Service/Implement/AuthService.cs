@@ -12,6 +12,8 @@ using KPOCOS.Domain.Models;
 using KPCOS.Api.Constants;
 using KPOCOS.Domain.Exceptions;
 using KPCOS.DataAccess.Repository.Interfaces;
+using KPCOS.Api.Mappers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace KPCOS.Api.Service.Implement
 {
@@ -19,11 +21,15 @@ namespace KPCOS.Api.Service.Implement
     {
         private readonly IAccountRepository _accountRepository;
         private readonly IConfiguration _configuration;
+        private readonly IUserProfileRepository _userProfileRepository;
+        private readonly IEmailService _emailService;
 
-        public AuthService(IAccountRepository accountRepository, IConfiguration configuration)
+        public AuthService(IAccountRepository accountRepository, IConfiguration configuration, IUserProfileRepository userProfileRepository, IEmailService emailService)
         {
             _accountRepository = accountRepository;
             _configuration = configuration;
+            _userProfileRepository = userProfileRepository;
+            _emailService = emailService;
         }
 
         public async Task<(int, string)> Login(LoginResquest model)
@@ -65,6 +71,87 @@ namespace KPCOS.Api.Service.Implement
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public async Task<string> Register([FromBody] RegisterDto request)
+        {
+            var user = await _accountRepository.GetByUserName(request.registerAccount.UserName);
+            if (user != null)
+            {
+                throw new BadRequestException(MessageConstant.RegisterConstants.ExistUserName);
+            }
+            if (request.registerAccount.Password != request.registerAccount.ConfirmPassword)
+            {
+                throw new BadRequestException(MessageConstant.RegisterConstants.PasswordNotMatch);
+            }
+            var email = await _userProfileRepository.CheckEmail(request.registerUserProfile.Email);
+            if (email != null)
+            {
+                throw new BadRequestException(MessageConstant.RegisterConstants.EmailHaveRegistered);
+            }
+            var account = request.RegisToAccount();
+            account.Status = false; // Tài khoản chưa được kích hoạt cho đến khi email được xác thực
+            var userprofile = request.registerUserProfile.RegisToProfile();
+            // Removed: userprofile.IsEmailVerified = false;
+
+            var userres = await _accountRepository.AddAccountAsync(account);
+            if (userres == null)
+            {
+                throw new BadRequestException(MessageConstant.RegisterConstants.RegisterFailed);
+            }
+            userprofile.AccountId = userres.Id;
+            var profile = await _userProfileRepository.AddUserProfileAsync(userprofile);
+            if (profile == null)
+            {
+                await _accountRepository.DeleteAccountAsync(userres.Id);
+                throw new BadRequestException(MessageConstant.RegisterConstants.RegisterFailed);
+            }
+
+            // Gửi email xác thực
+            await SendVerificationEmail(request.registerUserProfile.Email);  
+
+            return MessageConstant.RegisterConstants.RegisterSuccess;
+        }
+
+        public async Task VerifyEmail(string email)
+        {
+            var userProfile = await _userProfileRepository.CheckEmail(email);
+            if (userProfile == null)
+            {
+                throw new NotFoundException("Không tìm thấy hồ sơ người dùng");
+            }
+
+            var account = await _accountRepository.GetAccountAsync(userProfile.AccountId);
+            if (account == null)
+            {
+                throw new NotFoundException("Không tìm thấy tài khoản liên kết");
+            }
+
+            if (account.Status)
+            {
+                throw new BadRequestException("Email đã được xác thực");
+            }
+
+            account.Status = true;
+            await _accountRepository.UpdateAccountAsync(account);
+        }
+
+        private async Task SendVerificationEmail(string email)
+        {
+            var verifyUrl = $"{_configuration["AppUrl"]}/verify-email?email={Uri.EscapeDataString(email)}";
+
+            var emailBody = $@"
+                <h2>Xác nhận địa chỉ email của bạn</h2>
+                <p>Vui lòng nhấp vào nút bên dưới để xác nhận địa chỉ email của bạn:</p>
+                <a href='{verifyUrl}' style='display:inline-block;padding:10px 20px;background-color:#007bff;color:#ffffff;text-decoration:none;border-radius:5px;'>Xác nhận Email</a>
+            ";
+
+            await _emailService.SendEmailAsync(email, "Xác nhận địa chỉ email", emailBody, true);
+        }
+
+        private string GenerateVerificationToken()
+        {
+            return Guid.NewGuid().ToString();
         }
     }
 }

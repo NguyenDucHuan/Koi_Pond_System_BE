@@ -12,5 +12,7 @@ namespace KPCOS.Api.Service.Interface
         // Task<(int, string)> Registeration(RegistrationModel model, string role);
         Task<(int, string)> Login(LoginResquest model);
         Task<string> GenerateTokenAsync(Account account);
+        Task<string> Register(RegisterDto request);
+        Task VerifyEmail(string email);
     }
 }
