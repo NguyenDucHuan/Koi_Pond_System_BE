@@ -19,13 +19,9 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<UserProfile> AddUserProfileAsync(UserProfile userProfile)
         {
-            var userProfileadd = await _context.UserProfiles.AddAsync(userProfile);
-            if (userProfileadd != null)
-            {
-                throw new Exception("UserProfile have exist");
-            }
             _context.UserProfiles.Add(userProfile);
             await _context.SaveChangesAsync();
+            Console.WriteLine(".........................232131.................................................................");
             return userProfile;
         }
 

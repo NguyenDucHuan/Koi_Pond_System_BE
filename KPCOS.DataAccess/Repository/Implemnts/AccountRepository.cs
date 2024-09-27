@@ -21,10 +21,11 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Account> AddAccountAsync(Account account)
         {
-            var checkDuplicate = await _context.Accounts.FindAsync(account.UserName);
+            var checkDuplicate = await _context.Accounts.FirstOrDefaultAsync(a => a.UserName == account.UserName);
             if (checkDuplicate != null)
                 throw new Exception("Account already exists");
             _context.Accounts.Add(account);
+            await _context.SaveChangesAsync();
             return account;
         }
 

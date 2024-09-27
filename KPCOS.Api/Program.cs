@@ -27,7 +27,6 @@ namespace KPCOS.Api
 
             // Add services to the container.
             builder.Services.AddService();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
@@ -39,9 +38,17 @@ namespace KPCOS.Api
             builder.Services.AddJwtAuthentication(builder.Configuration);
             builder.Services.AddConfigSwagger();
 
-            builder.Services.AddCorsPolicy();
+            // Add CORS services
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
 
-            // Register your services here
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -51,10 +58,18 @@ namespace KPCOS.Api
                 app.UseSwaggerUI();
             }
 
-
             app.UseHttpsRedirection();
-            app.UseAuthorization();
+
+            // Add CORS middleware here, before routing and authorization
+            app.UseCors("AllowAll");
+
+            app.UseRouting();
+
+            // JWT middleware should come after routing but before authentication and authorization
             app.UseMiddleware<JwtMiddleware>();
+
+            app.UseAuthentication();
+            app.UseAuthorization(); //<< This needs to be between app.UseRouting(); and app.UseEndpoints();
             app.MapControllers();
 
             app.Run();

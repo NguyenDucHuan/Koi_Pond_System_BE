@@ -90,26 +90,36 @@ namespace KPCOS.Api.Service.Implement
                 throw new BadRequestException(MessageConstant.RegisterConstants.EmailHaveRegistered);
             }
             var account = request.RegisToAccount();
-            account.Status = false; // Tài khoản chưa được kích hoạt cho đến khi email được xác thực
+
             var userprofile = request.registerUserProfile.RegisToProfile();
-            // Removed: userprofile.IsEmailVerified = false;
 
             var userres = await _accountRepository.AddAccountAsync(account);
             if (userres == null)
             {
                 throw new BadRequestException(MessageConstant.RegisterConstants.RegisterFailed);
             }
+            Console.WriteLine("................................................................................................");
+            Console.WriteLine(userres.Id);
+            Console.WriteLine(userprofile.AccountId);
             userprofile.AccountId = userres.Id;
+
             var profile = await _userProfileRepository.AddUserProfileAsync(userprofile);
+            Console.WriteLine("................................................................................................");
+            Console.WriteLine(profile.AccountId);
+            Console.WriteLine(profile.Birthday);
+            Console.WriteLine(profile.Email);
+            Console.WriteLine(profile.FirstName);
+            Console.WriteLine(profile.LastName);
+            Console.WriteLine(profile.Phone);
+            Console.WriteLine(profile.Gender);
+            Console.WriteLine("................................................................................................");
             if (profile == null)
             {
                 await _accountRepository.DeleteAccountAsync(userres.Id);
                 throw new BadRequestException(MessageConstant.RegisterConstants.RegisterFailed);
             }
-
             // Gửi email xác thực
-            await SendVerificationEmail(request.registerUserProfile.Email);  
-
+            // await SendVerificationEmail(request.registerUserProfile.Email);
             return MessageConstant.RegisterConstants.RegisterSuccess;
         }
 

@@ -8,6 +8,7 @@ namespace KPCOS.Api.Service.Interface
     {
         Task<Account> GetAccountById(int id);
         // ... các phương thức hiện có ...
-
+        Task<List<Account>> GetAccountsAsync();
+        Task<Account> GetByUserName(string username);
     }
 }

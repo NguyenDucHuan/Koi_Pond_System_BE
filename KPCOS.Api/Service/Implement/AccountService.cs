@@ -32,6 +32,26 @@ namespace KPCOS.Api.Service.Implement
             }
             return account;
         }
+
+        public async Task<List<Account>> GetAccountsAsync()
+        {
+            var accounts = await _accountRepository.GetAccountsAsync();
+            if (accounts == null)
+            {
+                throw new NotFoundException("Account List is empty");
+            }
+            return accounts;
+        }
+
+        public async Task<Account> GetByUserName(string username)
+        {
+            var account = await _accountRepository.GetByUserName(username);
+            if (account == null)
+            {
+                throw new NotFoundException($"Account with username {username} not found");
+            }
+            return account;
+        }
     }
 }
 

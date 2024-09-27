@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace KPCOS.Api.Controllers
 {
     [Route("api/v1/authenticate")]
-    [EnableCors("AllowAllOrigins")]
     [ApiController]
     public class AuthenticateController : ControllerBase
     {
