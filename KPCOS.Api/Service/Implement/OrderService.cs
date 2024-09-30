@@ -40,7 +40,12 @@ namespace KPCOS.Api.Service.Implement
 
         public async Task<Order> GetOrderAsync(int orderId)
         {
-            return await _orderRepository.GetOrderAsync(orderId);
+            var order = await _orderRepository.GetOrderAsync(orderId);
+            if (order == null)
+            {
+                throw new ArgumentException("No order found");
+            }
+            return order;
         }
 
     }

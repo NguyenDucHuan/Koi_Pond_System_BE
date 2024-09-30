@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KPCOS.Api.Service.Interface;
+using KPCOS.DataAccess.Repository.Implemnts;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.Models;
 
@@ -40,7 +41,12 @@ namespace KPCOS.Api.Service.Implement
 
         public async Task<Component> GetComponentAsync(int componentId)
         {
-            return await _componentRepository.GetComponentAsync(componentId);
+            var component = await _componentRepository.GetComponentAsync(componentId);
+            if (component == null)
+            {
+                throw new ArgumentException("No component found");
+            }
+            return component;
         }
 
     }
