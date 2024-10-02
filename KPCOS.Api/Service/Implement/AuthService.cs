@@ -14,6 +14,7 @@ using KPOCOS.Domain.Exceptions;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPCOS.Api.Mappers;
 using Microsoft.AspNetCore.Mvc;
+using KPOCOS.Domain.DTOs.Account;
 
 namespace KPCOS.Api.Service.Implement
 {
@@ -32,7 +33,7 @@ namespace KPCOS.Api.Service.Implement
             _emailService = emailService;
         }
 
-        public async Task<(int, string)> Login(LoginResquest model)
+        public async Task<AccountResponse> Login(LoginResquest model)
         {
             var account = await _accountRepository.GetByUserName(model.UserName);
             if (account == null)
@@ -45,11 +46,13 @@ namespace KPCOS.Api.Service.Implement
             }
             if (account.Password != model.Password)
             {
-                throw new Exception("Password is incorrect");
+                throw new NotFoundException(MessageConstant.LoginConstants.InvalidUsernameOrPassword);
             }
 
             var token = await GenerateTokenAsync(account);
-            return (account.Id, token);
+            var accountResponse = account.ToAccountDto();
+            accountResponse.AccessToken = token;
+            return accountResponse;
         }
 
         public async Task<string> GenerateTokenAsync(Account account)
@@ -98,21 +101,10 @@ namespace KPCOS.Api.Service.Implement
             {
                 throw new BadRequestException(MessageConstant.RegisterConstants.RegisterFailed);
             }
-            Console.WriteLine("................................................................................................");
-            Console.WriteLine(userres.Id);
-            Console.WriteLine(userprofile.AccountId);
+
             userprofile.AccountId = userres.Id;
 
             var profile = await _userProfileRepository.AddUserProfileAsync(userprofile);
-            Console.WriteLine("................................................................................................");
-            Console.WriteLine(profile.AccountId);
-            Console.WriteLine(profile.Birthday);
-            Console.WriteLine(profile.Email);
-            Console.WriteLine(profile.FirstName);
-            Console.WriteLine(profile.LastName);
-            Console.WriteLine(profile.Phone);
-            Console.WriteLine(profile.Gender);
-            Console.WriteLine("................................................................................................");
             if (profile == null)
             {
                 await _accountRepository.DeleteAccountAsync(userres.Id);

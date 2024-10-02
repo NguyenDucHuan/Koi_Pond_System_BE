@@ -17,6 +17,12 @@ namespace KPOCOS.Domain.DTOs.Account
         public string AccessToken { get; set; } // Thêm trường này
 
         public bool Status { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+
     }
 
 }

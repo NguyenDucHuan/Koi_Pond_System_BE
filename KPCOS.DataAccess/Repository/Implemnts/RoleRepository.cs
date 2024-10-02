@@ -19,7 +19,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Role> AddRoleAsync(Role role)
         {
-            var roleadd = await _context.Roles.AddAsync(role);
+            var roleadd = await _context.Roles.FirstOrDefaultAsync(e => e.Type == role.Type);
             if (roleadd != null)
             {
                 throw new Exception("Role have exist");

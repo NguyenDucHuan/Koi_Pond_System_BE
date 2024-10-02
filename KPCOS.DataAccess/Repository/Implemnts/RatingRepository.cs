@@ -19,7 +19,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Rating> AddRatingAsync(Rating rating)
         {
-            var ratingadd = await _context.Ratings.AddAsync(rating);
+            var ratingadd = await _context.Ratings.FirstOrDefaultAsync(rate => rate.AccountId == rating.AccountId && rate.OrderItemId == rating.OrderItemId);
             if (ratingadd != null)
             {
                 throw new Exception("Rating have exist");

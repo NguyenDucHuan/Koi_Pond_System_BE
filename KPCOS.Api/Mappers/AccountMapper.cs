@@ -15,6 +15,8 @@ namespace KPCOS.Api.Mappers
                 RoleName = accountmodel.Role.Type,
                 AccessToken = null,
                 Status = accountmodel.Status,
+                FirstName = accountmodel.UserProfiles.FirstOrDefault().FirstName,
+                LastName = accountmodel.UserProfiles.FirstOrDefault().LastName,
             };
         }
         public static Account RegisToAccount(this RegisterAccount registerAccount)

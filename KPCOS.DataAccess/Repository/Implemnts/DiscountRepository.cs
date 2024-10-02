@@ -19,11 +19,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Discount> AddDiscountAsync(Discount discount)
         {
-            var discountadd = await _context.Discounts.AddAsync(discount);
-            if (discountadd != null)
-            {
-                throw new Exception("Discount have exist");
-            }
+
             _context.Discounts.Add(discount);
             await _context.SaveChangesAsync();
             return discount;

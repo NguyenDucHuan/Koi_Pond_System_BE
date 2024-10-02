@@ -19,7 +19,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<DecorationType> AddDecorationTypeAsync(DecorationType decorationType)
         {
-            var decorationTypeadd = await _context.DecorationTypes.AddAsync(decorationType);
+            var decorationTypeadd = await _context.DecorationTypes.FirstOrDefaultAsync(e => e.Name == decorationType.Name);
             if (decorationTypeadd != null)
             {
                 throw new Exception("DecorationType have exist");

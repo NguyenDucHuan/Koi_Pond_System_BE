@@ -19,11 +19,6 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Pond> AddPondAsync(Pond pond)
         {
-            var pondadd = await _context.Ponds.AddAsync(pond);
-            if (pondadd != null)
-            {
-                throw new Exception("Pond have exist");
-            }
             _context.Ponds.Add(pond);
             await _context.SaveChangesAsync();
             return pond;

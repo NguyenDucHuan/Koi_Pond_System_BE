@@ -20,7 +20,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Service> AddServiceAsync(Service service)
         {
-            var serviceadd = await _context.Services.AddAsync(service);
+            var serviceadd = await _context.Services.FirstOrDefaultAsync(e => e.Name == service.Name);
             if (serviceadd != null)
             {
                 throw new Exception("Service have exist");
