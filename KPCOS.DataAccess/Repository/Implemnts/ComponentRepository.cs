@@ -19,7 +19,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Component> AddComponentAsync(Component component)
         {
-            var componentadd = await _context.Components.AddAsync(component);
+            var componentadd = await _context.Components.FirstOrDefaultAsync(e => e.Name == component.Name);
             if (componentadd != null)
             {
                 throw new Exception("Component have exist");

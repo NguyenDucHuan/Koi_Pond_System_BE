@@ -17,9 +17,11 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             _context = context;
         }
 
-        public Task<OrderItem> AddOrderItemAsync(OrderItem orderItem)
+        public async Task<OrderItem> AddOrderItemAsync(OrderItem orderItem)
         {
-            throw new NotImplementedException();
+            _context.OrderItems.Add(orderItem);
+            await _context.SaveChangesAsync();
+            return orderItem;
         }
 
         public async Task DeleteOrderItemAsync(int orderItemId)

@@ -17,9 +17,16 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             _context = context;
         }
 
-        public Task<ServiceType> AddServiceTypeAsync(ServiceType serviceType)
+        public async Task<ServiceType> AddServiceTypeAsync(ServiceType serviceType)
         {
-            throw new NotImplementedException();
+            var serviceTypeExist = await _context.ServiceTypes.FirstOrDefaultAsync(e => e.TypeName == serviceType.TypeName);
+            if (serviceTypeExist != null)
+            {
+                throw new Exception("ServiceType already exists");
+            }
+            _context.ServiceTypes.Add(serviceType);
+            await _context.SaveChangesAsync();
+            return serviceType;
         }
 
         public async Task DeleteServiceTypeAsync(int serviceTypeId)

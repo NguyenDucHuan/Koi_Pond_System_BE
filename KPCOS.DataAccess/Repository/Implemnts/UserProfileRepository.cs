@@ -21,7 +21,6 @@ namespace KPCOS.DataAccess.Repository.Implemnts
         {
             _context.UserProfiles.Add(userProfile);
             await _context.SaveChangesAsync();
-            Console.WriteLine(".........................232131.................................................................");
             return userProfile;
         }
 

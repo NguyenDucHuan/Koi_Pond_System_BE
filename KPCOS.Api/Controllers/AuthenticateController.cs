@@ -28,13 +28,11 @@ namespace KPCOS.Api.Controllers
         {
             try
             {
-                var (accountId, token) = await _authService.Login(loginRequest);
-                var account = await _accountService.GetAccountById(accountId);
-                var accountResponse = account.ToAccountDto();
-                accountResponse.AccessToken = token;
+
+                var accountResponse = await _authService.Login(loginRequest);
 
                 // Set token in cookie
-                Response.Cookies.Append("AccessToken", token, new CookieOptions
+                Response.Cookies.Append("AccessToken", accountResponse.AccessToken, new CookieOptions
                 {
                     HttpOnly = true,
                     Secure = true,

@@ -19,11 +19,6 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Order> AddOrderAsync(Order order)
         {
-            var orderadd = await _context.Orders.AddAsync(order);
-            if (orderadd != null)
-            {
-                throw new Exception("Order have exist");
-            }
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
             return order;
