@@ -15,6 +15,8 @@ namespace KPCOS.Api.Controllers
     {
         private readonly IPondService _pondService;
         private readonly IAccountService _accountService;
+        private readonly IDecorationService _decorationService;
+        private readonly IComponentService _componentService;
 
         public ManagerController(IPondService pondService, IAccountService accountService)
         {
@@ -27,6 +29,20 @@ namespace KPCOS.Api.Controllers
         {
             var ponds = await _pondService.GetPondsAsync();
             return Ok(ponds);
+        }
+
+        [HttpGet("decorations")]
+        public async Task<IActionResult> GetDecorations()
+        {
+            var decorations = await _decorationService.GetDecorationsAsync();
+            return Ok(decorations);
+        }
+
+        [HttpGet("components")]
+        public async Task<IActionResult> GetComponents()
+        {
+            var components = await _componentService.GetComponentsAsync();
+            return Ok(components);
         }
 
         [HttpGet("accounts")]

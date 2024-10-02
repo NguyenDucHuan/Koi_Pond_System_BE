@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KPCOS.Api.Service.Interface;
+using KPCOS.DataAccess.Repository.Implemnts;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.Models;
 
@@ -40,7 +41,12 @@ namespace KPCOS.Api.Service.Implement
 
         public async Task<Decoration> GetDecorationAsync(int decorationId)
         {
-            return await _decorationRepository.GetDecorationAsync(decorationId);
+            var decoration = await _decorationRepository.GetDecorationAsync(decorationId);
+            if (decoration == null)
+            {
+                throw new ArgumentException("No decoration found");
+            }
+            return decoration;
         }
 
     }
