@@ -6,6 +6,7 @@ using KPOCOS.Domain.DTOs;
 using KPOCOS.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using FluentValidation;
 
 namespace KPCOS.Api
 {
@@ -24,11 +25,15 @@ namespace KPCOS.Api
             builder.Logging.ClearProviders();
             builder.Logging.AddConsole();
             // Thêm các provider khác nếu cần
-
+            builder.Services.AddControllers().ConfigureApiBehaviorOptions(opts
+                    => opts.SuppressModelStateInvalidFilter = true);
+            builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
             // Add services to the container.
             builder.Services.AddService();
+            builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddExceptionMiddleware();
             builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
             builder.Services.AddDbContext<KpcosdbContext>(
                 _ =>
@@ -65,8 +70,9 @@ namespace KPCOS.Api
 
             app.UseRouting();
 
-            // JWT middleware should come after routing but before authentication and authorization
             app.UseMiddleware<JwtMiddleware>();
+            app.UseMiddleware<ExceptionMiddleware>();
+
 
             app.UseAuthentication();
             app.UseAuthorization(); //<< This needs to be between app.UseRouting(); and app.UseEndpoints();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using KPCOS.Api.Middleware;
 using KPCOS.Api.Service.Implement;
 using KPCOS.Api.Service.Interface;
 using KPCOS.DataAccess.Repository.Implemnts;
@@ -29,6 +30,11 @@ namespace KPCOS.Api.Extensions
             services.AddScoped<IPondService, Pondservice>();
             services.AddScoped<IPondRepository, PondRepository>();
             services.AddCorsPolicy();
+            return services;
+        }
+        public static IServiceCollection AddExceptionMiddleware(this IServiceCollection services)
+        {
+            services.AddTransient<ExceptionMiddleware>();
             return services;
         }
 
@@ -73,13 +79,13 @@ namespace KPCOS.Api.Extensions
 
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            _ = services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"])),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"] ?? string.Empty)),
                         ValidateIssuer = false,
                         ValidateAudience = false
                     };

@@ -1,12 +1,14 @@
-﻿using KPCOS.Api.Attributes;
+﻿using FluentValidation;
+using FluentValidation.Results;
 using KPCOS.Api.Constants;
-using KPCOS.Api.Mappers;
 using KPCOS.Api.Service.Interface;
+using KPCOS.Api.Untils;
+using KPOCOS.Domain.DTOs.Account;
 using KPOCOS.Domain.DTOs.Resquest;
+using KPOCOS.Domain.Errors;
 using KPOCOS.Domain.Exceptions;
-using KPOCOS.Domain.Models;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using KPCOS.Api.Attributes;
 
 namespace KPCOS.Api.Controllers
 {
@@ -15,45 +17,47 @@ namespace KPCOS.Api.Controllers
     public class AuthenticateController : ControllerBase
     {
         private readonly IAuthService _authService;
-        private readonly IAccountService _accountService;
 
-        public AuthenticateController(IAuthService authService, IAccountService accountService)
+        private IValidator<LoginResquest> _loginValidator;
+        private IValidator<RegisterDto> _registerValidator;
+
+        public AuthenticateController(IAuthService authService, IValidator<LoginResquest> loginValidator, IValidator<RegisterDto> registerValidator)
         {
             _authService = authService;
-            _accountService = accountService;
+
+            _loginValidator = loginValidator;
+            _registerValidator = registerValidator;
         }
 
+        [ProducesResponseType(typeof(AccountResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
         [HttpPost("login")]
+
         public async Task<IActionResult> Login([FromBody] LoginResquest loginRequest)
         {
-            try
+            ValidationResult validationResult = await _loginValidator.ValidateAsync(loginRequest);
+            if (validationResult.IsValid == false)
             {
+                string errors = ErrorUtil.GetErrorsString(validationResult);
+                throw new BadRequestException(errors);
+            }
+            AccountResponse accountResponse = await _authService.Login(loginRequest);
 
-                var accountResponse = await _authService.Login(loginRequest);
+            // Set token in cookie
+            Response.Cookies.Append("AccessToken", accountResponse.AccessToken, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict,
+                Expires = DateTime.UtcNow.AddMinutes(30) // Matching token expiration
+            });
 
-                // Set token in cookie
-                Response.Cookies.Append("AccessToken", accountResponse.AccessToken, new CookieOptions
-                {
-                    HttpOnly = true,
-                    Secure = true,
-                    SameSite = SameSiteMode.Strict,
-                    Expires = DateTime.UtcNow.AddMinutes(30) // Matching token expiration
-                });
+            return Ok(accountResponse);
 
-                return Ok(accountResponse);
-            }
-            catch (NotFoundException)
-            {
-                return Unauthorized(MessageConstant.LoginConstants.InvalidUsernameOrPassword);
-            }
-            catch (BadRequestException ex)
-            {
-                return Problem(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
         }
 
         [HttpPost("logout")]
@@ -62,25 +66,32 @@ namespace KPCOS.Api.Controllers
             Response.Cookies.Delete("AccessToken");
             return Ok(new { Message = "Logged out successfully" });
         }
-
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto request)
         {
-            try
+            ValidationResult validationResult = await _registerValidator.ValidateAsync(request);
+            if (validationResult.IsValid == false)
             {
-                var message = await _authService.Register(request);
+                string errors = ErrorUtil.GetErrorsString(validationResult);
+                throw new BadRequestException(errors);
             }
-            catch (BadRequestException ex)
-            {
-                return Problem(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-            return Ok(new { Message = "Register successfully" });
+            await _authService.Register(request);
+
+            return Ok(new { Message = MessageConstant.RegisterConstants.RegisterSuccess });
         }
 
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
         [HttpGet("verify-email")]
         [HttpPost("verify-email")]
         public async Task<IActionResult> VerifyEmail([FromQuery] string email)
@@ -88,11 +99,11 @@ namespace KPCOS.Api.Controllers
             try
             {
                 await _authService.VerifyEmail(email);
-                return Ok("Email đã được xác thực thành công");
+                return Ok(new { Message = MessageConstant.EmailConstants.VerifyEmail });
             }
             catch (NotFoundException)
             {
-                return NotFound("Không tìm thấy người dùng");
+                return NotFound(new { Message = MessageConstant.EmailConstants.NotFoundUserProfile });
             }
             catch (BadRequestException ex)
             {
@@ -100,7 +111,7 @@ namespace KPCOS.Api.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(500, "Đã xảy ra lỗi khi xác thực email");
+                return StatusCode(500, new { Message = MessageConstant.EmailConstants.VerifyEmailFailed });
             }
         }
     }

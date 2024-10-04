@@ -15,6 +15,7 @@ using KPCOS.DataAccess.Repository.Interfaces;
 using KPCOS.Api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using KPOCOS.Domain.DTOs.Account;
+using KPCOS.Api.Untils;
 
 namespace KPCOS.Api.Service.Implement
 {
@@ -35,24 +36,48 @@ namespace KPCOS.Api.Service.Implement
 
         public async Task<AccountResponse> Login(LoginResquest model)
         {
-            var account = await _accountRepository.GetByUserName(model.UserName);
-            if (account == null)
+            try
             {
-                throw new NotFoundException(MessageConstant.LoginConstants.InvalidUsernameOrPassword);
-            }
-            if (account.Status == false)
-            {
-                throw new BadRequestException(MessageConstant.LoginConstants.DeactivatedAccount);
-            }
-            if (account.Password != model.Password)
-            {
-                throw new NotFoundException(MessageConstant.LoginConstants.InvalidUsernameOrPassword);
-            }
+                var account = await _accountRepository.GetByUserName(model.UserName);
+                if (account == null)
+                {
+                    throw new NotFoundException(MessageConstant.LoginConstants.InvalidUsernameOrPassword);
+                }
+                if (account != null && account.Status == false)
+                {
+                    throw new BadRequestException(MessageConstant.LoginConstants.DeactivatedAccount);
+                }
+                if (account != null && account.Password != model.Password)
+                {
+                    throw new NotFoundException(MessageConstant.LoginConstants.InvalidUsernameOrPassword);
+                }
 
-            var token = await GenerateTokenAsync(account);
-            var accountResponse = account.ToAccountDto();
-            accountResponse.AccessToken = token;
-            return accountResponse;
+                var token = await GenerateTokenAsync(account);
+                var accountResponse = account.ToAccountDto();
+                accountResponse.AccessToken = token;
+                return accountResponse;
+            }
+            catch (NotFoundException ex)
+            {
+                string error = ErrorUtil.GetErrorString("Tên đăng nhập", ex.Message);
+                throw new NotFoundException(error);
+            }
+            catch (BadRequestException ex)
+            {
+                string fieldName = "";
+                if (ex.Message.Equals(MessageConstant.LoginConstants.InvalidUsernameOrPassword) ||
+                    ex.Message.Equals(MessageConstant.LoginConstants.DeactivatedAccount))
+                {
+                    fieldName = "Login Failed";
+                }
+                string error = ErrorUtil.GetErrorString(fieldName, ex.Message);
+                throw new BadRequestException(error);
+            }
+            catch (Exception ex)
+            {
+                string error = ErrorUtil.GetErrorString("Exception", ex.Message);
+                throw new Exception(error);
+            }
         }
 
         public async Task<string> GenerateTokenAsync(Account account)
@@ -67,8 +92,6 @@ namespace KPCOS.Api.Service.Implement
             };
 
             var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
                 claims: claims,
                 expires: DateTime.Now.AddMinutes(30),
                 signingCredentials: credentials);
@@ -78,41 +101,62 @@ namespace KPCOS.Api.Service.Implement
 
         public async Task<string> Register([FromBody] RegisterDto request)
         {
-            var user = await _accountRepository.GetByUserName(request.registerAccount.UserName);
-            if (user != null)
+            try
             {
-                throw new BadRequestException(MessageConstant.RegisterConstants.ExistUserName);
-            }
-            if (request.registerAccount.Password != request.registerAccount.ConfirmPassword)
-            {
-                throw new BadRequestException(MessageConstant.RegisterConstants.PasswordNotMatch);
-            }
-            var email = await _userProfileRepository.CheckEmail(request.registerUserProfile.Email);
-            if (email != null)
-            {
-                throw new BadRequestException(MessageConstant.RegisterConstants.EmailHaveRegistered);
-            }
-            var account = request.RegisToAccount();
+                var user = await _accountRepository.GetByUserName(request.registerAccount.UserName);
+                if (user != null)
+                {
+                    throw new BadRequestException(MessageConstant.RegisterConstants.ExistUserName);
+                }
+                if (request.registerAccount.Password != request.registerAccount.ConfirmPassword)
+                {
+                    throw new BadRequestException(MessageConstant.RegisterConstants.PasswordNotMatch);
+                }
+                var email = await _userProfileRepository.CheckEmail(request.registerUserProfile.Email);
+                if (email != null)
+                {
+                    throw new BadRequestException(MessageConstant.RegisterConstants.EmailHaveRegistered);
+                }
+                var account = request.RegisToAccount();
 
-            var userprofile = request.registerUserProfile.RegisToProfile();
+                var userprofile = request.registerUserProfile.RegisToProfile();
 
-            var userres = await _accountRepository.AddAccountAsync(account);
-            if (userres == null)
-            {
-                throw new BadRequestException(MessageConstant.RegisterConstants.RegisterFailed);
+                var userres = await _accountRepository.AddAccountAsync(account);
+                if (userres == null)
+                {
+                    throw new BadRequestException(MessageConstant.RegisterConstants.RegisterFailed);
+                }
+
+                userprofile.AccountId = userres.Id;
+
+                var profile = await _userProfileRepository.AddUserProfileAsync(userprofile);
+                if (profile == null)
+                {
+                    await _accountRepository.DeleteAccountAsync(userres.Id);
+                    throw new BadRequestException(MessageConstant.RegisterConstants.RegisterFailed);
+                }
+                // Gửi email xác thực
+                // await SendVerificationEmail(request.registerUserProfile.Email);
+                return MessageConstant.RegisterConstants.RegisterSuccess;
             }
-
-            userprofile.AccountId = userres.Id;
-
-            var profile = await _userProfileRepository.AddUserProfileAsync(userprofile);
-            if (profile == null)
+            catch (BadRequestException ex)
             {
-                await _accountRepository.DeleteAccountAsync(userres.Id);
-                throw new BadRequestException(MessageConstant.RegisterConstants.RegisterFailed);
+                string fieldName = "";
+                if (ex.Message.Equals(MessageConstant.RegisterConstants.ExistUserName) ||
+                    ex.Message.Equals(MessageConstant.RegisterConstants.PasswordNotMatch) ||
+                    ex.Message.Equals(MessageConstant.RegisterConstants.EmailHaveRegistered) ||
+                    ex.Message.Equals(MessageConstant.RegisterConstants.RegisterFailed))
+                {
+                    fieldName = "Register Failed";
+                }
+                string error = ErrorUtil.GetErrorString(fieldName, ex.Message);
+                throw new BadRequestException(error);
             }
-            // Gửi email xác thực
-            // await SendVerificationEmail(request.registerUserProfile.Email);
-            return MessageConstant.RegisterConstants.RegisterSuccess;
+            catch (Exception ex)
+            {
+                string error = ErrorUtil.GetErrorString("Exception", ex.Message);
+                throw new Exception(error);
+            }
         }
 
         public async Task VerifyEmail(string email)
