@@ -25,5 +25,15 @@
             public const string NotMatchAccessToken = "Your access token does not match the registered access token.";
             public const string ExpiredRefreshToken = "Refresh token expired.";
         }
+
+        public static class EmailConstants
+        {
+            public const string VerifyEmail = "Xác nhận địa chỉ email của bạn";
+
+            public const string NotFoundUserProfile = "Không tìm thấy hồ sơ người dùng";
+            public const string VerifyEmailContent = "<h2>Xác nhận địa chỉ email của bạn</h2><p>Vui lòng nhấp vào nút bên dưới để xác nhận địa chỉ email của bạn:</p>";
+
+            public const string VerifyEmailFailed = "Xác thực email thất bại";
+        }
     }
 }
