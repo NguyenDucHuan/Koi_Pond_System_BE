@@ -28,12 +28,22 @@
 
         public static class EmailConstants
         {
-            public const string VerifyEmail = "Xác nhận địa chỉ email của bạn";
+            public const string VerifyEmail = "Xác nhận địa chỉ email của bạn thành công";
 
             public const string NotFoundUserProfile = "Không tìm thấy hồ sơ người dùng";
             public const string VerifyEmailContent = "<h2>Xác nhận địa chỉ email của bạn</h2><p>Vui lòng nhấp vào nút bên dưới để xác nhận địa chỉ email của bạn:</p>";
 
             public const string VerifyEmailFailed = "Xác thực email thất bại";
+        }
+
+        public static class VerifyEmailConstants
+        {
+            public const string EmailNotVerified = "Email không được xác thực";
+
+            public const string EmailVerified = "Email đã được xác thực";
+            public const string UserProfileNotFound = "Không tìm thấy hồ sơ người dùng";
+
+            public const string AccountNotFound = "Không tìm thấy tài khoản liên kết";
         }
     }
 }

@@ -26,7 +26,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<UserProfile> CheckEmail(string email)
         {
-            var check = await _context.UserProfiles.Include(e => e.Account).FirstOrDefaultAsync(e => e.Email == email);
+            var check = await _context.UserProfiles.FirstOrDefaultAsync(e => e.Email == email);
             if (check == null)
             {
                 return null;

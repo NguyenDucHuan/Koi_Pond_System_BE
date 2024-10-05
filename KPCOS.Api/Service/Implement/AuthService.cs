@@ -161,25 +161,59 @@ namespace KPCOS.Api.Service.Implement
 
         public async Task VerifyEmail(string email)
         {
-            var userProfile = await _userProfileRepository.CheckEmail(email);
-            if (userProfile == null)
+            try
             {
-                throw new NotFoundException("Không tìm thấy hồ sơ người dùng");
+
+                var userProfile = await _userProfileRepository.CheckEmail(email);
+                if (userProfile == null)
+                {
+                    throw new NotFoundException(MessageConstant.VerifyEmailConstants.UserProfileNotFound);
+                }
+
+                var account = await _accountRepository.GetAccountAsync(userProfile.AccountId);
+                if (account == null)
+                {
+                    throw new NotFoundException(MessageConstant.VerifyEmailConstants.AccountNotFound);
+                }
+
+                if (account.Status == true)
+                {
+                    throw new BadRequestException(MessageConstant.VerifyEmailConstants.EmailVerified);
+                }
+
+                account.Status = true;
+                await _accountRepository.UpdateAccountAsync(account);
+            }
+            catch (BadRequestException ex)
+            {
+                string fieldName = "";
+                if (ex.Message.Equals(MessageConstant.VerifyEmailConstants.EmailVerified))
+                {
+                    fieldName = "Xác thực email thất bại";
+                }
+                string error = ErrorUtil.GetErrorString(fieldName, ex.Message);
+                throw new BadRequestException(error);
+            }
+            catch (NotFoundException ex)
+            {
+                string fieldName = "";
+                if (ex.Message.Equals(MessageConstant.VerifyEmailConstants.UserProfileNotFound))
+                {
+                    fieldName = "Xác thực email thất bại";
+                }
+                else if (ex.Message.Equals(MessageConstant.VerifyEmailConstants.AccountNotFound))
+                {
+                    fieldName = "Xác thực email thất bại";
+                }
+                string error = ErrorUtil.GetErrorString(fieldName, ex.Message);
+                throw new NotFoundException(error);
             }
 
-            var account = await _accountRepository.GetAccountAsync(userProfile.AccountId);
-            if (account == null)
+            catch (Exception ex)
             {
-                throw new NotFoundException("Không tìm thấy tài khoản liên kết");
+                string error = ErrorUtil.GetErrorString("Exception", ex.Message);
+                throw new Exception(error);
             }
-
-            if (account.Status)
-            {
-                throw new BadRequestException("Email đã được xác thực");
-            }
-
-            account.Status = true;
-            await _accountRepository.UpdateAccountAsync(account);
         }
 
         private async Task SendVerificationEmail(string email)
