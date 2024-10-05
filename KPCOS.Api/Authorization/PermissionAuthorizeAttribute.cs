@@ -19,99 +19,105 @@ namespace MBKC.Service.Authorization
 {
     public class PermissionAuthorizeAttribute : AuthorizeAttribute, IAuthorizationFilter
     {
-        private string[] _roles;
+        private readonly string[] _roles;
+
         public PermissionAuthorizeAttribute(params string[] roles)
         {
-            this._roles = roles;
+            _roles = roles;
         }
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-
-            if (context.HttpContext.User.Identity.IsAuthenticated)
+            if (!context.HttpContext.User.Identity.IsAuthenticated)
             {
+                SetUnauthorizedResult(context, "Bạn không được phép truy cập vào API này.");
+                return;
+            }
 
-                IAccountService accountService = context.HttpContext.RequestServices.GetService<IAccountService>();
-                var currentController = context.RouteData.Values["controller"];
-                var currentActionName = context.RouteData.Values["action"];
-                string accountId = context.HttpContext.User.Claims.First(x => x.Type.ToLower() == JwtRegisteredClaimNames.Sid).Value;
-                System.Console.WriteLine($"Account ID: {accountId}");
-                var existedAccount = accountService.GetAccountById(int.Parse(accountId)).Result;
-                if (existedAccount.Status.Equals(AccountEnum.Status.INACTIVE.ToString().ToLower()))
+            IAccountService accountService = context.HttpContext.RequestServices.GetService<IAccountService>();
+            string userName = context.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")?.Value;
+
+            if (string.IsNullOrEmpty(userName))
+            {
+                SetUnauthorizedResult(context, "Không tìm thấy token");
+                return;
+            }
+
+            var existedAccount = accountService.GetByUserName(userName).Result;
+            foreach (var role in _roles)
+            {
+                if (existedAccount.Role.Type.Equals(role))
                 {
                     return;
                 }
-
-                if (existedAccount.Status == false)
-                {
-                    context.Result = new ObjectResult("Unauthorized")
-                    {
-                        StatusCode = 401,
-                        Value = new
-                        {
-                            Message = JsonConvert.DeserializeObject<List<ErrorDetail>>(ErrorUtil.GetErrorString("Unauthorized", "You have not changed your password for the first time after registering. " +
-                                                                                                                                "Please change the new password before using this function."))
-                        }
-                    };
-                }
-
-                bool isActiveAccount = existedAccount.Status.Equals(AccountEnum.Status.ACTIVE.ToString().ToLower()) ? true : false;
-
-                if (isActiveAccount == false)
-                {
-                    context.Result = new ObjectResult("Unauthorized")
-                    {
-                        StatusCode = 401,
-                        Value = new
-                        {
-                            Message = JsonConvert.DeserializeObject<List<ErrorDetail>>(ErrorUtil.GetErrorString("Unauthorized", "You are not allowed to access this API."))
-                        }
-                    };
-                }
-                var expiredClaim = long.Parse(context.HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Exp).Value);
-                var expiredDate = DateUtil.ConvertUnixTimeToDateTime(expiredClaim);
-                if (expiredDate <= DateTime.UtcNow)
-                {
-                    context.Result = new ObjectResult("Unauthorized")
-                    {
-                        StatusCode = 401,
-                        Value = new
-                        {
-                            Message = JsonConvert.DeserializeObject<List<ErrorDetail>>(ErrorUtil.GetErrorString("Unauthorized", "You are not allowed to access this API."))
-                        }
-                    };
-                }
                 else
                 {
-                    var roleClaim = context.HttpContext.User.Claims.FirstOrDefault(x => x.Type.ToLower() == "role");
-                    if (this._roles.FirstOrDefault(x => x.ToLower().Equals(roleClaim.Value.ToLower())) == null)
-                    {
-                        context.Result = new ObjectResult("Forbidden")
-                        {
-                            StatusCode = 403,
-                            Value = new
-                            {
-                                Message = JsonConvert.DeserializeObject<List<ErrorDetail>>(ErrorUtil.GetErrorString("Forbidden", "You are not allowed to access this function!"))
-                            }
-                        };
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    SetForbiddenResult(context, "Bạn không  được sử dụng chức năng này!");
+                    return;
                 }
             }
-            else
+
+            if (!existedAccount.Status)
             {
-                context.Result = new ObjectResult("Unauthorized")
-                {
-                    StatusCode = 401,
-                    Value = new
-                    {
-                        Message = JsonConvert.DeserializeObject<List<ErrorDetail>>(ErrorUtil.GetErrorString("Unauthorized", "You are not allowed to access this API."))
-                    }
-                };
+                SetUnauthorizedResult(context, "You have not changed your password for the first time after registering. Please change the new password before using this function.");
+                return;
             }
+
+            bool isActiveAccount = existedAccount.Status.Equals(AccountEnum.Status.ACTIVE.ToString().ToLower());
+
+            if (!isActiveAccount)
+            {
+                SetUnauthorizedResult(context, "You are not allowed to access this API.");
+                return;
+            }
+
+            var expiredClaim = context.HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Exp)?.Value;
+
+            if (string.IsNullOrEmpty(expiredClaim) || !long.TryParse(expiredClaim, out long expiredTimestamp))
+            {
+                SetUnauthorizedResult(context, "Token is expired.");
+                return;
+            }
+
+            var expiredDate = DateUtil.ConvertUnixTimeToDateTime(expiredTimestamp);
+
+            if (expiredDate <= DateTime.UtcNow)
+            {
+                SetUnauthorizedResult(context, "You are not allowed to access this API.");
+                return;
+            }
+
+            var roleClaim = context.HttpContext.User.Claims.FirstOrDefault(x => x.Type.ToLower() == "role")?.Value;
+
+            if (string.IsNullOrEmpty(roleClaim) || !_roles.Any(role => role.Equals(roleClaim, StringComparison.OrdinalIgnoreCase)))
+            {
+                SetForbiddenResult(context, "You are not allowed to access this function!");
+                return;
+            }
+        }
+
+        private void SetUnauthorizedResult(AuthorizationFilterContext context, string message)
+        {
+            context.Result = new ObjectResult("Unauthorized")
+            {
+                StatusCode = 401,
+                Value = new
+                {
+                    Message = JsonConvert.DeserializeObject<List<ErrorDetail>>(ErrorUtil.GetErrorString("Unauthorized", message))
+                }
+            };
+        }
+
+        private void SetForbiddenResult(AuthorizationFilterContext context, string message)
+        {
+            context.Result = new ObjectResult("Forbidden")
+            {
+                StatusCode = 403,
+                Value = new
+                {
+                    Message = JsonConvert.DeserializeObject<List<ErrorDetail>>(ErrorUtil.GetErrorString("Forbidden", message))
+                }
+            };
         }
     }
 }

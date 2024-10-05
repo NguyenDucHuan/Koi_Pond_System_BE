@@ -48,24 +48,19 @@ namespace KPCOS.Api.Controllers
             return Ok(accounts);
         }
 
+        [ProducesResponseType(typeof(GetAccountRespone), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
         [Consumes(MediaTypeConstant.ApplicationJson)]
         [Produces(MediaTypeConstant.ApplicationJson)]
+        [PermissionAuthorize(PermissionAuthorizeConstant.Manager)]
         [HttpGet("account/{id}")]
         public async Task<IActionResult> GetAccountById([FromRoute] int id)
         {
-            try
-            {
-                var account = await _accountService.GetAccountById(id);
-                return Ok(account);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+
+            GetAccountRespone account = await _accountService.GetAccountById(id);
+            return Ok(account);
+
         }
         [HttpGet("ponds")]
         public async Task<IActionResult> GetPonds()

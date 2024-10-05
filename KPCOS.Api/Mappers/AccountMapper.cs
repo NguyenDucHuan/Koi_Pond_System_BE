@@ -25,14 +25,14 @@ namespace KPCOS.Api.Mappers
             List<GetAccountRespone> getAccountRespones = new List<GetAccountRespone>();
             foreach (var item in accounts)
             {
-                getAccountRespones.Add(item.ToGetAccountsRespone());
+                getAccountRespones.Add(item.ToGetAccountRespone());
             }
             return new GetAccountsRespone
             {
                 Accounts = getAccountRespones
             };
         }
-        public static GetAccountRespone ToGetAccountsRespone(this Account account)
+        public static GetAccountRespone ToGetAccountRespone(this Account account)
         {
             return new GetAccountRespone
             {

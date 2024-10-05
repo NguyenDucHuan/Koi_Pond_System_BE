@@ -233,5 +233,48 @@ namespace KPCOS.Api.Service.Implement
         {
             return Guid.NewGuid().ToString();
         }
+
+        public async Task ForgotPassword(string value)
+        {
+            try
+            {
+                var account = await _accountRepository.GetByUserName(value);
+                if (account == null)
+                {
+                    throw new NotFoundException(MessageConstant.EmailConstants.NotFoundUserProfile);
+                }
+
+                var userProfile = await _userProfileRepository.GetUserProfileAsync(account.Id);
+                if (userProfile == null)
+                {
+                    throw new NotFoundException(MessageConstant.EmailConstants.NotFoundUserProfile);
+                }
+
+                var token = GenerateVerificationToken();
+                //  account.ResetPasswordToken = token;
+                //  account.ResetPasswordExpire = DateTime.Now.AddHours(1);
+                await _accountRepository.UpdateAccountAsync(account);
+
+                var resetUrl = $"{_configuration["AppUrl"]}/reset-password?token={token}";
+
+                var emailBody = $@"
+                    <h2>Quên mật khẩu</h2>
+                    <p>Vui lòng nhấp vào nút bên dưới để đặt lại mật khẩu của bạn:</p>
+                    <a href='{resetUrl}' style='display:inline-block;padding:10px 20px;background-color:#007bff;color:#ffffff;text-decoration:none;border-radius:5px;'>Đặt lại mật khẩu</a>
+                ";
+
+                //await _emailService.SendEmailAsync(userProfile.Email, "Quên mật khẩu", emailBody, true);
+            }
+            catch (NotFoundException ex)
+            {
+                string error = ErrorUtil.GetErrorString("Exception", ex.Message);
+                throw new NotFoundException(error);
+            }
+            catch (Exception ex)
+            {
+                string error = ErrorUtil.GetErrorString("Exception", ex.Message);
+                throw new Exception(error);
+            }
+        }
     }
 }
