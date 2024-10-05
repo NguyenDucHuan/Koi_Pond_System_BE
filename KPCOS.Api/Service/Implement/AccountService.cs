@@ -3,9 +3,11 @@ using System.Text;
 using KPCOS.Api.Constants;
 using KPCOS.Api.Mappers;
 using KPCOS.Api.Service.Interface;
+using KPCOS.Api.Untils;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.DTOs;
 using KPOCOS.Domain.DTOs.Account;
+using KPOCOS.Domain.DTOs.Response;
 using KPOCOS.Domain.DTOs.Resquest;
 using KPOCOS.Domain.Exceptions;
 using KPOCOS.Domain.Models;
@@ -33,14 +35,28 @@ namespace KPCOS.Api.Service.Implement
             return account;
         }
 
-        public async Task<List<Account>> GetAccountsAsync()
+        public async Task<GetAccountsRespone> GetAccountsAsync()
         {
-            var accounts = await _accountRepository.GetAccountsAsync();
-            if (accounts == null)
+            try
             {
-                throw new NotFoundException("Account List is empty");
+                var accounts = await _accountRepository.GetAccountsAsync();
+                var getAccountsRespone = accounts.ToGetAccountsRespone();
+                if (accounts == null)
+                {
+                    throw new NotFoundException("Account List is empty");
+                }
+                return getAccountsRespone;
             }
-            return accounts;
+            catch (NotFoundException ex)
+            {
+                string error = ErrorUtil.GetErrorString("Account List is empty", ex.Message);
+                throw new NotFoundException(error);
+            }
+            catch (Exception ex)
+            {
+                string error = ErrorUtil.GetErrorString("Exception", ex.Message);
+                throw new Exception(error);
+            }
         }
 
         public async Task<Account> GetByUserName(string username)

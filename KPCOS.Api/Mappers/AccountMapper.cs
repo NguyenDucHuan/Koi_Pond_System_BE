@@ -1,4 +1,5 @@
 ﻿using KPOCOS.Domain.DTOs.Account;
+using KPOCOS.Domain.DTOs.Response;
 using KPOCOS.Domain.DTOs.Resquest;
 using KPOCOS.Domain.Models;
 
@@ -19,6 +20,36 @@ namespace KPCOS.Api.Mappers
                 LastName = accountmodel.UserProfiles.FirstOrDefault().LastName,
             };
         }
+        public static GetAccountsRespone ToGetAccountsRespone(this List<Account> accounts)
+        {
+            List<GetAccountRespone> getAccountRespones = new List<GetAccountRespone>();
+            foreach (var item in accounts)
+            {
+                getAccountRespones.Add(item.ToGetAccountsRespone());
+            }
+            return new GetAccountsRespone
+            {
+                Accounts = getAccountRespones
+            };
+        }
+        public static GetAccountRespone ToGetAccountsRespone(this Account account)
+        {
+            return new GetAccountRespone
+            {
+                Id = account.Id,
+                UserName = account.UserName,
+                FirstName = account.UserProfiles.FirstOrDefault().FirstName,
+                LastName = account.UserProfiles.FirstOrDefault().LastName,
+                Email = account.UserProfiles.FirstOrDefault().Email,
+                Phone = account.UserProfiles.FirstOrDefault().Phone,
+                Birthday = account.UserProfiles.FirstOrDefault()?.Birthday ?? default(DateOnly),
+                Gender = account.UserProfiles.FirstOrDefault().Gender,
+                Status = account.Status,
+                RoleName = account.Role.Type
+            };
+
+        }
+
         public static Account RegisToAccount(this RegisterAccount registerAccount)
         {
             return new Account

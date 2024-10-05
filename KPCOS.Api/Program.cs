@@ -27,6 +27,12 @@ namespace KPCOS.Api
             // Thêm các provider khác nếu cần
             builder.Services.AddControllers().ConfigureApiBehaviorOptions(opts
                     => opts.SuppressModelStateInvalidFilter = true);
+            // builder.Services.AddControllers().AddJsonOptions(options =>
+            // {
+            //     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+            //     options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+            // });
+
             builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
             // Add services to the container.
             builder.Services.AddService();

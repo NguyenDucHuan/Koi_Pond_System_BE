@@ -1,5 +1,6 @@
 ﻿using KPOCOS.Domain.DTOs;
 using KPOCOS.Domain.DTOs.Account;
+using KPOCOS.Domain.DTOs.Response;
 using KPOCOS.Domain.Models;
 
 namespace KPCOS.Api.Service.Interface
@@ -8,7 +9,7 @@ namespace KPCOS.Api.Service.Interface
     {
         Task<Account> GetAccountById(int id);
         // ... các phương thức hiện có ...
-        Task<List<Account>> GetAccountsAsync();
+        Task<GetAccountsRespone> GetAccountsAsync();
         Task<Account> GetByUserName(string username);
     }
 }
