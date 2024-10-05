@@ -15,5 +15,6 @@ namespace KPCOS.Api.Service.Interface
         Task<string> GenerateTokenAsync(Account account);
         Task<string> Register(RegisterDto request);
         Task VerifyEmail(string email);
+        Task ForgotPassword(string value);
     }
 }

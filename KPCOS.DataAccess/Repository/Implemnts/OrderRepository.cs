@@ -57,12 +57,12 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Order> UpdateOrderAsync(Order order)
         {
-            var order1 = await _context.Orders.FindAsync(order.Id);
-            if (order == null)
+            var orderCheckExist = await _context.Orders.FindAsync(order.Id);
+            if (orderCheckExist == null)
             {
                 throw new Exception("Order not found");
             }
-            _context.Orders.Update(order);
+            _context.Update(order);
             await _context.SaveChangesAsync();
             return order;
         }

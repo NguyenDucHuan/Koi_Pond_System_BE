@@ -98,5 +98,17 @@ namespace KPCOS.Api.Controllers
             await _authService.VerifyEmail(email);
             return Ok(new { Message = MessageConstant.EmailConstants.VerifyEmail });
         }
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] string value)
+        {
+            await _authService.ForgotPassword(value);
+            return Ok(new { Message = MessageConstant.EmailConstants.ForgotPassword });
+        }
     }
 }

@@ -34,6 +34,8 @@
             public const string VerifyEmailContent = "<h2>Xác nhận địa chỉ email của bạn</h2><p>Vui lòng nhấp vào nút bên dưới để xác nhận địa chỉ email của bạn:</p>";
 
             public const string VerifyEmailFailed = "Xác thực email thất bại";
+
+            public const string ForgotPassword = "Quý khách vui lòng kiểm tra email để lấy lại mật khẩu";
         }
 
         public static class VerifyEmailConstants

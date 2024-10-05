@@ -25,14 +25,35 @@ namespace KPCOS.Api.Service.Implement
             _accountRepository = accountRepository;
         }
 
-        public async Task<Account> GetAccountById(int id)
+        public async Task<GetAccountRespone> GetAccountById(int id)
         {
-            var account = await _accountRepository.GetAccountAsync(id);
-            if (account == null)
+            try
             {
-                throw new NotFoundException($"Account with id {id} not found");
+
+                var account = await _accountRepository.GetAccountAsync(id);
+                if (account == null)
+                {
+                    throw new NotFoundException($"Tài khoản với id {id} không tồn tại");
+                }
+                var accountResponse = account.ToGetAccountRespone();
+
+                return accountResponse;
             }
-            return account;
+            catch (NotFoundException ex)
+            {
+                string fieldName = "";
+                if (ex.Message.Contains("id"))
+                {
+                    fieldName = "Không tìm thấy tài khoản";
+                }
+                string error = ErrorUtil.GetErrorString(fieldName, ex.Message);
+                throw new NotFoundException(error);
+            }
+            catch (Exception ex)
+            {
+                string error = ErrorUtil.GetErrorString("Exception", ex.Message);
+                throw new Exception(error);
+            }
         }
 
         public async Task<GetAccountsRespone> GetAccountsAsync()
@@ -40,11 +61,11 @@ namespace KPCOS.Api.Service.Implement
             try
             {
                 var accounts = await _accountRepository.GetAccountsAsync();
-                var getAccountsRespone = accounts.ToGetAccountsRespone();
                 if (accounts == null)
                 {
                     throw new NotFoundException("Account List is empty");
                 }
+                var getAccountsRespone = accounts.ToGetAccountsRespone();
                 return getAccountsRespone;
             }
             catch (NotFoundException ex)
