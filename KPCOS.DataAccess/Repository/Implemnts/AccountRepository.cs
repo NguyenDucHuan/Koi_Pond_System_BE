@@ -37,7 +37,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
                 throw new Exception("Account not found");
             }
             _context.Accounts.Remove(checkExist);
-            SaveChange("OK");
+            await _context.SaveChangesAsync();
         }
 
         public async Task<Account> GetAccountAsync(int accountId)
@@ -68,11 +68,12 @@ namespace KPCOS.DataAccess.Repository.Implemnts
                 throw new Exception("Account not found");
             }
             _context.Update(account);
+            await _context.SaveChangesAsync();
             return account;
         }
         public T SaveChange<T>(T u)
         {
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
             return u;
         }
 

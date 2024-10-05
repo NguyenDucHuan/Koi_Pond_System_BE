@@ -92,27 +92,11 @@ namespace KPCOS.Api.Controllers
         [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
         [Consumes(MediaTypeConstant.ApplicationJson)]
         [Produces(MediaTypeConstant.ApplicationJson)]
-        [HttpGet("verify-email")]
         [HttpPost("verify-email")]
-        public async Task<IActionResult> VerifyEmail([FromQuery] string email)
+        public async Task<IActionResult> VerifyEmail([FromBody] string email)
         {
-            try
-            {
-                await _authService.VerifyEmail(email);
-                return Ok(new { Message = MessageConstant.EmailConstants.VerifyEmail });
-            }
-            catch (NotFoundException)
-            {
-                return NotFound(new { Message = MessageConstant.EmailConstants.NotFoundUserProfile });
-            }
-            catch (BadRequestException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, new { Message = MessageConstant.EmailConstants.VerifyEmailFailed });
-            }
+            await _authService.VerifyEmail(email);
+            return Ok(new { Message = MessageConstant.EmailConstants.VerifyEmail });
         }
     }
 }
