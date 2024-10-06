@@ -8,7 +8,7 @@ using KPOCOS.Domain.Models;
 
 namespace KPCOS.Api.Service.Implement
 {
-    public class OrderService : IOderService
+    public class OrderService : IOrderService
     {
 
         private readonly IOrderRepository _orderRepository;
