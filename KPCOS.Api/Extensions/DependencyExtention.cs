@@ -29,6 +29,9 @@ namespace KPCOS.Api.Extensions
             services.AddScoped<IUserProfileRepository, UserProfileRepository>();
             services.AddScoped<IPondService, Pondservice>();
             services.AddScoped<IPondRepository, PondRepository>();
+            services.AddScoped<IServiceTypeRepository, ServiceTypeRepository>();
+            services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IServiceTypeService, ServiceTypeService>();
             services.AddCorsPolicy();
             return services;
         }
