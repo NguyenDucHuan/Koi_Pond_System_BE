@@ -6,7 +6,7 @@ using KPOCOS.Domain.Models;
 
 namespace KPCOS.Api.Service.Interface
 {
-    public interface IOderService
+    public interface IOrderService
     {
         Task<Order> GetOrderById(int id);
 

@@ -1,0 +1,15 @@
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\bin\Debug\net8.0\KPOCOS.Domain.deps.json
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\bin\Debug\net8.0\KPOCOS.Domain.runtimeconfig.json
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\bin\Debug\net8.0\KPOCOS.Domain.dll
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\bin\Debug\net8.0\KPOCOS.Domain.pdb
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.csproj.AssemblyReference.cache
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.AssemblyInfoInputs.cache
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.AssemblyInfo.cs
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.csproj.CoreCompileInputs.cache
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.sourcelink.json
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.dll
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\refint\KPOCOS.Domain.dll
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.pdb
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.genruntimeconfig.cache
+D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\ref\KPOCOS.Domain.dll
