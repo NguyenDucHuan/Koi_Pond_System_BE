@@ -1,21 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\SWP391-FA24\\KPCOS BE\\",
+  "WorkspaceRootPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\swp391-fa24\\kpcos be\\kpcos.api\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|d:\\term6\\merge\\koi_pond_system_be\\kpocos.domain\\models\\kpcosdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|solutionrelative:kpocos.domain\\models\\kpcosdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\term6\\merge\\koi_pond_system_be\\kpcos.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\term6\\merge\\koi_pond_system_be\\kpcos.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\term6\\merge\\koi_pond_system_be\\kpcos.api\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|D:\\SWP391-FA24\\KPCOS BE\\kpcos.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\term6\\merge\\koi_pond_system_be\\kpcos.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|D:\\SWP391-FA24\\KPCOS BE\\kpcos.api\\controllers\\pondcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\term6\\merge\\koi_pond_system_be\\kpcos.api\\controllers\\pondcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\controllers\\pondcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|D:\\SWP391-FA24\\KPCOS BE\\kpcos.api\\attributes\\authorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\term6\\merge\\koi_pond_system_be\\kpcos.api\\attributes\\authorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\attributes\\authorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -26,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -41,20 +53,51 @@
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "KpcosdbContext.cs",
+              "DocumentMoniker": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\Models\\KpcosdbContext.cs",
+              "RelativeDocumentMoniker": "KPOCOS.Domain\\Models\\KpcosdbContext.cs",
+              "ToolTip": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\Models\\KpcosdbContext.cs",
+              "RelativeToolTip": "KPOCOS.Domain\\Models\\KpcosdbContext.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAmwDkAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T03:09:43.035Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "KPCOS.Api\\appsettings.json",
+              "ToolTip": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\appsettings.json",
+              "RelativeToolTip": "KPCOS.Api\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-08T03:07:08.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\Program.cs",
+              "RelativeDocumentMoniker": "KPCOS.Api\\Program.cs",
+              "ToolTip": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\Program.cs",
+              "RelativeToolTip": "KPCOS.Api\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T03:07:07.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "AuthorizeAttribute.cs",
-              "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Attributes\\AuthorizeAttribute.cs",
+              "DocumentMoniker": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\Attributes\\AuthorizeAttribute.cs",
               "RelativeDocumentMoniker": "KPCOS.Api\\Attributes\\AuthorizeAttribute.cs",
-              "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Attributes\\AuthorizeAttribute.cs",
+              "ToolTip": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\Attributes\\AuthorizeAttribute.cs",
               "RelativeToolTip": "KPCOS.Api\\Attributes\\AuthorizeAttribute.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -62,11 +105,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\AccountController.cs",
+              "DocumentMoniker": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "KPCOS.Api\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\Controllers\\AccountController.cs",
               "RelativeToolTip": "KPCOS.Api\\Controllers\\AccountController.cs",
               "ViewState": "AQIAADMAAAAAAAAAAAAowCMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -74,11 +117,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "DashboardController.cs",
-              "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\DashboardController.cs",
+              "DocumentMoniker": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "KPCOS.Api\\Controllers\\DashboardController.cs",
-              "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\Controllers\\DashboardController.cs",
               "RelativeToolTip": "KPCOS.Api\\Controllers\\DashboardController.cs",
               "ViewState": "AQIAABIAAAAAAAAAAAAAACUAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -87,11 +130,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "PondController.cs",
-              "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\PondController.cs",
+              "DocumentMoniker": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\Controllers\\PondController.cs",
               "RelativeDocumentMoniker": "KPCOS.Api\\Controllers\\PondController.cs",
-              "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\PondController.cs",
+              "ToolTip": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\Controllers\\PondController.cs",
               "RelativeToolTip": "KPCOS.Api\\Controllers\\PondController.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAACoAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
