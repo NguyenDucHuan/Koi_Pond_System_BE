@@ -16,5 +16,6 @@ namespace KPCOS.DataAccess.Repository.Interfaces
         Task<Account> UpdateAccountAsync(Account account);
         Task DeleteAccountAsync(int accountId);
         Task<Account> GetByUserName(string userName);
+        Task<int> CountClientsAsync();
     }
 }
