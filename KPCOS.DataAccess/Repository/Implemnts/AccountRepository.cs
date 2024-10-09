@@ -83,6 +83,11 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             }
             return account;
         }
+
+        public async Task<int> CountClientsAsync()
+        {
+            return await _context.Accounts.CountAsync(a => a.RoleId == 2); 
+        }
     }
 
 }
