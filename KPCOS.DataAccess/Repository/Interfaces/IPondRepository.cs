@@ -13,5 +13,6 @@ namespace KPCOS.DataAccess.Repository.Interfaces
         Task<Pond> AddPondAsync(Pond pond);
         Task<Pond> UpdatePondAsync(Pond pond);
         Task DeletePondAsync(int pondId);
+        Task<List<Pond>> GetPondsByAccountIdAsync(int accountId);
     }
 }

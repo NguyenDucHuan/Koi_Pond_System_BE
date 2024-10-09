@@ -45,6 +45,16 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             return pond;
         }
 
+        public async Task<List<Pond>> GetPondsByAccountIdAsync(int accountId)
+        {
+            var ponds = await _context.Ponds.Include(p => p.PondComponents).Where(p => p.AccountId == accountId).ToListAsync();
+            if (ponds == null)
+            {
+                return null;
+            }
+            return ponds;
+        }
+
         public async Task<List<Pond>> GetPondsAsync()
         {
             var ponds = await _context.Ponds.ToListAsync();
