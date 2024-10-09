@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace KPOCOS.Domain.Models;
 
@@ -23,7 +22,7 @@ public partial class Account
     public virtual ICollection<Pond> Ponds { get; set; } = new List<Pond>();
 
     public virtual ICollection<Rating> Ratings { get; set; } = new List<Rating>();
-    [JsonIgnore]
+
     public virtual Role Role { get; set; } = null!;
 
     public virtual ICollection<UserProfile> UserProfiles { get; set; } = new List<UserProfile>();

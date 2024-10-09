@@ -28,6 +28,4 @@ public partial class Pond
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
     public virtual ICollection<PondComponent> PondComponents { get; set; } = new List<PondComponent>();
-
-    public virtual ICollection<PondDecoration> PondDecorations { get; set; } = new List<PondDecoration>();
 }

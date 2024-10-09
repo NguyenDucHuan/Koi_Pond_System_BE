@@ -22,10 +22,6 @@ public partial class KpcosdbContext : DbContext
 
     public virtual DbSet<ComponentType> ComponentTypes { get; set; }
 
-    public virtual DbSet<Decoration> Decorations { get; set; }
-
-    public virtual DbSet<DecorationType> DecorationTypes { get; set; }
-
     public virtual DbSet<Discount> Discounts { get; set; }
 
     public virtual DbSet<DiscountPound> DiscountPounds { get; set; }
@@ -37,8 +33,6 @@ public partial class KpcosdbContext : DbContext
     public virtual DbSet<Pond> Ponds { get; set; }
 
     public virtual DbSet<PondComponent> PondComponents { get; set; }
-
-    public virtual DbSet<PondDecoration> PondDecorations { get; set; }
 
     public virtual DbSet<Rating> Ratings { get; set; }
 
@@ -63,13 +57,11 @@ public partial class KpcosdbContext : DbContext
     {
         modelBuilder.Entity<Account>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Account__3214EC27BD230483");
+            entity.HasKey(e => e.Id).HasName("PK__Account__3214EC2751FC5BE9");
 
             entity.ToTable("Account");
 
-            entity.HasIndex(e => e.Password, "UQ__Account__87909B15E18F216A").IsUnique();
-
-            entity.HasIndex(e => e.UserName, "UQ__Account__C9F284563D4237D8").IsUnique();
+            entity.HasIndex(e => e.UserName, "UQ__Account__C9F28456D97F39F3").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Password).HasMaxLength(20);
@@ -79,12 +71,12 @@ public partial class KpcosdbContext : DbContext
             entity.HasOne(d => d.Role).WithMany(p => p.Accounts)
                 .HasForeignKey(d => d.RoleId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Account__RoleID__4D94879B");
+                .HasConstraintName("FK__Account__RoleID__45F365D3");
         });
 
         modelBuilder.Entity<Component>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Componen__3214EC270AC6D058");
+            entity.HasKey(e => e.Id).HasName("PK__Componen__3214EC27B703D704");
 
             entity.ToTable("Component");
 
@@ -96,12 +88,12 @@ public partial class KpcosdbContext : DbContext
             entity.HasOne(d => d.ComponentType).WithMany(p => p.Components)
                 .HasForeignKey(d => d.ComponentTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Component__Compo__5FB337D6");
+                .HasConstraintName("FK__Component__Compo__398D8EEE");
         });
 
         modelBuilder.Entity<ComponentType>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Componen__3214EC2709C105A2");
+            entity.HasKey(e => e.Id).HasName("PK__Componen__3214EC27D099DE7C");
 
             entity.ToTable("ComponentType");
 
@@ -109,40 +101,9 @@ public partial class KpcosdbContext : DbContext
             entity.Property(e => e.Name).HasMaxLength(255);
         });
 
-        modelBuilder.Entity<Decoration>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Decorati__3214EC273B88C3C9");
-
-            entity.ToTable("Decoration");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("ID");
-            entity.Property(e => e.DecorationName).HasMaxLength(255);
-            entity.Property(e => e.DecorationTypeId).HasColumnName("DecorationTypeID");
-            entity.Property(e => e.Decription).HasMaxLength(255);
-            entity.Property(e => e.PricePerSquareMeter).HasColumnType("decimal(10, 2)");
-
-            entity.HasOne(d => d.DecorationType).WithMany(p => p.Decorations)
-                .HasForeignKey(d => d.DecorationTypeId)
-                .HasConstraintName("FK__Decoratio__Decor__5AEE82B9");
-        });
-
-        modelBuilder.Entity<DecorationType>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Decorati__3214EC27982590F7");
-
-            entity.ToTable("DecorationType");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("ID");
-            entity.Property(e => e.Name).HasMaxLength(255);
-        });
-
         modelBuilder.Entity<Discount>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Discount__3214EC27E7009954");
+            entity.HasKey(e => e.Id).HasName("PK__Discount__3214EC27E34090BF");
 
             entity.ToTable("Discount");
 
@@ -159,7 +120,7 @@ public partial class KpcosdbContext : DbContext
 
         modelBuilder.Entity<DiscountPound>(entity =>
         {
-            entity.HasKey(e => new { e.DiscouId, e.AccountId }).HasName("PK__Discount__08A6B927B22D716E");
+            entity.HasKey(e => new { e.DiscouId, e.AccountId }).HasName("PK__Discount__08A6B927D3EA7A68");
 
             entity.ToTable("DiscountPound");
 
@@ -170,17 +131,17 @@ public partial class KpcosdbContext : DbContext
             entity.HasOne(d => d.Account).WithMany(p => p.DiscountPounds)
                 .HasForeignKey(d => d.AccountId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__DiscountP__Accou__656C112C");
+                .HasConstraintName("FK__DiscountP__Accou__49C3F6B7");
 
             entity.HasOne(d => d.Discou).WithMany(p => p.DiscountPounds)
                 .HasForeignKey(d => d.DiscouId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__DiscountP__Disco__6477ECF3");
+                .HasConstraintName("FK__DiscountP__Disco__48CFD27E");
         });
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Order__3214EC27A749A059");
+            entity.HasKey(e => e.Id).HasName("PK__Order__3214EC277A3CD5E9");
 
             entity.ToTable("Order");
 
@@ -194,16 +155,16 @@ public partial class KpcosdbContext : DbContext
             entity.HasOne(d => d.Account).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.AccountId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Order__AccountID__72C60C4A");
+                .HasConstraintName("FK__Order__AccountID__4CA06362");
 
             entity.HasOne(d => d.Discou).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.DiscouId)
-                .HasConstraintName("FK__Order__DiscouID__73BA3083");
+                .HasConstraintName("FK__Order__DiscouID__4D94879B");
         });
 
         modelBuilder.Entity<OrderItem>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__OrderIte__3214EC27AD242CD7");
+            entity.HasKey(e => e.Id).HasName("PK__OrderIte__3214EC2713A7F592");
 
             entity.ToTable("OrderItem");
 
@@ -217,21 +178,21 @@ public partial class KpcosdbContext : DbContext
             entity.HasOne(d => d.Order).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.OrderId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderItem__Order__778AC167");
+                .HasConstraintName("FK__OrderItem__Order__619B8048");
 
             entity.HasOne(d => d.Pond).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.PondId)
-                .HasConstraintName("FK__OrderItem__PondI__787EE5A0");
+                .HasConstraintName("FK__OrderItem__PondI__628FA481");
 
             entity.HasOne(d => d.Service).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.ServiceId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderItem__Servi__76969D2E");
+                .HasConstraintName("FK__OrderItem__Servi__60A75C0F");
         });
 
         modelBuilder.Entity<Pond>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Pond__3214EC27405CA86F");
+            entity.HasKey(e => e.Id).HasName("PK__Pond__3214EC27EE265DFA");
 
             entity.ToTable("Pond");
 
@@ -249,12 +210,12 @@ public partial class KpcosdbContext : DbContext
             entity.HasOne(d => d.Account).WithMany(p => p.Ponds)
                 .HasForeignKey(d => d.AccountId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Pond__AccountID__68487DD7");
+                .HasConstraintName("FK__Pond__AccountID__5070F446");
         });
 
         modelBuilder.Entity<PondComponent>(entity =>
         {
-            entity.HasKey(e => new { e.ComponentId, e.PondId }).HasName("PK__PondComp__8A844FAB3F6F405D");
+            entity.HasKey(e => new { e.ComponentId, e.PondId }).HasName("PK__PondComp__8A844FABFE7D7957");
 
             entity.ToTable("PondComponent");
 
@@ -265,38 +226,17 @@ public partial class KpcosdbContext : DbContext
             entity.HasOne(d => d.Component).WithMany(p => p.PondComponents)
                 .HasForeignKey(d => d.ComponentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PondCompo__Compo__6B24EA82");
+                .HasConstraintName("FK__PondCompo__Compo__5441852A");
 
             entity.HasOne(d => d.Pond).WithMany(p => p.PondComponents)
                 .HasForeignKey(d => d.PondId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PondCompo__PondI__6C190EBB");
-        });
-
-        modelBuilder.Entity<PondDecoration>(entity =>
-        {
-            entity.HasKey(e => new { e.DecorationId, e.PondId }).HasName("PK__PondDeco__13EC9D594C1A1B81");
-
-            entity.ToTable("PondDecoration");
-
-            entity.Property(e => e.DecorationId).HasColumnName("DecorationID");
-            entity.Property(e => e.PondId).HasColumnName("PondID");
-            entity.Property(e => e.AreaAmount).HasColumnType("decimal(10, 2)");
-
-            entity.HasOne(d => d.Decoration).WithMany(p => p.PondDecorations)
-                .HasForeignKey(d => d.DecorationId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PondDecor__Decor__6EF57B66");
-
-            entity.HasOne(d => d.Pond).WithMany(p => p.PondDecorations)
-                .HasForeignKey(d => d.PondId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PondDecor__PondI__6FE99F9F");
+                .HasConstraintName("FK__PondCompo__PondI__5535A963");
         });
 
         modelBuilder.Entity<Rating>(entity =>
         {
-            entity.HasKey(e => e.RatingId).HasName("PK__Rating__FCCDF85C39599C5A");
+            entity.HasKey(e => e.RatingId).HasName("PK__Rating__FCCDF85CA19CB0E2");
 
             entity.ToTable("Rating");
 
@@ -309,17 +249,17 @@ public partial class KpcosdbContext : DbContext
             entity.HasOne(d => d.Account).WithMany(p => p.Ratings)
                 .HasForeignKey(d => d.AccountId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Rating__AccountI__7B5B524B");
+                .HasConstraintName("FK__Rating__AccountI__656C112C");
 
             entity.HasOne(d => d.OrderItem).WithMany(p => p.Ratings)
                 .HasForeignKey(d => d.OrderItemId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Rating__OrderIte__7C4F7684");
+                .HasConstraintName("FK__Rating__OrderIte__66603565");
         });
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Role__3214EC27B9924792");
+            entity.HasKey(e => e.Id).HasName("PK__Role__3214EC27A69A358F");
 
             entity.ToTable("Role");
 
@@ -329,7 +269,7 @@ public partial class KpcosdbContext : DbContext
 
         modelBuilder.Entity<Service>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Service__3214EC2781386CF9");
+            entity.HasKey(e => e.Id).HasName("PK__Service__3214EC27CF5DFFEB");
 
             entity.ToTable("Service");
 
@@ -341,12 +281,12 @@ public partial class KpcosdbContext : DbContext
             entity.HasOne(d => d.ServiceType).WithMany(p => p.Services)
                 .HasForeignKey(d => d.ServiceTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Service__Service__5629CD9C");
+                .HasConstraintName("FK__Service__Service__5DCAEF64");
         });
 
         modelBuilder.Entity<ServiceType>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ServiceT__3214EC27E354EF53");
+            entity.HasKey(e => e.Id).HasName("PK__ServiceT__3214EC27B59D0E79");
 
             entity.ToTable("ServiceType");
 
@@ -358,27 +298,26 @@ public partial class KpcosdbContext : DbContext
 
         modelBuilder.Entity<UserProfile>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__UserProf__1788CCACF7BBCD55");
+            entity.HasKey(e => e.UserId).HasName("PK__UserProf__1788CCACBA7C2CC5");
 
             entity.ToTable("UserProfile");
 
-            entity.HasIndex(e => e.Email, "UQ__UserProf__A9D10534D50C0DEF").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__UserProf__A9D10534CCDB8F41").IsUnique();
 
             entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.AccountId).HasColumnName("AccountID");
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.FirstName).HasMaxLength(255);
             entity.Property(e => e.Gender)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength();
+                .HasMaxLength(6)
+                .IsUnicode(false);
             entity.Property(e => e.LastName).HasMaxLength(255);
             entity.Property(e => e.Phone).HasMaxLength(20);
 
             entity.HasOne(d => d.Account).WithMany(p => p.UserProfiles)
                 .HasForeignKey(d => d.AccountId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__UserProfi__Accou__5165187F");
+                .HasConstraintName("FK__UserProfi__Accou__6A30C649");
         });
 
         OnModelCreatingPartial(modelBuilder);
