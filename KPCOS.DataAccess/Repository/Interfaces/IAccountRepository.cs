@@ -3,7 +3,6 @@ using KPOCOS.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,5 +16,6 @@ namespace KPCOS.DataAccess.Repository.Interfaces
         Task<Account> UpdateAccountAsync(Account account);
         Task DeleteAccountAsync(int accountId);
         Task<Account> GetByUserName(string userName);
+        Task<int> CountClientsAsync();
     }
 }

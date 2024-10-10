@@ -19,5 +19,15 @@ namespace KPCOS.Api.Service.Interface
         Task<Order> DeleteOrder(int id);
 
         Task<Order> GetOrderByAccountId(int accountId);
+
+        Task<Order> GetOrderByStatus(int status);
+
+        Task<int> GetTotalOrdersCountAsync();
+
+        Task<int> GetOngoingOrdersCountAsync();
+
+        Task<decimal> GetTotalRevenueAsync();
+
+        Task<int> GetTotalClientsCountAsync();
     }
 }
