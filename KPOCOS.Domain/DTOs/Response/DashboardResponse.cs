@@ -16,5 +16,6 @@ namespace KPOCOS.Domain.DTOs.Response
         public int TotalClients { get; set; }
         public int TotalEmployees { get; set; }
         public List<RevenueResponse> MonthlyRevenueData { get; set; }
+        public List<RecentProjectsResponse> RecentProjects { get; set; }
     }
 }
