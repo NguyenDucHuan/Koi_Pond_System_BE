@@ -58,18 +58,6 @@ namespace KPCOS.Api.Controllers
                     })
                     .ToListAsync();
 
-                var recentProjects = await _context.Orders
-                    .Include(o => o.Account) 
-                    .Select(o => new RecentProjectsResponse
-                    {
-                        OrderId = o.Id,  
-                        Client = o.Account.UserName,
-                        Status = o.Status,
-                    })
-                    .OrderByDescending(o => o.OrderId) 
-                    .Take(3)
-                    .ToListAsync();
-
                 var dashboardData = new DashboardResponse
                 {
                     TotalProjects = totalProjects,
@@ -79,8 +67,7 @@ namespace KPCOS.Api.Controllers
                     TotalCosts = totalCosts,
                     TotalClients = totalClients,
                     TotalEmployees = totalEmployees,
-                    MonthlyRevenueData = monthlyRevenueData ,
-                    RecentProjects = recentProjects
+                    MonthlyRevenueData = monthlyRevenueData 
                 };
 
                 return Ok(dashboardData);
