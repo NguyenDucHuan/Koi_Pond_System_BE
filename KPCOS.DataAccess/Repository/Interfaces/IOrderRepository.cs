@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using KPOCOS.Domain.Models;
 
@@ -13,8 +14,5 @@ namespace KPCOS.DataAccess.Repository.Interfaces
         Task<Order> AddOrderAsync(Order order);
         Task<Order> UpdateOrderAsync(Order order);
         Task DeleteOrderAsync(int orderId);
-        Task<int> CountOrdersAsync();
-        Task<int> CountOrdersByStatusAsync(string status);
-        Task<decimal> SumTotalRevenueAsync();
     }
 }

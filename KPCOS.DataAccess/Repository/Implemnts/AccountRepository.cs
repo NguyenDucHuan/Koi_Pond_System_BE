@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -83,11 +84,5 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             }
             return account;
         }
-
-        public async Task<int> CountClientsAsync()
-        {
-            return await _context.Accounts.CountAsync(a => a.RoleId == 2); 
-        }
     }
-
 }

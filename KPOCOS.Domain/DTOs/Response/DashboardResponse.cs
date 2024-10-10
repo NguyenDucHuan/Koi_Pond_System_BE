@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace KPOCOS.Domain.DTOs.Response
 {
-    internal class DashboardResponse
+    public class DashboardResponse
     {
-        public int TotalDoneOrders { get; set; }
+        public int TotalProjects { get; set; }
+        public int OngoingProjects { get; set; }
+        public int CompletedProjects { get; set; }
+        public decimal TotalRevenue { get; set; }
+        public decimal TotalCosts { get; set; }
+        public int TotalClients { get; set; }
+        public int TotalEmployees { get; set; }
+        public List<RevenueResponse> MonthlyRevenueData { get; set; }
     }
 }
