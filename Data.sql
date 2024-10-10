@@ -79,7 +79,7 @@ create table [Order]
     AccountID  int            not null
         references Account,
     Status     nvarchar(50)   not null,
-    DiscoutID   int
+    DiscouID   int
         references Discount,
     TotalMoney decimal(10, 2) not null
 )
