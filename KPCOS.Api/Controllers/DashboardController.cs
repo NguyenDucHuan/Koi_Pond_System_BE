@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 using KPCOS.Api.Constants;
 using KPCOS.Api.Service.Implement;
 using KPCOS.Api.Service.Interface;
-using KPOCOS.Domain.DTOs;
 using KPOCOS.Domain.DTOs.Response;
 using KPOCOS.Domain.Errors;
 using KPOCOS.Domain.Exceptions;
-using KPOCOS.Domain.Models;
 using MBKC.Service.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace KPCOS.Api.Controllers
@@ -23,11 +20,11 @@ namespace KPCOS.Api.Controllers
     [Route("api/v1/dashboard")]
     public class DashboardController : ControllerBase
     {
-        private readonly KpcosdbContext _context;
+        private readonly OrderService _orderService;
 
-        public DashboardController(KpcosdbContext context)
+        public DashboardController(OrderService _orderService)
         {
-            _context = context;
+            _orderService = _orderService;
         }
 
         [ProducesResponseType(typeof(GetAccountRespone), StatusCodes.Status200OK)]
@@ -37,40 +34,24 @@ namespace KPCOS.Api.Controllers
         [Produces(MediaTypeConstant.ApplicationJson)]
         [PermissionAuthorize(PermissionAuthorizeConstant.Manager)]
         [HttpGet("dashboard-stats")]
-        public async Task<IActionResult> GetDashboardInfo()
+        public async Task<IActionResult> GetDashboardStats()
         {
             try
             {
-                var totalProjects = await _context.Ponds.CountAsync();
-                var ongoingProjects = await _context.Orders.CountAsync(p => p.Status == "Đang tiến hành"); 
-                var completedProjects = await _context.Orders.CountAsync(p => p.Status == "Hoàn thành"); 
-                var totalRevenue = await _context.Orders.SumAsync(o => o.TotalMoney);
-                var totalCosts = await _context.OrderItems.SumAsync(oi => oi.TotalPrice); 
-                var totalClients = await _context.Accounts.CountAsync(a => a.RoleId == 2); 
-                var totalEmployees = await _context.Accounts.CountAsync(a => a.RoleId == 1); 
+                var totalOrders = await _orderService.GetTotalOrdersCountAsync();
+                var ongoingOrders = await _orderService.GetOngoingOrdersCountAsync();
+                var totalRevenue = await _orderService.GetTotalRevenueAsync();
+                var totalClients = await _orderService.GetTotalClientsCountAsync();
 
-                var monthlyRevenueData = await _context.Orders
-                    .GroupBy(o => new { o.CreateOn.Year, o.CreateOn.Month })
-                    .Select(g => new RevenueResponse
-                    {
-                        Month = $"{g.Key.Month}/{g.Key.Year}", 
-                        Revenue = g.Sum(o => o.TotalMoney)
-                    })
-                    .ToListAsync();
-
-                var dashboardData = new DashboardResponse
+                var stats = new
                 {
-                    TotalProjects = totalProjects,
-                    OngoingProjects = ongoingProjects,
-                    CompletedProjects = completedProjects,
-                    TotalRevenue = totalRevenue,
-                    TotalCosts = totalCosts,
-                    TotalClients = totalClients,
-                    TotalEmployees = totalEmployees,
-                    MonthlyRevenueData = monthlyRevenueData 
+                    totalOrders,
+                    ongoingOrders,
+                    totalRevenue,
+                    totalClients
                 };
 
-                return Ok(dashboardData);
+                return Ok(stats);
             }
             catch (System.Exception ex)
             {
