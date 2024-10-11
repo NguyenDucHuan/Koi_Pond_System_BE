@@ -35,6 +35,11 @@ namespace KPCOS.Api.Service.Implement
             throw new NotImplementedException();
         }
 
+        public Task<int> GetOngoingOrdersCountAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Order> GetOrderByAccountId(int accountId)
         {
             throw new NotImplementedException();
@@ -51,6 +56,21 @@ namespace KPCOS.Api.Service.Implement
         }
 
         public Task<List<Order>> GetOrdersAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> GetTotalClientsCountAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> GetTotalOrdersCountAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<decimal> GetTotalRevenueAsync()
         {
             throw new NotImplementedException();
         }

@@ -17,6 +17,8 @@ public partial class Component
 
     public string? Image { get; set; }
 
+    public string? Unit { get; set; }
+
     public virtual ComponentType ComponentType { get; set; } = null!;
 
     public virtual ICollection<PondComponent> PondComponents { get; set; } = new List<PondComponent>();

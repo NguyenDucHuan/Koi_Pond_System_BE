@@ -21,7 +21,6 @@ namespace KPCOS.Api.Extensions
         public static IServiceCollection AddService(this IServiceCollection services)
         {
             services.AddControllers();
-
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IAccountRepository, AccountRepository>();
@@ -32,6 +31,9 @@ namespace KPCOS.Api.Extensions
             services.AddScoped<IServiceTypeRepository, ServiceTypeRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
             services.AddScoped<IServiceTypeService, ServiceTypeService>();
+            services.AddScoped<IComponentService, ComponentService>();
+            services.AddScoped<IComponentRepository, ComponentRepository>();
+            services.AddScoped<IComponentTypeRepository, ComponentTypeRepository>();
             services.AddCorsPolicy();
             return services;
         }
