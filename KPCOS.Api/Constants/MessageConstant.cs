@@ -47,5 +47,16 @@
 
             public const string AccountNotFound = "Không tìm thấy tài khoản liên kết";
         }
+
+        public static class ManagerAccount
+        {
+            public const string AccountNotFound = "Không tìm thấy tài khoản";
+
+            public const string UpdateAccountStatusSuccess = "Cập nhật trạng thái tài khoản thành công";
+
+            public const string UpdateAccountStatusFailed = "Cập nhật trạng thái tài khoản thất bại";
+
+            public const string UpdateAccountSuccess = "Cập nhật tài khoản thành công";
+        }
     }
 }

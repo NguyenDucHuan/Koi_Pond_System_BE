@@ -24,6 +24,25 @@ namespace KPOCOS.Domain.DTOs.Resquest
         public RegisterAccount registerAccount { get; set; } = new RegisterAccount();
         public RegisterUserProfile registerUserProfile { get; set; } = new RegisterUserProfile();
     }
+
+    public class UpdateAccountRequest
+    {
+        public string UserName { get; set; } = string.Empty;
+
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
+
+        public DateOnly? Birthday { get; set; }
+
+        public string Gender { get; set; } = string.Empty;
+
+        public string Role { get; set; } = string.Empty;
+    }
+
+
+
     public class RegisterAccount
     {
         [Required(ErrorMessage = "Username is missing")]
