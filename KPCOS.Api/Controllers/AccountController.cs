@@ -23,6 +23,7 @@ namespace KPCOS.Api.Controllers
 
         }
         [ProducesResponseType(typeof(GetAccountsRespone), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
         [Consumes(MediaTypeConstant.ApplicationJson)]
@@ -36,6 +37,7 @@ namespace KPCOS.Api.Controllers
         }
 
         [ProducesResponseType(typeof(GetAccountRespone), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
         [Consumes(MediaTypeConstant.ApplicationJson)]
@@ -74,6 +76,7 @@ namespace KPCOS.Api.Controllers
             return Ok(account);
 
         }
+
 
     }
 }

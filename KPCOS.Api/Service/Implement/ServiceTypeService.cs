@@ -38,11 +38,6 @@ namespace KPCOS.Api.Service.Implement
                 var ServiceTypesResponses = serviceTypes.merServiceListToServiceTypeList(services);
                 return ServiceTypesResponses;
             }
-            catch (NotFoundException ex)
-            {
-                string error = ErrorUtil.GetErrorString("serviceType List is empty", ex.Message);
-                throw new NotFoundException(error);
-            }
             catch (Exception ex)
             {
                 string error = ErrorUtil.GetErrorString("Exception", ex.Message);

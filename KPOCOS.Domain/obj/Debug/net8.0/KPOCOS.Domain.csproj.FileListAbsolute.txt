@@ -13,18 +13,3 @@ D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\refint\KPOCOS.Domain.dll
 D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.pdb
 D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.genruntimeconfig.cache
 D:\SWP391-FA24\KPCOS BE\KPOCOS.Domain\obj\Debug\net8.0\ref\KPOCOS.Domain.dll
-D:\Koi_Pond_System_BE\KPOCOS.Domain\bin\Debug\net8.0\KPOCOS.Domain.deps.json
-D:\Koi_Pond_System_BE\KPOCOS.Domain\bin\Debug\net8.0\KPOCOS.Domain.runtimeconfig.json
-D:\Koi_Pond_System_BE\KPOCOS.Domain\bin\Debug\net8.0\KPOCOS.Domain.dll
-D:\Koi_Pond_System_BE\KPOCOS.Domain\bin\Debug\net8.0\KPOCOS.Domain.pdb
-D:\Koi_Pond_System_BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.csproj.AssemblyReference.cache
-D:\Koi_Pond_System_BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.GeneratedMSBuildEditorConfig.editorconfig
-D:\Koi_Pond_System_BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.AssemblyInfoInputs.cache
-D:\Koi_Pond_System_BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.AssemblyInfo.cs
-D:\Koi_Pond_System_BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.csproj.CoreCompileInputs.cache
-D:\Koi_Pond_System_BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.sourcelink.json
-D:\Koi_Pond_System_BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.dll
-D:\Koi_Pond_System_BE\KPOCOS.Domain\obj\Debug\net8.0\refint\KPOCOS.Domain.dll
-D:\Koi_Pond_System_BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.pdb
-D:\Koi_Pond_System_BE\KPOCOS.Domain\obj\Debug\net8.0\KPOCOS.Domain.genruntimeconfig.cache
-D:\Koi_Pond_System_BE\KPOCOS.Domain\obj\Debug\net8.0\ref\KPOCOS.Domain.dll
