@@ -14,3 +14,19 @@ D:\SWP391-FA24\KPCOS BE\KPCOS.DataAccess\obj\Debug\net8.0\KPCOS.DataAccess.dll
 D:\SWP391-FA24\KPCOS BE\KPCOS.DataAccess\obj\Debug\net8.0\refint\KPCOS.DataAccess.dll
 D:\SWP391-FA24\KPCOS BE\KPCOS.DataAccess\obj\Debug\net8.0\KPCOS.DataAccess.pdb
 D:\SWP391-FA24\KPCOS BE\KPCOS.DataAccess\obj\Debug\net8.0\ref\KPCOS.DataAccess.dll
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\bin\Debug\net8.0\KPCOS.DataAccess.deps.json
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\bin\Debug\net8.0\KPCOS.DataAccess.dll
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\bin\Debug\net8.0\KPCOS.DataAccess.pdb
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\bin\Debug\net8.0\KPOCOS.Domain.dll
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\bin\Debug\net8.0\KPOCOS.Domain.pdb
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\obj\Debug\net8.0\KPCOS.DataAccess.csproj.AssemblyReference.cache
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\obj\Debug\net8.0\KPCOS.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\obj\Debug\net8.0\KPCOS.DataAccess.AssemblyInfoInputs.cache
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\obj\Debug\net8.0\KPCOS.DataAccess.AssemblyInfo.cs
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\obj\Debug\net8.0\KPCOS.DataAccess.csproj.CoreCompileInputs.cache
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\obj\Debug\net8.0\KPCOS.DataAccess.sourcelink.json
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\obj\Debug\net8.0\KPCOS.Da.6DF0DD9A.Up2Date
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\obj\Debug\net8.0\KPCOS.DataAccess.dll
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\obj\Debug\net8.0\refint\KPCOS.DataAccess.dll
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\obj\Debug\net8.0\KPCOS.DataAccess.pdb
+D:\Koi_Pond_System_BE\KPCOS.DataAccess\obj\Debug\net8.0\ref\KPCOS.DataAccess.dll
