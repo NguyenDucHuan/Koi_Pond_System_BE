@@ -89,6 +89,62 @@ namespace KPCOS.Api.Service.Implement
             }
             return account;
         }
+
+        public async Task<string> UpdateAccount(int id, UpdateAccountRequest request)
+        {
+            try
+            {
+                var account = await _accountRepository.GetAccountAsync(id);
+                if (account == null)
+                {
+                    throw new NotFoundException($"Tài khoản với id {id} không tồn tại");
+                }
+
+                request.ToUpdateAccount(account);
+
+                await _accountRepository.UpdateAccountAsync(account);
+
+                return MessageConstant.ManagerAccount.UpdateAccountSuccess;
+            }
+            catch (NotFoundException ex)
+            {
+                string error = ErrorUtil.GetErrorString("Không tìm thấy", ex.Message);
+                throw new NotFoundException(error);
+            }
+            catch (Exception ex)
+            {
+                string error = ErrorUtil.GetErrorString("Exception", ex.Message);
+                throw new Exception(error);
+            }
+        }
+
+
+
+        public async Task<string> UpdateAccountStatus(string value)
+        {
+            try
+            {
+                var account = await _accountRepository.GetByUserName(value);
+                if (account == null)
+                {
+                    throw new NotFoundException($"Tài khoản với username {value} không tồn tại");
+                }
+                account.Status = !account.Status;
+
+                await _accountRepository.UpdateAccountAsync(account);
+                return MessageConstant.ManagerAccount.UpdateAccountStatusSuccess;
+            }
+            catch (NotFoundException ex)
+            {
+                string error = ErrorUtil.GetErrorString("Không tìm tháy", ex.Message);
+                throw new NotFoundException(error);
+            }
+            catch (Exception ex)
+            {
+                string error = ErrorUtil.GetErrorString("Exception", ex.Message);
+                throw new Exception(error);
+            }
+        }
     }
 }
 

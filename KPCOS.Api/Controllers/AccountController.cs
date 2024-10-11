@@ -1,6 +1,7 @@
 using KPCOS.Api.Constants;
 using KPCOS.Api.Service.Interface;
 using KPOCOS.Domain.DTOs.Response;
+using KPOCOS.Domain.DTOs.Resquest;
 using KPOCOS.Domain.Errors;
 using MBKC.Service.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -50,7 +51,31 @@ namespace KPCOS.Api.Controllers
             return Ok(account);
 
         }
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [PermissionAuthorize(PermissionAuthorizeConstant.Manager)]
+        [HttpPut("users/{username}/status")]
+        public async Task<IActionResult> UpdateAccountStatus([FromRoute] string username)
+        {
+            var account = await _accountService.UpdateAccountStatus(username);
+            return Ok(account);
+        }
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [PermissionAuthorize(PermissionAuthorizeConstant.Manager)]
+        [HttpPut("users/{id}")]
+        public async Task<IActionResult> UpdateAccount([FromRoute] int id, [FromBody] UpdateAccountRequest request)
+        {
+            var account = await _accountService.UpdateAccount(id, request);
+            return Ok(account);
 
+        }
 
 
     }
