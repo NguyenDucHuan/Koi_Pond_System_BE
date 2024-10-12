@@ -86,7 +86,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<int> CountClientsAsync()
         {
-            return await _context.Accounts.CountAsync(a => a.RoleId == 2); 
+            return await _context.Accounts.CountAsync(a => a.RoleId == 2);
         }
     }
 

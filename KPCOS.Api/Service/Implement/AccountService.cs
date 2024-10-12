@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using KPCOS.Api.Constants;
+using KPCOS.Api.Enums;
 using KPCOS.Api.Mappers;
 using KPCOS.Api.Service.Interface;
 using KPCOS.Api.Untils;
@@ -19,6 +20,7 @@ namespace KPCOS.Api.Service.Implement
     public class AccountService : IAccountService
     {
         private readonly IAccountRepository _accountRepository;
+
 
         public AccountService(IAccountRepository accountRepository)
         {
@@ -100,7 +102,8 @@ namespace KPCOS.Api.Service.Implement
                     throw new NotFoundException($"Tài khoản với id {id} không tồn tại");
                 }
 
-                request.ToUpdateAccount(account);
+                request.ToUpdateAccount(account, (int)Enum.Parse(typeof(RoleEnum), request.Role));
+
 
                 await _accountRepository.UpdateAccountAsync(account);
 
