@@ -71,7 +71,7 @@ namespace KPCOS.Api.Mappers
             };
         }
 
-        public static void ToUpdateAccount(this UpdateAccountRequest request, Account account)
+        public static void ToUpdateAccount(this UpdateAccountRequest request, Account account, int rollID)
         {
             account.UserName = request.UserName;
             var userProfile = account.UserProfiles.FirstOrDefault();
@@ -87,7 +87,7 @@ namespace KPCOS.Api.Mappers
             }
 
             // Assuming Role can be updated directly, if the Role is an ID you would map the roleId
-            account.Role.Type = request.Role;
+            account.RoleId = rollID;
         }
     }
 }
