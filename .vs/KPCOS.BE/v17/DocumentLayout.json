@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\SWP391-FA24\\KPCOS BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\swp391-fa24\\kpcos be\\kpcos.api\\controllers\\userprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\controllers\\userprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\swp391-fa24\\kpcos be\\kpcos.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\swp391-fa24\\kpcos be\\kpcos.api\\service\\interface\\iuserprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,12 +27,20 @@
       "RelativeMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|solutionrelative:kpocos.domain\\dtos\\response\\dashboardresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|d:\\swp391-fa24\\kpcos be\\kpcos.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|d:\\swp391-fa24\\kpcos be\\kpocos.domain\\dtos\\response\\recentprojectsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DBF624B-57E5-4699-9C8A-8C8D30488F03}|KPOCOS.Domain\\KPOCOS.Domain.csproj|solutionrelative:kpocos.domain\\dtos\\response\\recentprojectsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|D:\\SWP391-FA24\\KPCOS BE\\kpcos.api\\controllers\\pondcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\controllers\\pondcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|D:\\SWP391-FA24\\KPCOS BE\\kpcos.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|D:\\SWP391-FA24\\KPCOS BE\\kpcos.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05EC2640-1F35-4837-88F6-715D4E6A7477}|KPCOS.Api\\KPCOS.Api.csproj|solutionrelative:kpcos.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{64DF189C-F46D-4DF6-A385-B1353315EC91}|KPCOS.DataAccess\\KPCOS.DataAccess.csproj|d:\\swp391-fa24\\kpcos be\\kpcos.dataaccess\\repository\\interfaces\\iuserprofilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,11 +58,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 9,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "IUserProfileRepository.cs",
               "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.DataAccess\\Repository\\Interfaces\\IUserProfileRepository.cs",
               "RelativeDocumentMoniker": "KPCOS.DataAccess\\Repository\\Interfaces\\IUserProfileRepository.cs",
@@ -86,7 +114,7 @@
               "RelativeDocumentMoniker": "KPCOS.Api\\Service\\Implement\\UserProfileService.cs",
               "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Service\\Implement\\UserProfileService.cs",
               "RelativeToolTip": "KPCOS.Api\\Service\\Implement\\UserProfileService.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAowE8AAAAFAAAA",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAwwCEAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-12T03:32:03.332Z",
               "EditorCaption": ""
@@ -99,7 +127,7 @@
               "RelativeDocumentMoniker": "KPCOS.Api\\Service\\Interface\\IUserProfileService.cs",
               "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Service\\Interface\\IUserProfileService.cs",
               "RelativeToolTip": "KPCOS.Api\\Service\\Interface\\IUserProfileService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-12T03:31:47.887Z",
               "EditorCaption": ""
@@ -107,32 +135,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserProfileController.cs",
-              "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\UserProfileController.cs",
-              "RelativeDocumentMoniker": "KPCOS.Api\\Controllers\\UserProfileController.cs",
-              "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\UserProfileController.cs",
-              "RelativeToolTip": "KPCOS.Api\\Controllers\\UserProfileController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T03:29:21.373Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "KPCOS.Api\\Controllers\\AccountController.cs",
               "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\AccountController.cs",
               "RelativeToolTip": "KPCOS.Api\\Controllers\\AccountController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAAVAAAA",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAmwG4AAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-12T03:23:49.693Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "AccountService.cs",
               "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Service\\Implement\\AccountService.cs",
               "RelativeDocumentMoniker": "KPCOS.Api\\Service\\Implement\\AccountService.cs",
@@ -145,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "RecentProjectsResponse.cs",
               "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPOCOS.Domain\\DTOs\\Response\\RecentProjectsResponse.cs",
               "RelativeDocumentMoniker": "KPOCOS.Domain\\DTOs\\Response\\RecentProjectsResponse.cs",
@@ -170,24 +185,30 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "KPCOS.Api\\appsettings.json",
+              "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\appsettings.json",
+              "RelativeToolTip": "KPCOS.Api\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-08T03:07:08.895Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Program.cs",
+              "RelativeDocumentMoniker": "KPCOS.Api\\Program.cs",
+              "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Program.cs",
+              "RelativeToolTip": "KPCOS.Api\\Program.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T03:07:07.909Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -195,11 +216,24 @@
               "Title": "DashboardController.cs",
               "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "KPCOS.Api\\Controllers\\DashboardController.cs",
-              "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\DashboardController.cs*",
-              "RelativeToolTip": "KPCOS.Api\\Controllers\\DashboardController.cs*",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABYAAAAzAAAA",
+              "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "KPCOS.Api\\Controllers\\DashboardController.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAgwBYAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-06T12:10:48.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PondController.cs",
+              "DocumentMoniker": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\PondController.cs",
+              "RelativeDocumentMoniker": "KPCOS.Api\\Controllers\\PondController.cs",
+              "ToolTip": "D:\\SWP391-FA24\\KPCOS BE\\KPCOS.Api\\Controllers\\PondController.cs",
+              "RelativeToolTip": "KPCOS.Api\\Controllers\\PondController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T12:10:08.137Z",
               "EditorCaption": ""
             }
           ]

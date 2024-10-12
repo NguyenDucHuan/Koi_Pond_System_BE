@@ -13,13 +13,14 @@ namespace KPCOS.Api.Controllers
     {
         private readonly IPondService _pondService;
         private readonly IAccountService _accountService;
+        private readonly IUserProfileService _userProfileService;
 
 
-
-        public ManagerController(IPondService pondService, IAccountService accountService)
+        public ManagerController(IPondService pondService, IAccountService accountService, IUserProfileService userProfileService)
         {
             _pondService = pondService;
             _accountService = accountService;
+            _userProfileService = userProfileService;
 
         }
         [ProducesResponseType(typeof(GetAccountsRespone), StatusCodes.Status200OK)]
@@ -77,6 +78,67 @@ namespace KPCOS.Api.Controllers
 
         }
 
+        [ProducesResponseType(typeof(GetAccountsRespone), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [PermissionAuthorize(PermissionAuthorizeConstant.Manager)]
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetUserProfile(int userId)
+        {
+            var profile = await _userProfileService.GetUserProfileAsync(userId);
+            if (profile == null)
+            {
+                return NotFound();
+            }
+            return Ok(profile);
+        }
+
+        [ProducesResponseType(typeof(GetAccountsRespone), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [PermissionAuthorize(PermissionAuthorizeConstant.Manager)]
+        [HttpPut("{userId}")]
+        public async Task<IActionResult> UpdateUserProfile(int userId, [FromBody] UserProfileResponse profileDto)
+        {
+            if (userId != profileDto.UserID)
+            {
+                return BadRequest("User ID mismatch.");
+            }
+
+            var result = await _userProfileService.UpdateUserProfileAsync(userId, profileDto);
+            if (!result)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+
+        [ProducesResponseType(typeof(GetAccountsRespone), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [PermissionAuthorize(PermissionAuthorizeConstant.Manager)]
+        [HttpDelete("{userId}")]
+        public async Task<IActionResult> DeleteUserProfile(int userId)
+        {
+            var result = await _userProfileService.DeleteUserProfileAsync(userId);
+            if (!result)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
 
     }
 }
