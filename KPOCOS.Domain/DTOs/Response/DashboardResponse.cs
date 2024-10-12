@@ -8,6 +8,10 @@ namespace KPOCOS.Domain.DTOs.Response
 {
     internal class DashboardResponse
     {
-        public int TotalDoneOrders { get; set; }
+        public int TotalProjects { get; set; }
+        public int OngoingProjects { get; set; }
+        public decimal TotalRevenue { get; set; }
+        public int TotalClients { get; set; }
+        public List<RecentProjectsResponse> RecentProjects { get; set; }
     }
 }

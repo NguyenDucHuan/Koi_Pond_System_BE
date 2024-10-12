@@ -271,3 +271,6 @@ D:\SWP391-FA24\KPCOS BE\KPCOS.Api\obj\Debug\net8.0\refint\KPCOS.Api.dll
 D:\SWP391-FA24\KPCOS BE\KPCOS.Api\obj\Debug\net8.0\KPCOS.Api.pdb
 D:\SWP391-FA24\KPCOS BE\KPCOS.Api\obj\Debug\net8.0\KPCOS.Api.genruntimeconfig.cache
 D:\SWP391-FA24\KPCOS BE\KPCOS.Api\obj\Debug\net8.0\ref\KPCOS.Api.dll
+D:\SWP391-FA24\KPCOS BE\KPCOS.Api\bin\Debug\net8.0\Hangfire.AspNetCore.dll
+D:\SWP391-FA24\KPCOS BE\KPCOS.Api\bin\Debug\net8.0\Hangfire.Core.dll
+D:\SWP391-FA24\KPCOS BE\KPCOS.Api\bin\Debug\net8.0\Hangfire.NetCore.dll
