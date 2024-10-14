@@ -43,7 +43,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Account> GetAccountAsync(int accountId)
         {
-            var account = await _context.Accounts.Include(a => a.Role).Include(a => a.UserProfiles).FirstOrDefaultAsync(a => a.Id == accountId);
+            var account = await _context.Accounts.Include(a => a.Role).Include(a => a.UserProfiles).Include(a => a.Ponds).Include(a => a.Orders).FirstOrDefaultAsync(a => a.Id == accountId);
             if (account == null)
             {
                 return null;

@@ -28,7 +28,6 @@ namespace KPCOS.Api.Middleware
 
             if (token != null)
                 AttachUserToContext(context, token);
-
             await _next(context);
         }
 
