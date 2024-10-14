@@ -46,14 +46,16 @@ namespace KPCOS.Api.Controllers
                 throw new BadRequestException(errors);
             }
             AccountResponse accountResponse = await _authService.Login(loginRequest);
-
+            var expiration = loginRequest.RememberMe
+                    ? DateTime.UtcNow.AddDays(1)
+                    : DateTime.UtcNow.AddMinutes(30);
             // Set token in cookie
             Response.Cookies.Append("AccessToken", accountResponse.AccessToken, new CookieOptions
             {
                 HttpOnly = true,
                 Secure = true,
                 SameSite = SameSiteMode.Strict,
-                Expires = DateTime.UtcNow.AddMinutes(30) // Matching token expiration
+                Expires = expiration
             });
 
             return Ok(accountResponse);
