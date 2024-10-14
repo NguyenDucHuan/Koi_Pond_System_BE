@@ -102,7 +102,7 @@ namespace KPCOS.Api.Service.Implement
                     throw new NotFoundException($"Tài khoản với id {id} không tồn tại");
                 }
 
-                request.ToUpdateAccount(account, (int)Enum.Parse(typeof(RoleEnum), request.Role));
+                request.ToUpdateAccount(account, (int)Enum.Parse(typeof(RoleEnum), request.RoleName));
 
 
                 await _accountRepository.UpdateAccountAsync(account);
