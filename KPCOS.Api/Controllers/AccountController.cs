@@ -76,6 +76,21 @@ namespace KPCOS.Api.Controllers
             return Ok(account);
 
         }
+        [ProducesResponseType(typeof(GetUserProfileResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [PermissionAuthorize(PermissionAuthorizeConstant.Manager, PermissionAuthorizeConstant.Customer)]
+
+        [HttpPost("get-user-profile/{id}")]
+        public async Task<IActionResult> GetUserProfile([FromRoute] int id)
+        {
+            var userProfile = await _accountService.GetUserProfile(id);
+            return Ok(userProfile);
+        }
 
 
     }

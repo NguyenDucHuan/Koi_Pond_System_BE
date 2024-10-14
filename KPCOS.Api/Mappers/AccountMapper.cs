@@ -85,9 +85,48 @@ namespace KPCOS.Api.Mappers
                 userProfile.Birthday = request.Birthday ?? default(DateOnly);
                 userProfile.Gender = request.Gender;
             }
-
-            // Assuming Role can be updated directly, if the Role is an ID you would map the roleId
             account.RoleId = rollID;
+        }
+        public static GetUserProfileResponse ToGetUserProfileResponse(this Account account)
+        {
+            return new GetUserProfileResponse
+            {
+                ponds = account.Ponds.ToList().ToGetPondsResponse(),
+                account = account.ToGetAccountRespone(),
+                orders = account.Orders.ToList().ToGetOrdersResponse(),
+            };
+        }
+
+        public static GetPondsResponse ToGetPondsResponse(this List<Pond> ponds)
+        {
+            return new GetPondsResponse
+            {
+                ponds = ponds.Select(p => new GetPondResponse
+                {
+                    Id = p.Id,
+                    PondName = p.PondName,
+                    Decription = p.Decription,
+                    PondDepth = p.PondDepth,
+                    Area = p.Area,
+                    Location = p.Location,
+                    Shape = p.Shape,
+                    AccountId = p.AccountId,
+                    DesignImage = p.DesignImage,
+                }).ToList()
+            };
+        }
+        public static GetOrdersResponse ToGetOrdersResponse(this List<Order> orders)
+        {
+            return new GetOrdersResponse
+            {
+                orders = orders.Select(o => new GetOrderResponse
+                {
+                    Id = o.Id,
+                    CreateOn = o.CreateOn,
+                    Status = o.Status,
+                    TotalMoney = o.TotalMoney
+                }).ToList()
+            };
         }
     }
 }

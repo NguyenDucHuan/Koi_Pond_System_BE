@@ -16,5 +16,6 @@ namespace KPCOS.Api.Service.Interface
         Task<string> UpdateAccountStatus(string value);
 
         Task<string> UpdateAccount(int id, UpdateAccountRequest request);
+        Task<GetUserProfileResponse> GetUserProfile(int id);
     }
 }

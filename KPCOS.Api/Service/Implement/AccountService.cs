@@ -92,6 +92,17 @@ namespace KPCOS.Api.Service.Implement
             return account;
         }
 
+        public async Task<GetUserProfileResponse> GetUserProfile(int id)
+        {
+            var account = await _accountRepository.GetAccountAsync(id);
+            if (account == null)
+            {
+                throw new NotFoundException($"Account with id {id} not found");
+            }
+            var userProfile = account.ToGetUserProfileResponse();
+            return userProfile;
+        }
+
         public async Task<string> UpdateAccount(int id, UpdateAccountRequest request)
         {
             try
@@ -102,7 +113,7 @@ namespace KPCOS.Api.Service.Implement
                     throw new NotFoundException($"Tài khoản với id {id} không tồn tại");
                 }
 
-                request.ToUpdateAccount(account, (int)Enum.Parse(typeof(RoleEnum), request.Role));
+                request.ToUpdateAccount(account, (int)Enum.Parse(typeof(RoleEnum), request.RoleName));
 
 
                 await _accountRepository.UpdateAccountAsync(account);
