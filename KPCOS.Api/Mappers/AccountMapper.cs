@@ -1,4 +1,5 @@
-﻿using KPOCOS.Domain.DTOs.Account;
+﻿using KPCOS.Api.Enums;
+using KPOCOS.Domain.DTOs.Account;
 using KPOCOS.Domain.DTOs.Response;
 using KPOCOS.Domain.DTOs.Resquest;
 using KPOCOS.Domain.Models;
@@ -66,7 +67,7 @@ namespace KPCOS.Api.Mappers
             {
                 UserName = registerDto.registerAccount.UserName,
                 Password = registerDto.registerAccount.Password,
-                RoleId = 2,
+                RoleId = (int)RoleEnum.Customer,
                 Status = false
             };
         }
