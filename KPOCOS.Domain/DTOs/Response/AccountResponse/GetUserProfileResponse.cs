@@ -9,5 +9,6 @@ namespace KPOCOS.Domain.DTOs.Response
     {
         public GetPondsResponse ponds { get; set; } = new GetPondsResponse();
         public GetAccountRespone account { get; set; } = new GetAccountRespone();
+        public GetOrdersResponse orders { get; set; } = new GetOrdersResponse();
     }
 }
