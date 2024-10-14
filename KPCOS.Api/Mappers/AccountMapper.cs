@@ -88,7 +88,6 @@ namespace KPCOS.Api.Mappers
             }
             account.RoleId = rollID;
         }
-
         public static GetUserProfileResponse ToGetUserProfileResponse(this Account account)
         {
             return new GetUserProfileResponse

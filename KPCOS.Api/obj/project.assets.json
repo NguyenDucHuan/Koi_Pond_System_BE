@@ -8849,23 +8849,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Soram\\.nuget\\packages\\": {},
+    "C:\\Users\\subih\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Koi_Pond_System_BE\\KPCOS.Api\\KPCOS.Api.csproj",
+      "projectUniqueName": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\KPCOS.Api.csproj",
       "projectName": "KPCOS.Api",
-      "projectPath": "D:\\Koi_Pond_System_BE\\KPCOS.Api\\KPCOS.Api.csproj",
-      "packagesPath": "C:\\Users\\Soram\\.nuget\\packages\\",
-      "outputPath": "D:\\Koi_Pond_System_BE\\KPCOS.Api\\obj\\",
+      "projectPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\KPCOS.Api.csproj",
+      "packagesPath": "C:\\Users\\subih\\.nuget\\packages\\",
+      "outputPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Soram\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\subih\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8881,11 +8881,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj": {
-              "projectPath": "D:\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj"
+            "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj": {
+              "projectPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj"
             },
-            "D:\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
-              "projectPath": "D:\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj"
+            "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
+              "projectPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj"
             }
           }
         }
@@ -8981,7 +8981,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -116,7 +116,6 @@ namespace KPCOS.Api.Service.Implement
                 request.ToUpdateAccount(account, (int)Enum.Parse(typeof(RoleEnum), request.RoleName));
 
 
-
                 await _accountRepository.UpdateAccountAsync(account);
 
                 return MessageConstant.ManagerAccount.UpdateAccountSuccess;

@@ -11,10 +11,14 @@ namespace KPCOS.Api.Controllers
     [Route("api/v1/account-manager")]
     public class ManagerController : Controller
     {
+        private readonly IPondService _pondService;
         private readonly IAccountService _accountService;
 
-        public ManagerController(IAccountService accountService)
+
+
+        public ManagerController(IPondService pondService, IAccountService accountService)
         {
+            _pondService = pondService;
             _accountService = accountService;
 
         }
@@ -45,8 +49,8 @@ namespace KPCOS.Api.Controllers
 
             GetAccountRespone account = await _accountService.GetAccountById(id);
             return Ok(account);
-        }
 
+        }
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
@@ -59,7 +63,6 @@ namespace KPCOS.Api.Controllers
             var account = await _accountService.UpdateAccountStatus(username);
             return Ok(account);
         }
-
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
@@ -73,7 +76,6 @@ namespace KPCOS.Api.Controllers
             return Ok(account);
 
         }
-
         [ProducesResponseType(typeof(GetUserProfileResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status401Unauthorized)]
@@ -81,12 +83,15 @@ namespace KPCOS.Api.Controllers
         [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
         [Consumes(MediaTypeConstant.ApplicationJson)]
         [Produces(MediaTypeConstant.ApplicationJson)]
-        [PermissionAuthorize(PermissionAuthorizeConstant.Customer, PermissionAuthorizeConstant.Manager)]
-        [HttpPost("get-user-profile")]
-        public async Task<IActionResult> GetUserProfile([FromBody] int id)
+        [PermissionAuthorize(PermissionAuthorizeConstant.Manager, PermissionAuthorizeConstant.Customer)]
+
+        [HttpPost("get-user-profile/{id}")]
+        public async Task<IActionResult> GetUserProfile([FromRoute] int id)
         {
             var userProfile = await _accountService.GetUserProfile(id);
             return Ok(userProfile);
         }
+
+
     }
 }
