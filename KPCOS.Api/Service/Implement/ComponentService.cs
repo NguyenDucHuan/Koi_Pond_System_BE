@@ -9,6 +9,7 @@ using KPCOS.Api.Untils;
 using KPCOS.DataAccess.Repository.Interfaces;
 using KPOCOS.Domain.DTOs.Response;
 using KPOCOS.Domain.DTOs.Response.Componant;
+using KPOCOS.Domain.DTOs.Resquest;
 using KPOCOS.Domain.Exceptions;
 using KPOCOS.Domain.Models;
 
@@ -25,9 +26,10 @@ namespace KPCOS.Api.Service.Implement
             _componentTypeRepository = componentTypeRepository;
         }
 
-        public async Task<Component> AddComponentAsync(Component component)
+        public async Task<Component> AddComponentAsync(CreateComponentRequest component)
         {
-            return await _componentRepository.AddComponentAsync(component);
+            var createComponentRequest = component.ToCreateComponentRequest();
+            return await _componentRepository.AddComponentAsync(createComponentRequest);
         }
 
         public Task DeleteComponentAsync(int componentId)

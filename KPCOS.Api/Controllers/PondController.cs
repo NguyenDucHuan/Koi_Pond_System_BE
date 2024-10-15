@@ -26,41 +26,41 @@ namespace KPCOS.Api.Controllers
             _pondService = pondService;
         }
 
-        // [HttpGet("ponds")]
-        // public async Task<IActionResult> GetPonds()
-        // {
-        //     try
-        //     {
-        //         var ponds = await _pondService.GetPondsAsync();
-        //         return Ok(ponds);
-        //     }
-        //     catch (NotFoundException ex)
-        //     {
-        //         return NotFound(ex.Message);
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         return StatusCode(500, ex.Message);
-        //     }
-        // }
+        [HttpGet("ponds")]
+        public async Task<IActionResult> GetPonds()
+        {
+            try
+            {
+                var ponds = await _pondService.GetPondsAsync();
+                return Ok(ponds);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
-        // [HttpGet("pond/{id}")]
-        // public async Task<IActionResult> GetPondById([FromRoute] int id)
-        // {
-        //     try
-        //     {
-        //         var pond = await _pondService.GetPondAsync(id);
-        //         return Ok(pond);
-        //     }
-        //     catch (NotFoundException ex)
-        //     {
-        //         return NotFound(ex.Message);
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         return StatusCode(500, ex.Message);
-        //     }
-        // }
+        [HttpGet("pond/{id}")]
+        public async Task<IActionResult> GetPondById([FromRoute] int id)
+        {
+            try
+            {
+                var pond = await _pondService.GetPondAsync(id);
+                return Ok(pond);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         [ProducesResponseType(typeof(CreatePondRequest), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]

@@ -47,7 +47,7 @@ namespace KPCOS.Api.Controllers
             }
             AccountResponse accountResponse = await _authService.Login(loginRequest);
             var expiration = loginRequest.RememberMe
-                    ? DateTime.UtcNow.AddDays(1)
+                    ? DateTime.UtcNow.AddDays(1000)
                     : DateTime.UtcNow.AddMinutes(30);
             // Set token in cookie
             Response.Cookies.Append("AccessToken", accountResponse.AccessToken, new CookieOptions
