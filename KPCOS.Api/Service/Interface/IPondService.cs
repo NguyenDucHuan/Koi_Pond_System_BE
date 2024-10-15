@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+using KPOCOS.Domain.DTOs.Resquest;
 using KPOCOS.Domain.Models;
 
 namespace KPCOS.Api.Service.Interface
@@ -10,8 +8,7 @@ namespace KPCOS.Api.Service.Interface
     {
         Task<Pond> GetPondAsync(int pondId);
         Task<List<Pond>> GetPondsAsync();
-
-        Task<Pond> AddPondAsync(Pond pond);
+        Task<string> AddPondAsync(CreatePondRequest request);
         Task<Pond> UpdatePondAsync(Pond pond);
         Task DeletePondAsync(int pondId);
     }

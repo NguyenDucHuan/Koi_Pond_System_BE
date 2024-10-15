@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace KPCOS.Api.Controllers
 {
     [Route("api/v1/account-manager")]
+    [ApiController]
     public class ManagerController : Controller
     {
         private readonly IPondService _pondService;

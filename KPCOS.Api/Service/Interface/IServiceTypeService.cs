@@ -9,5 +9,6 @@ namespace KPCOS.Api.Service.Interface
     public interface IServiceTypeService
     {
         Task<GetServiceTypesResponse> GetServiceTypesAsync();
+
     }
 }

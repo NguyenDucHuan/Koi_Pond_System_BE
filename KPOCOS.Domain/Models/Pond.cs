@@ -19,13 +19,19 @@ public partial class Pond
 
     public string? Shape { get; set; }
 
-    public int AccountId { get; set; }
+    public int? AccountId { get; set; }
 
     public string? DesignImage { get; set; }
 
-    public virtual Account Account { get; set; } = null!;
+    public bool? Status { get; set; }
+
+    public int? SampleType { get; set; }
+
+    public virtual Account? Account { get; set; }
 
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
     public virtual ICollection<PondComponent> PondComponents { get; set; } = new List<PondComponent>();
+
+    public virtual Service? SampleTypeNavigation { get; set; }
 }

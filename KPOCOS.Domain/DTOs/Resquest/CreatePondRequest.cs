@@ -19,8 +19,15 @@ namespace KPOCOS.Domain.DTOs.Resquest
 
         public string? Shape { get; set; }
 
-        public int AccountId { get; set; }
+        public int? AccountId { get; set; } = null;
 
         public string? DesignImage { get; set; }
+
+        public bool? Status { get; set; }
+
+        public int? SampleType { get; set; }
+
+        public List<CreatePondComponentRequest> ListComponent { get; set; }
+
     }
 }
