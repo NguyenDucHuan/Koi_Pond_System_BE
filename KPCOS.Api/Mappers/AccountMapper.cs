@@ -88,6 +88,26 @@ namespace KPCOS.Api.Mappers
             }
             account.RoleId = rollID;
         }
+
+        public static (Account, UserProfile) ToAddAccountRequest(this AddAccountRequest request)
+        {
+            return (new Account
+            {
+                UserName = request.UserName,
+                Password = request.Password,
+                RoleId = (int)Enum.Parse(typeof(RoleEnum), request.RoleName),
+                Status = request.Status
+            }, new UserProfile
+            {
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Email = request.Email,
+                Phone = request.Phone,
+                Birthday = request.Birthday ?? default(DateOnly),
+                Gender = request.Gender
+            });
+        }
+
         public static GetUserProfileResponse ToGetUserProfileResponse(this Account account)
         {
             return new GetUserProfileResponse
