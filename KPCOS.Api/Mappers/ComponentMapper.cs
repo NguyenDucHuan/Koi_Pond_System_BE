@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KPOCOS.Domain.DTOs.Response;
 using KPOCOS.Domain.DTOs.Response.Componant;
+using KPOCOS.Domain.DTOs.Resquest;
 using KPOCOS.Domain.Models;
 
 namespace KPCOS.Api.Mappers
@@ -28,6 +29,18 @@ namespace KPCOS.Api.Mappers
                         Unit = c.Unit
                     }).ToList()
                 }).ToList()
+            };
+        }
+        public static Component ToCreateComponentRequest(this CreateComponentRequest request)
+        {
+            return new Component
+            {
+                Name = request.Name,
+                Decription = request.Decription,
+                PricePerItem = request.PricePerItem,
+                ComponentTypeId = request.ComponentTypeId,
+                Image = request.Image,
+                Unit = request.Unit
             };
         }
     }
