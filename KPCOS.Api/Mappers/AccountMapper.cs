@@ -111,7 +111,7 @@ namespace KPCOS.Api.Mappers
                     Area = p.Area,
                     Location = p.Location,
                     Shape = p.Shape,
-                    AccountId = p.AccountId,
+                    AccountId = p.AccountId ?? 0,
                     DesignImage = p.DesignImage,
                 }).ToList()
             };

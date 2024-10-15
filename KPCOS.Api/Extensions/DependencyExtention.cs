@@ -27,11 +27,12 @@ namespace KPCOS.Api.Extensions
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IUserProfileRepository, UserProfileRepository>();
             services.AddScoped<IPondService, Pondservice>();
+            services.AddScoped<IComponentService, ComponentService>();
             services.AddScoped<IPondRepository, PondRepository>();
+            services.AddScoped<IPondComponentRepository, PondComponentRepository>();
             services.AddScoped<IServiceTypeRepository, ServiceTypeRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
             services.AddScoped<IServiceTypeService, ServiceTypeService>();
-            services.AddScoped<IComponentService, ComponentService>();
             services.AddScoped<IComponentRepository, ComponentRepository>();
             services.AddScoped<IComponentTypeRepository, ComponentTypeRepository>();
             services.AddCorsPolicy();

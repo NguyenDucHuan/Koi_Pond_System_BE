@@ -17,5 +17,7 @@ public partial class Service
 
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
+    public virtual ICollection<Pond> Ponds { get; set; } = new List<Pond>();
+
     public virtual ServiceType ServiceType { get; set; } = null!;
 }
