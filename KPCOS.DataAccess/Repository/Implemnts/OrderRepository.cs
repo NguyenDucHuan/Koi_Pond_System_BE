@@ -37,7 +37,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Order> GetOrderAsync(int orderId)
         {
-            var order = await _context.Orders.FindAsync(orderId);
+            var order = await _context.Orders.Include(o => o.OrderItems).FirstOrDefaultAsync(o => o.Id == orderId);
             if (order == null)
             {
                 return null;

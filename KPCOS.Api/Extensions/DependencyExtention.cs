@@ -35,6 +35,10 @@ namespace KPCOS.Api.Extensions
             services.AddScoped<IServiceTypeService, ServiceTypeService>();
             services.AddScoped<IComponentRepository, ComponentRepository>();
             services.AddScoped<IComponentTypeRepository, ComponentTypeRepository>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+            services.AddScoped<IOrderItemService, OrderItemService>();
             services.AddCorsPolicy();
             return services;
         }

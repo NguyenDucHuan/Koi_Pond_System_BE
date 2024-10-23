@@ -8,8 +8,7 @@ namespace KPOCOS.Domain.DTOs.Response
     public class GetUserProfileResponse
     {
         public GetAccountRespone account { get; set; } = new GetAccountRespone();
-        public GetPondsResponse ponds { get; set; } = new GetPondsResponse();
-
-        public GetOrdersResponse orders { get; set; } = new GetOrdersResponse();
+        public List<GetPondResponse> ponds { get; set; } = new List<GetPondResponse>();
+        public List<GetOrderResponse> orders { get; set; } = new List<GetOrderResponse>();
     }
 }

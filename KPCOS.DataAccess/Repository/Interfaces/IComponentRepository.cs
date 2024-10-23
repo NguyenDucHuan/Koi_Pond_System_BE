@@ -13,5 +13,6 @@ namespace KPCOS.DataAccess.Repository.Interfaces
         Task<Component> AddComponentAsync(Component component);
         Task<Component> UpdateComponentAsync(Component component);
         Task DeleteComponentAsync(int componentId);
+        Task<String> GetComponentNameById(int id);
     }
 }

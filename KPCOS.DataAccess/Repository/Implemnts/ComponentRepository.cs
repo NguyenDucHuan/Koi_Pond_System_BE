@@ -50,6 +50,12 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             return component;
         }
 
+        public async Task<string> GetComponentNameById(int id)
+        {
+            var component = await _context.Components.FirstOrDefaultAsync(i => i.Id == id);
+            return component?.Name ?? string.Empty;
+        }
+
         public async Task<List<Component>> GetComponentsAsync()
         {
             var components = await _context.Components.ToListAsync();
