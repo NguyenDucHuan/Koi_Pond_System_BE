@@ -37,7 +37,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Pond> GetPondAsync(int pondId)
         {
-            var pond = await _context.Ponds.FindAsync(pondId);
+            var pond = await _context.Ponds.Include(p => p.PondComponents).FirstOrDefaultAsync(p => p.Id == pondId);
             if (pond == null)
             {
                 return null;
@@ -57,7 +57,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<List<Pond>> GetPondsAsync()
         {
-            var ponds = await _context.Ponds.ToListAsync();
+            var ponds = await _context.Ponds.Include(p => p.PondComponents).ToListAsync();
             if (ponds == null)
             {
                 return null;

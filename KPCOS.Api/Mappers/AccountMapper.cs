@@ -118,36 +118,31 @@ namespace KPCOS.Api.Mappers
             };
         }
 
-        public static GetPondsResponse ToGetPondsResponse(this List<Pond> ponds)
+        public static List<GetPondResponse> ToGetPondsResponse(this List<Pond> ponds)
         {
-            return new GetPondsResponse
+            return ponds.Select(p => new GetPondResponse
             {
-                ponds = ponds.Select(p => new GetPondResponse
-                {
-                    Id = p.Id,
-                    PondName = p.PondName,
-                    Decription = p.Decription,
-                    PondDepth = p.PondDepth,
-                    Area = p.Area,
-                    Location = p.Location,
-                    Shape = p.Shape,
-                    AccountId = p.AccountId ?? 0,
-                    DesignImage = p.DesignImage,
-                }).ToList()
-            };
+                Id = p.Id,
+                PondName = p.PondName,
+                Decription = p.Decription,
+                PondDepth = p.PondDepth,
+                Area = p.Area,
+                Location = p.Location,
+                Shape = p.Shape,
+                AccountId = p.AccountId ?? 0,
+                DesignImage = p.DesignImage,
+
+            }).ToList();
         }
-        public static GetOrdersResponse ToGetOrdersResponse(this List<Order> orders)
+        public static List<GetOrderResponse> ToGetOrdersResponse(this List<Order> orders)
         {
-            return new GetOrdersResponse
+            return orders.Select(o => new GetOrderResponse
             {
-                orders = orders.Select(o => new GetOrderResponse
-                {
-                    Id = o.Id,
-                    CreateOn = o.CreateOn,
-                    Status = o.Status,
-                    TotalMoney = o.TotalMoney
-                }).ToList()
-            };
+                Id = o.Id,
+                CreateOn = o.CreateOn,
+                Status = o.Status,
+                TotalMoney = o.TotalMoney
+            }).ToList();
         }
     }
 }

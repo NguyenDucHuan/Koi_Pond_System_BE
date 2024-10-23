@@ -2,9 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KPCOS.Api.Mappers;
 using KPCOS.Api.Service.Interface;
 using KPCOS.DataAccess.Repository.Interfaces;
+using KPOCOS.Domain.DTOs.Response;
+using KPOCOS.Domain.DTOs.Resquest;
+using KPOCOS.Domain.Exceptions;
 using KPOCOS.Domain.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace KPCOS.Api.Service.Implement
 {
@@ -12,72 +17,61 @@ namespace KPCOS.Api.Service.Implement
     {
 
         private readonly IOrderRepository _orderRepository;
+        private readonly IOrderItemRepository _orderItemRepository;
+        private readonly IPondRepository _pondRepository;
+        private readonly IPondComponentRepository _pondComponentRepository;
 
-        public OrderService(IOrderRepository orderRepository)
+        public OrderService(IOrderRepository orderRepository, IOrderItemRepository orderItemRepository, IPondRepository pondRepository, IPondComponentRepository pondComponentRepository)
         {
             _orderRepository = orderRepository;
+            _orderItemRepository = orderItemRepository;
+            _pondRepository = pondRepository;
+            _pondComponentRepository = pondComponentRepository;
         }
-        public Task<Order> CreateOrder(Order order)
+        public async Task<string> CreateOrder(CreateOrderRequest orderRequest)
         {
-            try
+            var order = orderRequest.ToOrder();
+            var pondCreate = await _pondRepository.AddPondAsync(order.Item3);
+            foreach (var item in order.Item4)
             {
-                var orderCreate = _orderRepository.AddOrderAsync(order);
-                return orderCreate;
+                item.PondId = pondCreate.Id;
+                await _pondComponentRepository.AddPondComponentAsync(item);
             }
-            catch (Exception e)
+            order.Item1.DiscouId = null;
+            var orderCreate = await _orderRepository.AddOrderAsync(order.Item1);
+            foreach (var item in order.Item2)
             {
-                throw new Exception(e.Message);
+                item.PondId = pondCreate.Id;
+                item.OrderId = orderCreate.Id;
+                await _orderItemRepository.AddOrderItemAsync(item);
             }
+            return "Create order success";
+
         }
 
-        public Task<Order> DeleteOrder(int id)
+        public async Task<GetOrderDetailResponse> GetOrderAsync(int orderId)
         {
-            throw new NotImplementedException();
+            var order = await _orderRepository.GetOrderAsync(orderId);
+            var response = new GetOrderDetailResponse
+            {
+                Id = order.Id,
+                CreateOn = order.CreateOn,
+                Status = order.Status,
+                TotalMoney = order.TotalMoney,
+            };
+            return response;
         }
 
-        public Task<int> GetOngoingOrdersCountAsync()
+        public async Task<string> UpdateOrderStatus(int orderId, string status)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Order> GetOrderByAccountId(int accountId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Order> GetOrderById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Order> GetOrderByStatus(int status)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Order>> GetOrdersAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> GetTotalClientsCountAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> GetTotalOrdersCountAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<decimal> GetTotalRevenueAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Order> UpdateOrder(Order order)
-        {
-            throw new NotImplementedException();
+            var order = await _orderRepository.GetOrderAsync(orderId);
+            if (order == null)
+            {
+                throw new NotFoundException("order ko tồn tại");
+            }
+            order.Status = status;
+            await _orderRepository.UpdateOrderAsync(order);
+            return "cập nhật thành công";
         }
     }
 }

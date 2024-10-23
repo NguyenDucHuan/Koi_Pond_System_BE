@@ -205,6 +205,7 @@ public partial class KpcosdbContext : DbContext
             entity.Property(e => e.Location).HasMaxLength(255);
             entity.Property(e => e.PondDepth).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.PondName).HasMaxLength(255);
+            entity.Property(e => e.SamplePrice).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.Shape).HasMaxLength(255);
             entity.Property(e => e.Status).HasDefaultValue(true);
 
