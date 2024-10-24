@@ -74,11 +74,13 @@ namespace KPCOS.Api.Controllers
             return Ok(Response);
         }
 
+
         [HttpGet("orders")]
         public async Task<IActionResult> GetOrders()
         {
             var orders = await _orderService.GetOrders();
             return Ok(orders);
         }
+
     }
 }

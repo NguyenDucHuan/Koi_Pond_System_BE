@@ -20,11 +20,41 @@ namespace KPCOS.Api.Service.Implement
     public class AccountService : IAccountService
     {
         private readonly IAccountRepository _accountRepository;
+        private readonly IUserProfileRepository _userProfileRepository;
 
-
-        public AccountService(IAccountRepository accountRepository)
+        public AccountService(IAccountRepository accountRepository, IUserProfileRepository userProfileRepository)
         {
             _accountRepository = accountRepository;
+            _userProfileRepository = userProfileRepository;
+        }
+
+        public async Task<string> AddAccount(AddAccountRequest request)
+        {
+
+            var user = await _accountRepository.GetByUserName(request.UserName);
+            if (user != null)
+            {
+                throw new BadRequestException(MessageConstant.RegisterConstants.ExistUserName);
+            }
+            var email = await _userProfileRepository.CheckEmail(request.Email);
+            if (email != null)
+            {
+                throw new BadRequestException(MessageConstant.RegisterConstants.EmailHaveRegistered);
+            }
+            var (account, userProfile) = request.ToAddAccountRequest();
+            var userres = await _accountRepository.AddAccountAsync(account);
+            if (userres == null)
+            {
+                throw new BadRequestException(MessageConstant.RegisterConstants.RegisterFailed);
+            }
+            userProfile.AccountId = userres.Id;
+            var profile = await _userProfileRepository.AddUserProfileAsync(userProfile);
+            if (profile == null)
+            {
+                await _accountRepository.DeleteAccountAsync(userres.Id);
+                throw new BadRequestException(MessageConstant.RegisterConstants.RegisterFailed);
+            }
+            return "Add tài khoản thành công";
         }
 
         public async Task<GetAccountRespone> GetAccountById(int id)
@@ -131,8 +161,6 @@ namespace KPCOS.Api.Service.Implement
                 throw new Exception(error);
             }
         }
-
-
 
         public async Task<string> UpdateAccountStatus(string value)
         {

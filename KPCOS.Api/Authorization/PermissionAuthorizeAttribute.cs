@@ -44,15 +44,15 @@ namespace MBKC.Service.Authorization
             }
 
             var existedAccount = accountService.GetByUserName(userName).Result;
-            foreach (var role in _roles)
+            if (_roles != null)
             {
-                if (existedAccount.Role.Type.Equals(role))
+                if (!_roles.Any(role => existedAccount.Role.Type.Equals(role)))
                 {
+                    SetForbiddenResult(context, "Bạn không được sử dụng chức năng này!");
                     return;
                 }
                 else
                 {
-                    SetForbiddenResult(context, "Bạn không  được sử dụng chức năng này!");
                     return;
                 }
             }

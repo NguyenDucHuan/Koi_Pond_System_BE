@@ -27,6 +27,8 @@ public partial class Pond
 
     public int? SampleType { get; set; }
 
+    public decimal? SamplePrice { get; set; }
+
     public virtual Account? Account { get; set; }
 
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();

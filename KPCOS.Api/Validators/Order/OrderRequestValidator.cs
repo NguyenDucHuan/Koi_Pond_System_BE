@@ -7,7 +7,7 @@ using KPOCOS.Domain.DTOs.Resquest;
 
 namespace KPCOS.Api.Validators.Order
 {
-    public class OrderRequestValidator : AbstractValidator<OrderRequest>
+    public class OrderRequestValidator : AbstractValidator<CreateOrderRequest>
     {
         public OrderRequestValidator()
         {

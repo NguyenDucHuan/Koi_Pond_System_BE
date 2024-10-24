@@ -38,20 +38,20 @@ namespace KPCOS.Api.Controllers
         {
             try
             {
-                var totalOrders = await _orderService.GetTotalOrdersCountAsync();
-                var ongoingOrders = await _orderService.GetOngoingOrdersCountAsync();
-                var totalRevenue = await _orderService.GetTotalRevenueAsync();
-                var totalClients = await _orderService.GetTotalClientsCountAsync();
+                // var totalOrders = await _orderService.GetTotalOrdersCountAsync();
+                // var ongoingOrders = await _orderService.GetOngoingOrdersCountAsync();
+                // var totalRevenue = await _orderService.GetTotalRevenueAsync();
+                // var totalClients = await _orderService.GetTotalClientsCountAsync();
 
-                var stats = new
-                {
-                    totalOrders,
-                    ongoingOrders,
-                    totalRevenue,
-                    totalClients
-                };
+                // var stats = new
+                // {
+                //     totalOrders,
+                //     ongoingOrders,
+                //     totalRevenue,
+                //     totalClients
+                // };
 
-                return Ok(stats);
+                return Ok("ok");
             }
             catch (System.Exception ex)
             {

@@ -44,7 +44,7 @@ namespace KPCOS.Api
             builder.Services.AddDbContext<KpcosdbContext>(
                 _ =>
                 {
-                    _.UseSqlServer(builder.Configuration.GetConnectionString("OnlineConnection"));
+                    _.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
                 });
             builder.Services.AddJwtAuthentication(builder.Configuration);
             builder.Services.AddConfigSwagger();

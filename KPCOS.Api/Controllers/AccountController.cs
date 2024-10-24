@@ -85,14 +85,25 @@ namespace KPCOS.Api.Controllers
         [Consumes(MediaTypeConstant.ApplicationJson)]
         [Produces(MediaTypeConstant.ApplicationJson)]
         [PermissionAuthorize(PermissionAuthorizeConstant.Manager, PermissionAuthorizeConstant.Customer)]
-
-        [HttpPost("get-user-profile/{id}")]
+        [HttpGet("get-user-profile/{id}")]
         public async Task<IActionResult> GetUserProfile([FromRoute] int id)
         {
             var userProfile = await _accountService.GetUserProfile(id);
             return Ok(userProfile);
         }
 
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [PermissionAuthorize(PermissionAuthorizeConstant.Manager, PermissionAuthorizeConstant.Customer)]
+        [HttpPost("add-account")]
+        public async Task<IActionResult> AddAccount([FromBody] AddAccountRequest request)
+        {
+            var account = await _accountService.AddAccount(request);
+            return Ok(account);
+        }
 
     }
 }
