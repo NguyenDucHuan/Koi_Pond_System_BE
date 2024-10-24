@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {}
+    "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {}
   },
   "projects": {
-    "D:\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
+    "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj",
         "projectName": "KPOCOS.Domain",
-        "projectPath": "D:\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj",
+        "projectPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj",
         "packagesPath": "C:\\Users\\Soram\\.nuget\\packages\\",
-        "outputPath": "D:\\Koi_Pond_System_BE\\KPOCOS.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

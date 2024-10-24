@@ -8855,11 +8855,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Koi_Pond_System_BE\\KPCOS.Api\\KPCOS.Api.csproj",
+      "projectUniqueName": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPCOS.Api\\KPCOS.Api.csproj",
       "projectName": "KPCOS.Api",
-      "projectPath": "D:\\Koi_Pond_System_BE\\KPCOS.Api\\KPCOS.Api.csproj",
+      "projectPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPCOS.Api\\KPCOS.Api.csproj",
       "packagesPath": "C:\\Users\\Soram\\.nuget\\packages\\",
-      "outputPath": "D:\\Koi_Pond_System_BE\\KPCOS.Api\\obj\\",
+      "outputPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPCOS.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8881,11 +8881,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj": {
-              "projectPath": "D:\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj"
+            "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj"
             },
-            "D:\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
-              "projectPath": "D:\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj"
+            "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
+              "projectPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj"
             }
           }
         }
@@ -8984,5 +8984,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPCOS.Api\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
