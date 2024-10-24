@@ -73,5 +73,14 @@ namespace KPCOS.Api.Controllers
             var Response = _orderService.UpdateOrderStatus(orderId, status);
             return Ok(Response);
         }
+
+
+        [HttpGet("orders")]
+        public async Task<IActionResult> GetOrders()
+        {
+            var orders = await _orderService.GetOrders();
+            return Ok(orders);
+        }
+
     }
 }
