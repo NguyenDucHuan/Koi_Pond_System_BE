@@ -45,11 +45,6 @@ namespace KPCOS.Api.Service.Implement
             return response;
         }
 
-        public async Task<Pond> UpdatePondAsync(Pond pond)
-        {
-            return await _pondRepository.UpdatePondAsync(pond);
-        }
-
         public async Task<GetPondDetailResponse> GetPondAsync(int pondId)
         {
             var pond = await _pondRepository.GetPondAsync(pondId);

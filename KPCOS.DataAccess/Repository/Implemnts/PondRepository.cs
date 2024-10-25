@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KPCOS.DataAccess.Repository.Interfaces;
+using KPOCOS.Domain.DTOs.Resquest;
 using KPOCOS.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -65,7 +66,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             return ponds;
         }
 
-        public async Task<Pond> UpdatePondAsync(Pond pond)
+        public async Task UpdatePondAsync(Pond pond)
         {
             var pond1 = await _context.Ponds.FindAsync(pond.Id);
             if (pond1 == null)
@@ -74,7 +75,33 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             }
             _context.Ponds.Update(pond);
             await _context.SaveChangesAsync();
-            return pond;
         }
+        public async Task UpdatePondComponentsAsync(int pondId, List<UpdatePondComponentRequest> updatedComponents)
+        {
+            var currentComponentIds = updatedComponents.Select(c => c.componentId).ToList();
+            await _context.PondComponents
+                .Where(pc => pc.PondId == pondId && !currentComponentIds.Contains(pc.ComponentId))
+                .ExecuteDeleteAsync();
+            foreach (var component in updatedComponents)
+            {
+                await _context.PondComponents
+                    .Where(pc => pc.PondId == pondId && pc.ComponentId == component.componentId)
+                    .ExecuteUpdateAsync(pc => pc.SetProperty(p => p.Amount, p => component.amount));
+            }
+            var existingComponentIds = await _context.PondComponents.Where(pc => pc.PondId == pondId).Select(pc => pc.ComponentId).ToListAsync();
+            var newComponents = updatedComponents.Where(c => !existingComponentIds.Contains(c.componentId)).Select(c => new PondComponent
+            {
+                PondId = pondId,
+                ComponentId = c.componentId,
+                Amount = c.amount
+            })
+    .ToList();
+            if (newComponents.Any())
+            {
+                await _context.PondComponents.AddRangeAsync(newComponents);
+            }
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

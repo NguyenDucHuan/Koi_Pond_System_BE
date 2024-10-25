@@ -11,6 +11,7 @@ using KPOCOS.Domain.DTOs.Resquest;
 using KPOCOS.Domain.Exceptions;
 using KPOCOS.Domain.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 
 namespace KPCOS.Api.Service.Implement
 {
@@ -149,6 +150,72 @@ namespace KPCOS.Api.Service.Implement
                 response.Add(orderdetail);
             }
             return response;
+        }
+
+        public async Task<string> UpdateOrderAsync(UpdateOrderRequest request)
+        {
+
+            try
+            {
+                var order = await _orderRepository.GetOrderAsync(request.id);
+                order.TotalMoney = request.totalMoney;
+                foreach (var item in order.OrderItems)
+                {
+                    foreach (var ites in request.orderItems)
+                    {
+                        if (ites.id == item.Id)
+                        {
+                            item.ServiceId = ites.serviceId;
+                            item.TotalPrice = ites.totalPrice;
+                            item.Pond.PondName = ites.getPondDetailResponse.pondName;
+                            item.Pond.Location = ites.getPondDetailResponse.location;
+                            item.Pond.PondDepth = ites.getPondDetailResponse.PondDepth;
+                            item.Pond.Area = ites.getPondDetailResponse.Area;
+                            item.Pond.Shape = ites.getPondDetailResponse.shape;
+                            var newComponents = ites.getPondDetailResponse.components;
+
+                            foreach (var newComponent in newComponents)
+                            {
+                                var existingComponent = item.Pond.PondComponents.FirstOrDefault(c => c.ComponentId == newComponent.componentId);
+
+                                if (existingComponent != null)
+                                {
+                                    existingComponent.Amount = newComponent.amount;
+                                }
+                                else
+                                {
+                                    var pondComponent = new PondComponent
+                                    {
+                                        PondId = item.PondId ?? 0,
+                                        ComponentId = newComponent.componentId,
+                                        Amount = newComponent.amount,
+                                    };
+                                    item.Pond.PondComponents.Add(pondComponent);
+                                }
+                            }
+                            var componentsToRemove = item.Pond.PondComponents
+                            .Where(c => !newComponents.Any(nc => nc.componentId == c.ComponentId))
+                            .ToList();
+                            foreach (var component in componentsToRemove)
+                            {
+                                item.Pond.PondComponents.Remove(component);
+                            }
+                            
+                            await _orderRepository.UpdateOrderAsync(order);
+                        }
+                    }
+
+                }
+                return "Update success";
+            }
+            catch (DbUpdateException ex)
+            {
+                // Ghi lại lỗi
+                Console.WriteLine(ex.InnerException?.Message ?? ex.Message);
+                throw;
+            }
+
+
         }
 
         public async Task<string> UpdateOrderStatus(int orderId, string status)

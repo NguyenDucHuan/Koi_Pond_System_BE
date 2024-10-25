@@ -10,7 +10,6 @@ namespace KPCOS.Api.Service.Interface
         Task<GetPondDetailResponse> GetPondAsync(int pondId);
         Task<List<GetPondDetailResponse>> GetPondsAsync();
         Task<string> AddPondAsync(CreatePondRequest request);
-        Task<Pond> UpdatePondAsync(Pond pond);
         Task DeletePondAsync(int pondId);
         Task<List<GetPondDetailResponse>> GetPondsDisplayAsync();
     }

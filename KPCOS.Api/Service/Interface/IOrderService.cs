@@ -19,6 +19,6 @@ namespace KPCOS.Api.Service.Interface
         Task<GetDashboardStatsResponse> GetDashboardStatsResponse(DateTime dateTimestart, DateTime dateTimeEnd);
         Task<RevenueDahboardResponse> GetDashboardRevenueRes(DateTime dateTimestart, DateTime dateTimeEnd);
         Task<GetCurrentPondDashboardResponse> GetDashboardPondsRes(DateTime dateTimestart, DateTime dateTimeEnd, int curentPage, int numpage);
-
+        Task<string> UpdateOrderAsync(UpdateOrderRequest request);
     }
 }

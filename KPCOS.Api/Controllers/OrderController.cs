@@ -86,5 +86,16 @@ namespace KPCOS.Api.Controllers
             return Ok(orders);
         }
 
+        [ProducesResponseType(typeof(List<UpdateOrderRequest>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [HttpPut("update-order")]
+        public async Task<IActionResult> UpdateOrder([FromBody] UpdateOrderRequest orderRequest)
+        {
+            var createOrderResponse = await _orderService.UpdateOrderAsync(orderRequest);
+            return Ok(createOrderResponse);
+        }
     }
 }
