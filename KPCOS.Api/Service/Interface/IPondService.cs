@@ -12,5 +12,6 @@ namespace KPCOS.Api.Service.Interface
         Task<string> AddPondAsync(CreatePondRequest request);
         Task<Pond> UpdatePondAsync(Pond pond);
         Task DeletePondAsync(int pondId);
+        Task<List<GetPondDetailResponse>> GetPondsDisplayAsync();
     }
 }

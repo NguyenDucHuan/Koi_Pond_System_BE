@@ -16,12 +16,10 @@ namespace KPCOS.Api.Controllers
         private readonly IAccountService _accountService;
 
 
-
-        public ManagerController(IPondService pondService, IAccountService accountService)
+        public ManagerController(IPondService pondService, IAccountService accountService, IOrderService orderService)
         {
             _pondService = pondService;
             _accountService = accountService;
-
         }
         [ProducesResponseType(typeof(GetAccountsRespone), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
@@ -113,5 +111,6 @@ namespace KPCOS.Api.Controllers
             var account = await _accountService.GetAccountByOrderId(orderId);
             return Ok(account);
         }
+
     }
 }

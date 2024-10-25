@@ -14,10 +14,12 @@ namespace KPCOS.Api.Controllers
     {
         private readonly IServiceTypeService _servicetypeservice;
         private readonly IComponentService _componentService;
-        public DisplayController(IServiceTypeService serviceTypeService, IComponentService componentService)
+        private readonly IPondService _pondService;
+        public DisplayController(IServiceTypeService serviceTypeService, IComponentService componentService, IPondService pondService)
         {
             _servicetypeservice = serviceTypeService;
             _componentService = componentService;
+            _pondService = pondService;
         }
         [ProducesResponseType(typeof(GetServiceTypesResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
@@ -41,6 +43,17 @@ namespace KPCOS.Api.Controllers
         {
             var components = await _componentService.GetComponentsAsync();
             return Ok(components);
+        }
+        [ProducesResponseType(typeof(List<GetPondDetailResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [HttpGet("ponds-display")]
+        public async Task<IActionResult> GetPondSample()
+        {
+            var ponds = await _pondService.GetPondsDisplayAsync();
+            return Ok(ponds);
         }
     }
 }

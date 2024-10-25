@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KPCOS.Api.Enums;
 using KPCOS.Api.Mappers;
 using KPCOS.Api.Service.Interface;
 using KPCOS.DataAccess.Repository.Interfaces;
@@ -49,6 +50,87 @@ namespace KPCOS.Api.Service.Implement
 
         }
 
+        public async Task<GetCurrentPondDashboardResponse> GetDashboardPondsRes(DateTime dateTimestart, DateTime dateTimeEnd, int curentPage, int numpage)
+        {
+            var orders = await _orderRepository.GetOrdersAsync();
+            var orderInTime = orders.Where(c => c.CreateOn >= dateTimestart && c.CreateOn <= dateTimeEnd);
+            if (orderInTime.Count() > numpage)
+            {
+
+            }
+            throw new NotImplementedException();
+        }
+
+        public Task<RevenueDahboardResponse> GetDashboardRevenueRes(DateTime dateTimestart, DateTime dateTimeEnd)
+        {
+            var orders = _orderRepository.GetOrdersAsync().Result;
+            var orderInTime = orders.Where(c => c.CreateOn >= dateTimestart && c.CreateOn <= dateTimeEnd);
+
+            // Calculate the interval duration
+            var totalDuration = dateTimeEnd - dateTimestart;
+            var intervalDuration = TimeSpan.FromTicks(totalDuration.Ticks / 7);
+
+            var dashboardData = new List<DashboardCol>();
+
+            for (int i = 0; i < 7; i++)
+            {
+                var intervalStart = dateTimestart.AddTicks(intervalDuration.Ticks * i);
+                var intervalEnd = intervalStart.AddTicks(intervalDuration.Ticks);
+
+                var totalMoneyInInterval = orderInTime
+                    .Where(order => order.CreateOn >= intervalStart && order.CreateOn < intervalEnd)
+                    .Sum(order => order.TotalMoney);
+
+                dashboardData.Add(new DashboardCol
+                {
+                    Time = $"{intervalStart:yyyy-MM-dd} to {intervalEnd:yyyy-MM-dd}",
+                    Money = totalMoneyInInterval
+                });
+            }
+
+            return Task.FromResult(new RevenueDahboardResponse
+            {
+                dashboards = dashboardData
+            });
+        }
+
+        public Task<GetDashboardStatsResponse> GetDashboardStatsResponse(DateTime dateTimestart, DateTime dateTimeEnd)
+        {
+            var orders = _orderRepository.GetOrdersAsync().Result;
+
+            Console.WriteLine(orders.Count());
+            if (orders == null)
+            {
+                return Task.FromResult(new GetDashboardStatsResponse
+                {
+                    CompletedProjects = 0,
+                    TotalProjects = 0,
+                    TotalRevenue = 0,
+                    OngoingProjects = 0,
+                    TimeFillterStart = dateTimestart,
+                    TimeFillterEnd = dateTimeEnd
+                });
+            }
+            else
+            {
+                var orderInTime = orders.Where(c => c.CreateOn >= dateTimestart && c.CreateOn <= dateTimeEnd);
+                var TotalProjects = orderInTime.Count();
+                var TotalComplete = orderInTime.Count(s => s.Status == OrderEnum.Complete.ToString());
+                var TotalOrderOnGoing = orderInTime.Count(s => s.Status != OrderEnum.Complete.ToString());
+                var totalMoney = orderInTime.Sum(s => s.TotalMoney);
+                var otalRevenue = (double)totalMoney;
+                return Task.FromResult(new GetDashboardStatsResponse
+                {
+                    CompletedProjects = TotalComplete,
+                    TotalProjects = TotalProjects,
+                    TotalRevenue = otalRevenue,
+                    OngoingProjects = TotalOrderOnGoing,
+                    TimeFillterStart = dateTimestart,
+                    TimeFillterEnd = dateTimeEnd
+                });
+            }
+        }
+
         public async Task<GetOrderDetailResponse> GetOrderAsync(int orderId)
         {
             var order = await _orderRepository.GetOrderAsync(orderId);
@@ -62,10 +144,16 @@ namespace KPCOS.Api.Service.Implement
             return response;
         }
 
+<<<<<<< Updated upstream
         public async Task<List<Order>> GetOrders()
         {
             var orders = await _orderRepository.GetOrdersAsync();
             return orders;
+=======
+        public Task<List<Order>> GetOrders()
+        {
+            return _orderRepository.GetOrdersAsync();
+>>>>>>> Stashed changes
         }
 
         public async Task<string> UpdateOrderStatus(int orderId, string status)
