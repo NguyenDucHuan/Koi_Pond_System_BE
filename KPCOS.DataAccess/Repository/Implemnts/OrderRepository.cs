@@ -67,19 +67,6 @@ namespace KPCOS.DataAccess.Repository.Implemnts
             return order;
         }
 
-        public async Task<int> CountOrdersAsync()
-        {
-            return await _context.Orders.CountAsync();
-        }
 
-        public async Task<int> CountOrdersByStatusAsync(string status)
-        {
-            return await _context.Orders.CountAsync(o => o.Status == status);
-        }
-
-        public async Task<decimal> SumTotalRevenueAsync()
-        {
-            return await _context.Orders.SumAsync(o => o.TotalMoney);
-        }
     }
 }

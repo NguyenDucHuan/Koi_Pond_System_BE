@@ -38,5 +38,13 @@ namespace KPOCOS.Domain.DTOs.Response
         public string ComponentName { get; set; } = null!;
         public decimal Amount { get; set; }
     }
-
+    public class PondDashBoard
+    {
+        public int AccountId { get; set; }
+        public int PondId { get; set; }
+        public string PondName { get; set; }
+        public string CustomerName { get; set; }
+        public string Status { get; set; }
+        public int Completion { get; set; }
+    }
 }

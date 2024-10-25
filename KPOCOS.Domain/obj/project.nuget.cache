@@ -1,8 +1,12 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "RyLsAnWWR68=",
+=======
+  "dgSpecHash": "3DfVn/g0k2s=",
+>>>>>>> Stashed changes
   "success": true,
-  "projectFilePath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj",
+  "projectFilePath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Soram\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Soram\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

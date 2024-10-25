@@ -50,9 +50,8 @@ public partial class KpcosdbContext : DbContext
                 .AddJsonFile("appsettings.json", true, true).Build();
         return configuration["ConnectionStrings:DefaultConnection"];
     }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-   => optionsBuilder.UseSqlServer(GetConnectionString());
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer(GetConnectionString());
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Account>(entity =>

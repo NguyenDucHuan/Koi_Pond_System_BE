@@ -13,8 +13,6 @@ namespace KPCOS.DataAccess.Repository.Interfaces
         Task<Order> AddOrderAsync(Order order);
         Task<Order> UpdateOrderAsync(Order order);
         Task DeleteOrderAsync(int orderId);
-        Task<int> CountOrdersAsync();
-        Task<int> CountOrdersByStatusAsync(string status);
-        Task<decimal> SumTotalRevenueAsync();
+
     }
 }

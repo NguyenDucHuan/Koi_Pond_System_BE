@@ -27,4 +27,9 @@ namespace KPOCOS.Domain.DTOs.Response
         public decimal TotalMoney { get; set; }
         public List<GetOrderItemResponse> OrderItems { get; set; } = new List<GetOrderItemResponse>();
     }
+    public class DashboardCol
+    {
+        public string Time { get; set; }
+        public decimal Money { get; set; }
+    }
 }

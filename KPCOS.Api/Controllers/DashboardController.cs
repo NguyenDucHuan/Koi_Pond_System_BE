@@ -20,43 +20,46 @@ namespace KPCOS.Api.Controllers
     [Route("api/v1/dashboard")]
     public class DashboardController : ControllerBase
     {
-        private readonly OrderService _orderService;
+        private readonly IOrderService _orderService;
 
-        public DashboardController(OrderService _orderService)
+        public DashboardController(IOrderService orderService)
         {
-            _orderService = _orderService;
+            _orderService = orderService;
         }
 
-        [ProducesResponseType(typeof(GetAccountRespone), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GetDashboardStatsResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
         [Consumes(MediaTypeConstant.ApplicationJson)]
         [Produces(MediaTypeConstant.ApplicationJson)]
-        [PermissionAuthorize(PermissionAuthorizeConstant.Manager)]
         [HttpGet("dashboard-stats")]
-        public async Task<IActionResult> GetDashboardStats()
+        public async Task<IActionResult> GetDashboardStats(DateTime dateTimestart, DateTime dateTimeEnd)
         {
-            try
-            {
-                // var totalOrders = await _orderService.GetTotalOrdersCountAsync();
-                // var ongoingOrders = await _orderService.GetOngoingOrdersCountAsync();
-                // var totalRevenue = await _orderService.GetTotalRevenueAsync();
-                // var totalClients = await _orderService.GetTotalClientsCountAsync();
 
-                // var stats = new
-                // {
-                //     totalOrders,
-                //     ongoingOrders,
-                //     totalRevenue,
-                //     totalClients
-                // };
-
-                return Ok("ok");
-            }
-            catch (System.Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            var response = _orderService.GetDashboardStatsResponse(dateTimestart, dateTimeEnd);
+            return Ok(response);
+        }
+        [ProducesResponseType(typeof(RevenueDahboardResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [HttpGet("dashboard-revenue")]
+        public async Task<IActionResult> GetDashboardRevenue(DateTime dateTimestart, DateTime dateTimeEnd)
+        {
+            var response = _orderService.GetDashboardRevenueRes(dateTimestart, dateTimeEnd);
+            return Ok(response);
+        }
+        [ProducesResponseType(typeof(RevenueDahboardResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
+        [HttpGet("dashboard-ponds")]
+        public async Task<IActionResult> GetDashboardPonds(DateTime dateTimestart, DateTime dateTimeEnd, int curentPage, int numpage)
+        {
+            var response = _orderService.GetDashboardPondsRes(dateTimestart, dateTimeEnd, curentPage, numpage);
+            return Ok(response);
         }
     }
 }

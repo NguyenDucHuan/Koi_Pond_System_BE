@@ -32,7 +32,6 @@ namespace KPCOS.Api.Service.Implement
         public async Task<List<GetPondDetailResponse>> GetPondsAsync()
         {
             var ponds = await _pondRepository.GetPondsAsync();
-
             var response = new List<GetPondDetailResponse>();
             foreach (var pond in ponds)
             {
@@ -78,6 +77,23 @@ namespace KPCOS.Api.Service.Implement
             }
             return "Pond added successfully";
 
+        }
+
+        public async Task<List<GetPondDetailResponse>> GetPondsDisplayAsync()
+        {
+            var ponds = await _pondRepository.GetPondsAsync();
+            var ress = ponds.Where(i => i.AccountId == null).ToList();
+            var response = new List<GetPondDetailResponse>();
+            foreach (var pond in ress)
+            {
+                var res = pond.ToPondDetailResponse();
+                foreach (var comp in res.Components)
+                {
+                    comp.ComponentName = await _componentRepository.GetComponentNameById(comp.ComponentId);
+                }
+                response.Add(res);
+            }
+            return response;
         }
     }
 }
