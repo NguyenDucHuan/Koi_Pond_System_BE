@@ -63,6 +63,7 @@ namespace KPCOS.Api.Service.Implement
 
         public Task<RevenueDahboardResponse> GetDashboardRevenueRes(DateTime dateTimestart, DateTime dateTimeEnd)
         {
+
             var orders = _orderRepository.GetOrdersAsync().Result;
             var orderInTime = orders.Where(c => c.CreateOn >= dateTimestart && c.CreateOn <= dateTimeEnd);
 
@@ -144,16 +145,9 @@ namespace KPCOS.Api.Service.Implement
             return response;
         }
 
-<<<<<<< Updated upstream
-        public async Task<List<Order>> GetOrders()
-        {
-            var orders = await _orderRepository.GetOrdersAsync();
-            return orders;
-=======
         public Task<List<Order>> GetOrders()
         {
             return _orderRepository.GetOrdersAsync();
->>>>>>> Stashed changes
         }
 
         public async Task<string> UpdateOrderStatus(int orderId, string status)
