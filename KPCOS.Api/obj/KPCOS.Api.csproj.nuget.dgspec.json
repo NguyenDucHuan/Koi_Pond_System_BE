@@ -17,7 +17,7 @@
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Soram\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\subih\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,19 +33,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-<<<<<<< Updated upstream
-              "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj"
-              },
-              "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
-                "projectPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj"
-=======
               "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj": {
                 "projectPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj"
               },
               "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
                 "projectPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj"
->>>>>>> Stashed changes
               }
             }
           }
@@ -145,7 +137,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -154,21 +146,15 @@
       "restore": {
         "projectUniqueName": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj",
         "projectName": "KPCOS.DataAccess",
-<<<<<<< Updated upstream
-        "projectPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\Soram\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPCOS.DataAccess\\obj\\",
-=======
         "projectPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.DataAccess\\KPCOS.DataAccess.csproj",
         "packagesPath": "C:\\Users\\subih\\.nuget\\packages\\",
         "outputPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPCOS.DataAccess\\obj\\",
->>>>>>> Stashed changes
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Soram\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\subih\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -184,13 +170,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-<<<<<<< Updated upstream
-              "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
-                "projectPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj"
-=======
               "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
                 "projectPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj"
->>>>>>> Stashed changes
               }
             }
           }
@@ -225,34 +206,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-<<<<<<< Updated upstream
-    "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
-=======
     "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj": {
->>>>>>> Stashed changes
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj",
         "projectName": "KPOCOS.Domain",
-<<<<<<< Updated upstream
-        "projectPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj",
-        "packagesPath": "C:\\Users\\Soram\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Soram\\Desktop\\Koi_Pond_System_BE\\KPOCOS.Domain\\obj\\",
-=======
         "projectPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\KPOCOS.Domain.csproj",
         "packagesPath": "C:\\Users\\subih\\.nuget\\packages\\",
         "outputPath": "D:\\TERM6\\Merge\\Koi_Pond_System_BE\\KPOCOS.Domain\\obj\\",
->>>>>>> Stashed changes
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Soram\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\subih\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -338,7 +309,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
