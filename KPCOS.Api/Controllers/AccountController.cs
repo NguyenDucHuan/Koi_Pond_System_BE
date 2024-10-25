@@ -104,6 +104,14 @@ namespace KPCOS.Api.Controllers
             var account = await _accountService.AddAccount(request);
             return Ok(account);
         }
-
+        [ProducesResponseType(typeof(GetAccountRespone), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [HttpGet("account-by-order/{orderId}")]
+        public async Task<IActionResult> GetAccountByOrderId([FromRoute] int orderId)
+        {
+            var account = await _accountService.GetAccountByOrderId(orderId);
+            return Ok(account);
+        }
     }
 }

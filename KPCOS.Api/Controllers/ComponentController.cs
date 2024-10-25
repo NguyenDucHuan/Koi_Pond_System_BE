@@ -30,7 +30,7 @@ namespace KPCOS.Api.Controllers
         [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
         [Consumes(MediaTypeConstant.ApplicationJson)]
         [Produces(MediaTypeConstant.ApplicationJson)]
-        [PermissionAuthorize(PermissionAuthorizeConstant.Manager)]
+        [PermissionAuthorize(PermissionAuthorizeConstant.Manager, PermissionAuthorizeConstant.Customer)]
         [HttpGet("components")]
         public async Task<IActionResult> GetComponents()
         {
