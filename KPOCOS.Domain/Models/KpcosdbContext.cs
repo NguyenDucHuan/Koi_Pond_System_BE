@@ -43,7 +43,6 @@ public partial class KpcosdbContext : DbContext
     public virtual DbSet<ServiceType> ServiceTypes { get; set; }
 
     public virtual DbSet<UserProfile> UserProfiles { get; set; }
-
     private string? GetConnectionString()
     {
         IConfiguration configuration = new ConfigurationBuilder()
@@ -52,7 +51,8 @@ public partial class KpcosdbContext : DbContext
         return configuration["ConnectionStrings:DefaultConnection"];
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(GetConnectionString());
+   => optionsBuilder.UseSqlServer(GetConnectionString());
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Account>(entity =>
@@ -83,7 +83,7 @@ public partial class KpcosdbContext : DbContext
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.ComponentTypeId).HasColumnName("ComponentTypeID");
             entity.Property(e => e.Name).HasMaxLength(255);
-            entity.Property(e => e.PricePerItem).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.PricePerItem).HasColumnType("decimal(18, 0)");
 
             entity.HasOne(d => d.ComponentType).WithMany(p => p.Components)
                 .HasForeignKey(d => d.ComponentTypeId)
@@ -108,13 +108,13 @@ public partial class KpcosdbContext : DbContext
             entity.ToTable("Discount");
 
             entity.Property(e => e.Id).HasColumnName("ID");
-            entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.DiscountAmount).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Amount).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.DiscountAmount).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.FieldOnDiscount).HasMaxLength(255);
             entity.Property(e => e.FinishTime).HasColumnType("datetime");
-            entity.Property(e => e.MaxTotalDiscount).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.MinRequireDiscount).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.RemainingAmount).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.MaxTotalDiscount).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.MinRequireDiscount).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.RemainingAmount).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.StartTime).HasColumnType("datetime");
         });
 
@@ -126,7 +126,7 @@ public partial class KpcosdbContext : DbContext
 
             entity.Property(e => e.DiscouId).HasColumnName("DiscouID");
             entity.Property(e => e.AccountId).HasColumnName("AccountID");
-            entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Amount).HasColumnType("decimal(18, 0)");
 
             entity.HasOne(d => d.Account).WithMany(p => p.DiscountPounds)
                 .HasForeignKey(d => d.AccountId)
@@ -150,7 +150,7 @@ public partial class KpcosdbContext : DbContext
             entity.Property(e => e.CreateOn).HasColumnType("datetime");
             entity.Property(e => e.DiscouId).HasColumnName("DiscouID");
             entity.Property(e => e.Status).HasMaxLength(50);
-            entity.Property(e => e.TotalMoney).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.TotalMoney).HasColumnType("decimal(18, 0)");
 
             entity.HasOne(d => d.Account).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.AccountId)
@@ -173,7 +173,7 @@ public partial class KpcosdbContext : DbContext
             entity.Property(e => e.PondId).HasColumnName("PondID");
             entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
             entity.Property(e => e.Status).HasMaxLength(50);
-            entity.Property(e => e.TotalPrice).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.TotalPrice).HasColumnType("decimal(18, 0)");
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.OrderId)
@@ -198,12 +198,12 @@ public partial class KpcosdbContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.AccountId).HasColumnName("AccountID");
-            entity.Property(e => e.Area).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Area).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.DesignImage)
                 .HasMaxLength(1000)
                 .HasDefaultValueSql("(NULL)");
             entity.Property(e => e.Location).HasMaxLength(255);
-            entity.Property(e => e.PondDepth).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.PondDepth).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.PondName).HasMaxLength(255);
             entity.Property(e => e.SamplePrice).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.Shape).HasMaxLength(255);
@@ -226,7 +226,7 @@ public partial class KpcosdbContext : DbContext
 
             entity.Property(e => e.ComponentId).HasColumnName("ComponentID");
             entity.Property(e => e.PondId).HasColumnName("PondID");
-            entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Amount).HasColumnType("decimal(18, 0)");
 
             entity.HasOne(d => d.Component).WithMany(p => p.PondComponents)
                 .HasForeignKey(d => d.ComponentId)
@@ -280,7 +280,7 @@ public partial class KpcosdbContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Name).HasMaxLength(255);
-            entity.Property(e => e.PricePerM2).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.PricePerM2).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.ServiceTypeId).HasColumnName("ServiceTypeID");
 
             entity.HasOne(d => d.ServiceType).WithMany(p => p.Services)
