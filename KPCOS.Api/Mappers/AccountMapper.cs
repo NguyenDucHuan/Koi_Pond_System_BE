@@ -134,9 +134,9 @@ namespace KPCOS.Api.Mappers
 
             }).ToList();
         }
-        public static List<GetOrderResponse> ToGetOrdersResponse(this List<Order> orders)
+        public static List<GetOrderDetailResponse> ToGetOrdersResponse(this List<Order> orders)
         {
-            return orders.Select(o => new GetOrderResponse
+            return orders.Select(o => new GetOrderDetailResponse
             {
                 Id = o.Id,
                 CreateOn = o.CreateOn,

@@ -31,6 +31,11 @@ namespace KPOCOS.Domain.DTOs.Response
         public int? SampleType { get; set; }
         public decimal? SamplePrice { get; set; }
         public List<GetPondOrderComponentResponse> Components { get; set; } = new List<GetPondOrderComponentResponse>();
+
+        public static implicit operator GetPondDetailResponse(GetOrderDetailResponse v)
+        {
+            throw new NotImplementedException();
+        }
     }
     public class GetPondOrderComponentResponse
     {

@@ -60,7 +60,7 @@ namespace KPCOS.Api.Controllers
         public async Task<IActionResult> GetOrder([FromRoute] int orderId)
         {
             var orderItem = await _orderService.GetOrderAsync(orderId);
-            return Ok("orderItem");
+            return Ok(orderItem);
         }
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
@@ -74,7 +74,11 @@ namespace KPCOS.Api.Controllers
             return Ok(Response);
         }
 
-
+        [ProducesResponseType(typeof(List<GetOrderDetailResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
+        [Consumes(MediaTypeConstant.ApplicationJson)]
+        [Produces(MediaTypeConstant.ApplicationJson)]
         [HttpGet("orders")]
         public async Task<IActionResult> GetOrders()
         {

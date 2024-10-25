@@ -135,19 +135,20 @@ namespace KPCOS.Api.Service.Implement
         public async Task<GetOrderDetailResponse> GetOrderAsync(int orderId)
         {
             var order = await _orderRepository.GetOrderAsync(orderId);
-            var response = new GetOrderDetailResponse
-            {
-                Id = order.Id,
-                CreateOn = order.CreateOn,
-                Status = order.Status,
-                TotalMoney = order.TotalMoney,
-            };
-            return response;
+            var orderdetail = order.ToGetOrderDetailResponse();
+            return orderdetail;
         }
 
-        public Task<List<Order>> GetOrders()
+        public async Task<List<GetOrderDetailResponse>> GetOrders()
         {
-            return _orderRepository.GetOrdersAsync();
+            var orders = await _orderRepository.GetOrdersAsync();
+            var response = new List<GetOrderDetailResponse>();
+            foreach (var item in orders)
+            {
+                var orderdetail = item.ToGetOrderDetailResponse();
+                response.Add(orderdetail);
+            }
+            return response;
         }
 
         public async Task<string> UpdateOrderStatus(int orderId, string status)
