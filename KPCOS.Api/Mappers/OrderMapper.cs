@@ -75,7 +75,9 @@ namespace KPCOS.Api.Mappers
                         Components = item.Pond.PondComponents.Select(pc => new GetPondOrderComponentResponse
                         {
                             ComponentId = pc.ComponentId,
-                            Amount = pc.Amount
+                            Amount = pc.Amount,
+                            ComponentName = pc.Component.Name
+
                         }).ToList()
                     }
                 }).ToList()
