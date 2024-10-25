@@ -22,10 +22,13 @@ namespace KPCOS.Api.Service.Implement
         private readonly IAccountRepository _accountRepository;
         private readonly IUserProfileRepository _userProfileRepository;
 
-        public AccountService(IAccountRepository accountRepository, IUserProfileRepository userProfileRepository)
+        private readonly IOrderRepository _orderRepository;
+
+        public AccountService(IAccountRepository accountRepository, IUserProfileRepository userProfileRepository, IOrderRepository orderRepository)
         {
             _accountRepository = accountRepository;
             _userProfileRepository = userProfileRepository;
+            _orderRepository = orderRepository;
         }
 
         public async Task<string> AddAccount(AddAccountRequest request)
@@ -175,6 +178,36 @@ namespace KPCOS.Api.Service.Implement
 
                 await _accountRepository.UpdateAccountAsync(account);
                 return MessageConstant.ManagerAccount.UpdateAccountStatusSuccess;
+            }
+            catch (NotFoundException ex)
+            {
+                string error = ErrorUtil.GetErrorString("Không tìm tháy", ex.Message);
+                throw new NotFoundException(error);
+            }
+            catch (Exception ex)
+            {
+                string error = ErrorUtil.GetErrorString("Exception", ex.Message);
+                throw new Exception(error);
+            }
+        }
+        public async Task<GetAccountRespone> GetAccountByOrderId(int orderId)
+        {
+            try
+            {
+                var order = await _orderRepository.GetOrderAsync(orderId);
+                if (order == null)
+                {
+                    throw new NotFoundException($"Order with id {orderId} not found");
+                }
+                var account = await _accountRepository.GetAccountAsync(order.AccountId);
+                if (account == null)
+                {
+                    throw new NotFoundException($"Account with id {order.AccountId} not found");
+                }
+
+                var accountResponse = account.ToGetAccountRespone();
+
+                return accountResponse;
             }
             catch (NotFoundException ex)
             {

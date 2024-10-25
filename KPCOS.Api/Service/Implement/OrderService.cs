@@ -62,6 +62,12 @@ namespace KPCOS.Api.Service.Implement
             return response;
         }
 
+        public async Task<List<Order>> GetOrders()
+        {
+            var orders = await _orderRepository.GetOrdersAsync();
+            return orders;
+        }
+
         public async Task<string> UpdateOrderStatus(int orderId, string status)
         {
             var order = await _orderRepository.GetOrderAsync(orderId);
