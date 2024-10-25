@@ -59,7 +59,25 @@ namespace KPCOS.Api.Mappers
                     Id = item.Id,
                     ServiceId = item.ServiceId,
                     TotalPrice = item.TotalPrice,
-                    Status = item.Status
+                    Status = item.Status,
+                    GetPondDetailResponse = new GetPondDetailResponse
+                    {
+                        Id = item.PondId ?? 0,
+                        PondName = item.Pond.PondName,
+                        PondDepth = item.Pond.PondDepth,
+                        Area = item.Pond.Area,
+                        Location = item.Pond.Location,
+                        Shape = item.Pond.Shape,
+                        AccountId = item.Pond.AccountId ?? 0,
+                        DesignImage = item.Pond.DesignImage,
+                        SampleType = item.Pond.SampleType,
+                        SamplePrice = item.Pond.SamplePrice,
+                        Components = item.Pond.PondComponents.Select(pc => new GetPondOrderComponentResponse
+                        {
+                            ComponentId = pc.ComponentId,
+                            Amount = pc.Amount
+                        }).ToList()
+                    }
                 }).ToList()
             };
         }

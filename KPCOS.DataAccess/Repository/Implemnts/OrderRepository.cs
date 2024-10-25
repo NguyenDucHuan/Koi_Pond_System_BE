@@ -37,7 +37,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<Order> GetOrderAsync(int orderId)
         {
-            var order = await _context.Orders.Include(o => o.OrderItems).FirstOrDefaultAsync(o => o.Id == orderId);
+            var order = await _context.Orders.Include(o => o.OrderItems).ThenInclude(i => i.Pond).ThenInclude(i => i.PondComponents).FirstOrDefaultAsync(o => o.Id == orderId);
             if (order == null)
             {
                 return null;
@@ -47,7 +47,7 @@ namespace KPCOS.DataAccess.Repository.Implemnts
 
         public async Task<List<Order>> GetOrdersAsync()
         {
-            var orders = await _context.Orders.ToListAsync();
+            var orders = await _context.Orders.Include(o => o.OrderItems).ThenInclude(i => i.Pond).ThenInclude(i => i.PondComponents).ToListAsync();
             if (orders == null)
             {
                 return null;
