@@ -10,7 +10,7 @@ namespace KPOCOS.Domain.DTOs.Resquest
     {
         public int id { get; set; }
         public string status { get; set; }
-        public decimal totalMoney { get; set; }
+        public decimal? totalMoney { get; set; }
 
         public List<UpdateOrderItemRequest> orderItems { get; set; }
 
@@ -19,7 +19,7 @@ namespace KPOCOS.Domain.DTOs.Resquest
     public class UpdateOrderItemRequest
     {
         public int id { get; set; }
-        public decimal totalPrice { get; set; }
+        public decimal? totalPrice { get; set; }
         public int serviceId { get; set; }
         public UpdateOrderPondRequest getPondDetailResponse { get; set; }
     }
@@ -37,5 +37,6 @@ namespace KPOCOS.Domain.DTOs.Resquest
     {
         public int componentId { get; set; }
         public decimal amount { get; set; }
+        public decimal price { get; set; }
     }
 }

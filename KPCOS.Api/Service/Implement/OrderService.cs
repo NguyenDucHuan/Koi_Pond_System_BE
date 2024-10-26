@@ -22,13 +22,15 @@ namespace KPCOS.Api.Service.Implement
         private readonly IOrderItemRepository _orderItemRepository;
         private readonly IPondRepository _pondRepository;
         private readonly IPondComponentRepository _pondComponentRepository;
+        private readonly IServiceRepository _serviceRepository;
 
-        public OrderService(IOrderRepository orderRepository, IOrderItemRepository orderItemRepository, IPondRepository pondRepository, IPondComponentRepository pondComponentRepository)
+        public OrderService(IOrderRepository orderRepository, IOrderItemRepository orderItemRepository, IPondRepository pondRepository, IPondComponentRepository pondComponentRepository, IServiceRepository serviceRepository)
         {
             _orderRepository = orderRepository;
             _orderItemRepository = orderItemRepository;
             _pondRepository = pondRepository;
             _pondComponentRepository = pondComponentRepository;
+            _serviceRepository = serviceRepository;
         }
         public async Task<string> CreateOrder(CreateOrderRequest orderRequest)
         {
@@ -158,15 +160,19 @@ namespace KPCOS.Api.Service.Implement
             try
             {
                 var order = await _orderRepository.GetOrderAsync(request.id);
-                order.TotalMoney = request.totalMoney;
                 foreach (var item in order.OrderItems)
                 {
                     foreach (var ites in request.orderItems)
                     {
+
                         if (ites.id == item.Id)
                         {
+                            var service = await _serviceRepository.GetServiceAsync(ites.serviceId);
+
                             item.ServiceId = ites.serviceId;
-                            item.TotalPrice = ites.totalPrice;
+                            item.TotalPrice = (service.PricePerM2 * ites.getPondDetailResponse.Area) +
+                                              ites.getPondDetailResponse.components
+                                                  .Sum(component => component.amount * component.price);
                             item.Pond.PondName = ites.getPondDetailResponse.pondName;
                             item.Pond.Location = ites.getPondDetailResponse.location;
                             item.Pond.PondDepth = ites.getPondDetailResponse.PondDepth;
@@ -200,12 +206,11 @@ namespace KPCOS.Api.Service.Implement
                             {
                                 item.Pond.PondComponents.Remove(component);
                             }
-                            
-                            await _orderRepository.UpdateOrderAsync(order);
                         }
                     }
-
                 }
+                order.TotalMoney = order.OrderItems.Sum(item => item.TotalPrice);
+                await _orderRepository.UpdateOrderAsync(order);
                 return "Update success";
             }
             catch (DbUpdateException ex)

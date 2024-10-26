@@ -91,7 +91,7 @@ namespace KPCOS.Api.Controllers
         [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
         [Consumes(MediaTypeConstant.ApplicationJson)]
         [Produces(MediaTypeConstant.ApplicationJson)]
-        [HttpPut("update-order")]
+        [HttpPost("update-order")]
         public async Task<IActionResult> UpdateOrder([FromBody] UpdateOrderRequest orderRequest)
         {
             var createOrderResponse = await _orderService.UpdateOrderAsync(orderRequest);
